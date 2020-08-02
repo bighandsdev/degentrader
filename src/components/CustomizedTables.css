@@ -1,0 +1,73 @@
+img {
+  max-width: 5%;
+  height: auto;
+  margin: '10px';
+}
+
+.Coin-Logo {
+  position: relative;
+  top: 3px;
+  right: 3px;
+}
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  color: black;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 15px;
+  border: collapse;
+}
+
+tr {
+  text-align: center;
+  padding: 12px;
+
+  border-width: 1px;
+  border-radius: 0px;
+}
+th,
+td,
+tr {
+  text-align: left;
+  padding: 12px;
+  border-width: 1px;
+  border-color: red;
+  border: collapse;
+
+  border-radius: 10px;
+}
+td {
+  margin: 0px solid black;
+
+  border: collapse;
+  margin: 0px;
+}
+
+.up {
+  background: linear-gradient(to bottom right, #48b770, #7ebc43);
+  border-collapse: collapse;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+.down {
+  background: linear-gradient(to bottom right, #bb4462, #d1332e);
+  border-collapse: collapse;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+.fuck {
+  background: linear-gradient(to bottom right, #290710, #d1332e);
+  border-collapse: collapse;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+.emoji {
+  font-size: 25px;
+  position: relative;
+
+  background: linear-gradient(to bottom right, #349dda, #752ed1);
+}

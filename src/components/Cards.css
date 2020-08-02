@@ -1,0 +1,104 @@
+.image {
+  text-align: center;
+  max-width: 20%;
+  height: auto;
+  margin: '10px';
+}
+
+/* Float four columns side by side */
+.column {
+  text-align: center;
+  float: left;
+  width: 25%;
+  padding: 0px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  text-align: center;
+  margin: 0px;
+  max-height: 150px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  text-align: center;
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 6000px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 50px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 3px;
+  text-align: center;
+  background-color: linear-gradient(to bottom right, red, yellow);
+  border-radius: 5px;
+  background: linear-gradient(
+    to bottom right,
+    rgb(148, 1, 148),
+    rgb(82, 1, 82)
+  );
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  height: 130px;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  float: left;
+}
+
+.image {
+  position: relative;
+  top: 8px;
+  right: 5px;
+}
+
+.Card-up {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 3px;
+  text-align: center;
+  background-color: linear-gradient(to bottom right, red, yellow);
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, #48b770, #7ebc43);
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  height: 130px;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  float: left;
+}
+.Card-down {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 3px;
+  text-align: center;
+  background-color: linear-gradient(to bottom right, red, yellow);
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, #bb4462, #d1332e);
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  height: 130px;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  float: left;
+}
+.card-text {
+  position: relative;
+  bottom: 10px;
+}
+.card-price {
+  position: relative;
+  bottom: 10px;
+}
