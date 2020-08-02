@@ -1,9 +1,9 @@
-import React from 'react';
-import logo from './logo.png';
-import './App.css';
-import CustomizedTables from './components/CustomizedTables.js';
-import Cards from './components/Cards.js';
-import SearchBar from './components/SearchBar.js';
+import React from "react";
+import logo from "./logo.png";
+import "./App.css";
+import CustomizedTables from "./components/CustomizedTables.js";
+import Cards from "./components/Cards.js";
+import SearchBar from "./components/SearchBar.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       error: null,
       searchOn: false,
-      search: '',
+      search: "",
       isLoaded: false,
       coins: [],
     };
@@ -20,7 +20,7 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false',
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     )
       .then((res) => res.json())
       .then(
@@ -35,13 +35,13 @@ class App extends React.Component {
             isLoaded: true,
             error,
           });
-        },
+        }
       );
   }
   handleChange(e) {
     let currentList = [];
     let newList = [];
-    if (e !== '') {
+    if (e !== "") {
       currentList = this.state.coins;
 
       newList = currentList.filter((coin) => {
