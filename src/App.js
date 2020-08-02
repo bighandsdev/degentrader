@@ -74,7 +74,9 @@ class App extends React.Component {
             <CustomizedTables coins={this.state} />
           </div>
 
-          <div></div>
+          <div>
+            <p>fg</p>
+          </div>
         </header>
       </div>
     );
