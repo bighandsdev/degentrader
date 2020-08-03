@@ -1,14 +1,14 @@
-import React from 'react';
-import './CustomizedTables.css';
+import React from "react";
+import "./CustomizedTables.css";
 
 export default class CustomizedTables extends React.Component {
   handleUporDown(coinChange) {
     if (coinChange > 0) {
-      return 'up';
+      return "up";
     } else if (coinChange < -10) {
-      return 'fuck';
+      return "fuck";
     } else {
-      return 'down';
+      return "down";
     }
   }
   handleEmoji(coinChange) {
@@ -27,10 +27,7 @@ export default class CustomizedTables extends React.Component {
 
   roundDown(number, decimals) {
     decimals = decimals || 0;
-    return (
-      Math.floor(number * Math.pow(10, decimals)) /
-      Math.pow(10, decimals)
-    );
+    return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
   }
 
   render() {
@@ -60,11 +57,11 @@ export default class CustomizedTables extends React.Component {
                 $
                 {this.roundDown(coin.current_price, 2)
                   .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </td>
               <td
                 className={this.handleUporDown(
-                  coin.price_change_percentage_24h,
+                  coin.price_change_percentage_24h
                 )}
               >
                 {this.roundDown(coin.price_change_percentage_24h, 2)}%
@@ -73,7 +70,7 @@ export default class CustomizedTables extends React.Component {
                 $
                 {coin.market_cap
                   .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </td>
               <td className="emoji">
                 {this.handleEmoji(coin.price_change_percentage_24h)}

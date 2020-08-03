@@ -11,11 +11,12 @@ class App extends React.Component {
     this.state = {
       error: null,
       searchOn: false,
-      search: "",
+      value: "",
       isLoaded: false,
       coins: [],
+      rawCoins: [],
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends React.Component {
           this.setState({
             isLoaded: true,
             coins: result,
+            rawCoins: result,
           });
         },
         (error) => {
@@ -38,24 +40,28 @@ class App extends React.Component {
         }
       );
   }
-  handleChange(e) {
-    let currentList = [];
-    let newList = [];
-    if (e !== "") {
-      currentList = this.state.coins;
-
-      newList = currentList.filter((coin) => {
-        const lc = coin.toString().toLowerCase();
-        const filter = e.toLowerCase();
-        return lc.includes(filter);
-      });
-    } else {
-      newList = this.state.coins;
-    }
+  onChange(e) {
     this.setState({
-      coins: newList,
+      value: e.target.value,
     });
+    if (e.target.value == "") {
+      this.setState({
+        coins: this.state.rawCoins,
+      });
+    } else if (e.target.value !== "") {
+      {
+        let searcjQery = this.state.value.toLowerCase(),
+          displayedCoins = this.state.coins.filter((el) => {
+            let searchValue = el.id.toLowerCase();
+            return searchValue.indexOf(searcjQery) !== -1;
+          });
+        this.setState({
+          coins: displayedCoins,
+        });
+      }
+    }
   }
+
   render() {
     return (
       <div className="App">
@@ -63,11 +69,11 @@ class App extends React.Component {
           <div class="row">
             <img src={logo} className="logo" />
           </div>
-          <p>{this.state.search}</p>
+
           <Cards />
 
           <div>
-            <SearchBar handleChange={this.handleChange} />
+            <SearchBar inputValue={this.state.value} onChange={this.onChange} />
           </div>
 
           <div>
