@@ -30,6 +30,38 @@ export default class CustomizedTables extends React.Component {
     return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
   }
 
+  result() {
+    const { error, isLoaded, coins } = this.props.coins;
+    if (coins.length > 0) {
+      return coins.map((coin) => (
+        <tr>
+          <td>{coin.market_cap_rank}</td>
+          <td>
+            <img src={coin.image} className="Coin-Logo" />
+            {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
+            <span className="symbol">{coin.symbol.toUpperCase()}</span>
+          </td>
+          <td>
+            $
+            {this.roundDown(coin.current_price, 2)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </td>
+          <td className={this.handleUporDown(coin.price_change_percentage_24h)}>
+            {this.roundDown(coin.price_change_percentage_24h, 2)}%
+          </td>
+          <td>
+            ${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </td>
+          <td className="emoji">
+            {this.handleEmoji(coin.price_change_percentage_24h)}
+          </td>
+        </tr>
+      ));
+    } else {
+      return <p>No results 😕</p>;
+    }
+  }
   render() {
     const { error, isLoaded, coins } = this.props.coins;
     if (error) {
@@ -46,37 +78,7 @@ export default class CustomizedTables extends React.Component {
             <th>24 Hour Change</th>
             <th>MarketCap</th>
           </tr>
-          {coins.map((coin) => (
-            <tr>
-              <td>{coin.market_cap_rank}</td>
-              <td>
-                <img src={coin.image} className="Coin-Logo" />
-                {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
-              </td>
-              <td>
-                $
-                {this.roundDown(coin.current_price, 2)
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </td>
-              <td
-                className={this.handleUporDown(
-                  coin.price_change_percentage_24h
-                )}
-              >
-                {this.roundDown(coin.price_change_percentage_24h, 2)}%
-              </td>
-              <td>
-                $
-                {coin.market_cap
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </td>
-              <td className="emoji">
-                {this.handleEmoji(coin.price_change_percentage_24h)}
-              </td>
-            </tr>
-          ))}
+          {this.result()}
         </table>
       );
     }

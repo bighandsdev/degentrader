@@ -4,6 +4,7 @@ import "./App.css";
 import CustomizedTables from "./components/CustomizedTables.js";
 import Cards from "./components/Cards.js";
 import SearchBar from "./components/SearchBar.js";
+import Chart from "./components/Chart.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class App extends React.Component {
       });
     } else if (e.target.value !== "") {
       {
-        let searcjQery = this.state.value.toLowerCase(),
+        let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
             let searchValue = el.id.toLowerCase();
             return searchValue.indexOf(searcjQery) !== -1;
@@ -71,7 +72,6 @@ class App extends React.Component {
           </div>
 
           <Cards />
-
           <div>
             <SearchBar inputValue={this.state.value} onChange={this.onChange} />
           </div>
