@@ -41,6 +41,7 @@ class App extends React.Component {
         }
       );
   }
+
   onChange(e) {
     this.setState({
       value: e.target.value,
@@ -72,6 +73,10 @@ class App extends React.Component {
           </div>
 
           <Cards />
+          <div style={{ width: 500 }}>
+            <Chart />
+          </div>
+
           <div>
             <SearchBar inputValue={this.state.value} onChange={this.onChange} />
           </div>

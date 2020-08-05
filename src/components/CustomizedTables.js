@@ -1,5 +1,6 @@
 import React from "react";
 import "./CustomizedTables.css";
+import Chart from "./Chart.js";
 
 export default class CustomizedTables extends React.Component {
   handleUporDown(coinChange) {
