@@ -37,14 +37,6 @@ export default class CustomizedTables extends React.Component {
     return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
   }
 
-  fetchSongDetails = (e) => {
-    const coin = e.currentTarget.getAttribute("data-item");
-    this.setState({
-      coinClicked: coin,
-    });
-    console.log("We need to get the details for " + this.state.coinClicked);
-  };
-
   result() {
     const { error, isLoaded, coins } = this.props.coins;
     if (coins.length > 0) {
@@ -82,16 +74,7 @@ export default class CustomizedTables extends React.Component {
               {this.handleEmoji(coin.price_change_percentage_24h)}
             </td>
           </tr>
-          <tr>
-            <td></td>
-            <td>
-              <Chart />
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <Chart id={coin.id} />
         </>
       ));
     } else {

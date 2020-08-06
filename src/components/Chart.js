@@ -3,16 +3,17 @@ import { Line } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
 
-const Chart = () => {
+const Chart = (props) => {
   const [chartData, setChartData] = useState({});
-
+  const [id] = useState(props.id);
   const chart = () => {
     let time = [];
     let price = [];
     let priceSmaller = [];
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
-    let whichCoin = "ethereum";
+    let whichCoin = id;
+    console.log(whichCoin);
     axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=100`
@@ -31,9 +32,7 @@ const Chart = () => {
           timeSmaller.push(time[i]);
         }
         for (var i = 0; i < timeSmaller.length; i++) {
-          timeSmallerAndConverted.push(
-            moment(timeSmaller[i]).format("YYYY-MM-DD HH:mm")
-          );
+          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("ll"));
         }
         setChartData({
           labels: timeSmallerAndConverted,
@@ -56,16 +55,17 @@ const Chart = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    console.log(time, price);
   };
 
   useEffect(() => {
-    chart();
-  }, []);
+    chart(props);
+  }, [props]);
+
   return (
-    <div className="App">
-      <div>
+    <tr>
+      <td></td>
+
+      <td>
         <Line
           data={chartData}
           options={{
@@ -108,8 +108,12 @@ const Chart = () => {
             },
           }}
         />
-      </div>
-    </div>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
   );
 };
 
