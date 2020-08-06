@@ -5,8 +5,6 @@ import moment from "moment";
 
 const Chart = () => {
   const [chartData, setChartData] = useState({});
-  const [employeeSalary, setEmployeeSalary] = useState([]);
-  const [employeeAge, setEmployeeAge] = useState([]);
 
   const chart = () => {
     let time = [];
@@ -14,9 +12,10 @@ const Chart = () => {
     let priceSmaller = [];
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
+    let whichCoin = "ethereum";
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=3"
+        `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=100`
       )
       .then((res) => {
         console.log(res);
@@ -25,10 +24,10 @@ const Chart = () => {
           price.push(parseInt(dataObj[[1]]));
         }
 
-        for (var i = 0; i < price.length; i = i + 10) {
+        for (var i = 0; i < price.length; i = i + 1) {
           priceSmaller.push(price[i]);
         }
-        for (var i = 0; i < time.length; i = i + 10) {
+        for (var i = 0; i < time.length; i = i + 1) {
           timeSmaller.push(time[i]);
         }
         for (var i = 0; i < timeSmaller.length; i++) {
@@ -40,7 +39,7 @@ const Chart = () => {
           labels: timeSmallerAndConverted,
           datasets: [
             {
-              label: "Price",
+              label: "USD",
               data: priceSmaller,
               backgroundColor: ["lightgreen"],
               backgroundColor: ["lightgreen"],
@@ -70,14 +69,20 @@ const Chart = () => {
         <Line
           data={chartData}
           options={{
+            legend: {
+              display: false,
+            },
             tooltips: {
               mode: "x-axis",
             },
             responsive: true,
             title: { text: "THICCNESS SCALE", display: false },
             elements: {
+              point: {
+                radius: 0,
+              },
               line: {
-                tension: 0,
+                tension: 0.05,
               },
             },
             scales: {
