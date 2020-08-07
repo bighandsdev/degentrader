@@ -21,10 +21,10 @@ const Chart = (props) => {
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data.prices) {
-          time.push(parseInt(dataObj[[0]]));
-          price.push(parseInt(dataObj[[1]]));
+          time.push(dataObj[0]);
+          price.push(dataObj[1]);
         }
-
+        console.log(price);
         for (var i = 0; i < price.length; i = i + 1) {
           priceSmaller.push(price[i]);
         }
