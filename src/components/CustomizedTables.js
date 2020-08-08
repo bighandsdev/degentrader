@@ -37,15 +37,31 @@ export default class CustomizedTables extends React.Component {
     return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
   }
 
+  handleClick(e) {
+    const coin = e.currentTarget.getAttribute("data-item");
+    this.setState({
+      coinClicked: coin,
+    });
+    console.log("We need to get the details for " + coin);
+  }
+
+  chartRender(coin) {
+    const { error, isLoaded, coins } = this.props.coins;
+    if (coin === this.state.coinClicked) {
+      return <Chart id={coin} />;
+    } else {
+    }
+  }
+
   result() {
     const { error, isLoaded, coins } = this.props.coins;
     if (coins.length > 0) {
       return coins.map((coin) => (
         <>
           <tr
-            key={"row-for-" + coin.id}
+            key={coin.id}
             data-item={coin.id}
-            onClick={this.fetchSongDetails}
+            onClick={this.handleClick.bind(this)}
           >
             <td>{coin.market_cap_rank}</td>
             <td>
@@ -54,6 +70,7 @@ export default class CustomizedTables extends React.Component {
               {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
 
               <span className="symbol">{coin.symbol.toUpperCase()}</span>
+              <td></td>
             </td>
             <td>
               $
@@ -74,7 +91,7 @@ export default class CustomizedTables extends React.Component {
               {this.handleEmoji(coin.price_change_percentage_24h)}
             </td>
           </tr>
-          <Chart id={coin.id} />
+          {this.chartRender(coin.id)}
         </>
       ));
     } else {

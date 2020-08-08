@@ -13,7 +13,7 @@ const Chart = (props) => {
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
     let whichCoin = id;
-    console.log(whichCoin);
+
     axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=100`
@@ -100,6 +100,11 @@ const Chart = (props) => {
               ],
               xAxes: [
                 {
+                  ticks: {
+                    maxTicksLimit: 5,
+                    maxRotation: 0,
+                    minRotation: 0,
+                  },
                   gridLines: {
                     display: false,
                   },
