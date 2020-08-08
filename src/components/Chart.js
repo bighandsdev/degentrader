@@ -6,7 +6,10 @@ import moment from "moment";
 const Chart = (props) => {
   const [chartData, setChartData] = useState({});
   const [id] = useState(props.id);
-  const chart = () => {
+  const [days] = useState(props.days);
+  const [redraw, setRedraw] = useState({});
+  const chart = (props) => {
+    let daysChart = props.days;
     let time = [];
     let price = [];
     let priceSmaller = [];
@@ -14,9 +17,10 @@ const Chart = (props) => {
     let timeSmallerAndConverted = [];
     let whichCoin = id;
 
+    console.log(days);
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=100`
+        `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=${daysChart}`
       )
       .then((res) => {
         console.log(res);
@@ -51,6 +55,8 @@ const Chart = (props) => {
             },
           ],
         });
+        setRedraw(true);
+        setRedraw(false);
       })
       .catch((err) => {
         console.log(err);
@@ -62,63 +68,54 @@ const Chart = (props) => {
   }, [props]);
 
   return (
-    <tr>
-      <td></td>
-
-      <td>
-        <Line
-          data={chartData}
-          options={{
-            legend: {
-              display: false,
-            },
-            tooltips: {
-              mode: "x-axis",
-            },
-            responsive: true,
-            title: { text: "THICCNESS SCALE", display: false },
-            elements: {
-              point: {
-                radius: 0,
+    <Line
+      redraw={redraw}
+      data={chartData}
+      options={{
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          mode: "x-axis",
+        },
+        responsive: true,
+        title: { text: "THICCNESS SCALE", display: false },
+        elements: {
+          point: {
+            radius: 0,
+          },
+          line: {
+            tension: 0.05,
+          },
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 10,
+                beginAtZero: false,
               },
-              line: {
-                tension: 0.05,
+              gridLines: {
+                display: false,
               },
             },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 10,
-                    beginAtZero: false,
-                  },
-                  gridLines: {
-                    display: false,
-                  },
-                },
-              ],
-              xAxes: [
-                {
-                  ticks: {
-                    maxTicksLimit: 5,
-                    maxRotation: 0,
-                    minRotation: 0,
-                  },
-                  gridLines: {
-                    display: false,
-                  },
-                },
-              ],
+          ],
+          xAxes: [
+            {
+              ticks: {
+                maxTicksLimit: 5,
+                maxRotation: 0,
+                minRotation: 0,
+              },
+              gridLines: {
+                display: false,
+              },
             },
-          }}
-        />
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+          ],
+        },
+      }}
+    />
   );
 };
 

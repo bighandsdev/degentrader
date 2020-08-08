@@ -7,7 +7,10 @@ export default class CustomizedTables extends React.Component {
     super(props);
     this.state = {
       coinClicked: "",
+      chartDays: 10,
+      redraw: false,
     };
+    this.dateClick = this.dateClick.bind(this);
   }
   handleUporDown(coinChange) {
     if (coinChange > 0) {
@@ -45,10 +48,59 @@ export default class CustomizedTables extends React.Component {
     console.log("We need to get the details for " + coin);
   }
 
-  chartRender(coin) {
+  dateClick(e) {
+    const dayRequest = e.currentTarget.getAttribute("data-item");
+
+    this.setState({
+      chartDays: dayRequest,
+    });
+  }
+  chartRender(coin, days) {
     const { error, isLoaded, coins } = this.props.coins;
     if (coin === this.state.coinClicked) {
-      return <Chart id={coin} />;
+      return (
+        <tr>
+          <td></td>
+
+          <td>
+            <div class="container">
+              <a
+                class="btn btn-1"
+                key="1-days"
+                data-item={1}
+                onClick={this.dateClick}
+                id={coin}
+              >
+                Past day
+              </a>
+              <a
+                class="btn btn-2"
+                key="7-days"
+                data-item={7}
+                onClick={this.dateClick}
+                id={coin}
+              >
+                Past week
+              </a>
+              <a
+                class="btn btn-3"
+                key="30-days"
+                data-item={30}
+                onClick={this.dateClick}
+                id={coin}
+              >
+                Past month
+              </a>
+            </div>
+            <Chart id={coin} days={days} redraw={this.state.redraw} />
+          </td>
+
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      );
     } else {
     }
   }
@@ -91,7 +143,7 @@ export default class CustomizedTables extends React.Component {
               {this.handleEmoji(coin.price_change_percentage_24h)}
             </td>
           </tr>
-          {this.chartRender(coin.id)}
+          {this.chartRender(coin.id, this.state.chartDays)}
         </>
       ));
     } else {
