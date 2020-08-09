@@ -17,14 +17,57 @@ class App extends React.Component {
       isLoaded: false,
       coins: [],
       rawCoins: [],
-      currencies: ["usd", "btc", "gbp"],
+      currencies: ["usd", "eur", "rub", "idr", "krw", "cny"],
+      currencySymbols: {
+        USD: "$", // US Dollar
+        EUR: "€", // Euro
+        CRC: "₡", // Costa Rican Colón
+        GBP: "£", // British Pound Sterling
+        ILS: "₪", // Israeli New Sheqel
+        INR: "₹", // Indian Rupee
+        JPY: "¥", // Japanese Yen
+        KRW: "₩", // South Korean Won
+        NGN: "₦", // Nigerian Naira
+        PHP: "₱", // Philippine Peso
+        PLN: "zł", // Polish Zloty
+        PYG: "₲", // Paraguayan Guarani
+        THB: "฿", // Thai Baht
+        UAH: "₴", // Ukrainian Hryvnia
+        VND: "₫", // Vietnamese Dong
+      },
+      currency: "usd",
+      currencySymbol: "$",
     };
     this.onChange = this.onChange.bind(this);
+    this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
   }
 
   componentDidMount() {
+    const currencyR = this.state.currency;
     fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            coins: result,
+            rawCoins: result,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
+  updateData(currency) {
+    const currencyR = currency;
+    fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -65,6 +108,12 @@ class App extends React.Component {
       }
     }
   }
+  handleCurrencyClick(e) {
+    this.setState({
+      currency: e.currentTarget.getAttribute("data-item"),
+    });
+    return this.updateData(e.currentTarget.getAttribute("data-item"));
+  }
 
   render() {
     return (
@@ -83,12 +132,16 @@ class App extends React.Component {
               <CurrencySettings
                 currencies={this.state.currencies}
                 onClick={this.handleCurrencyClick}
+                inputValue={this.state.currency}
               />
             </span>
           </div>
 
           <div>
-            <CustomizedTables coins={this.state} />
+            <CustomizedTables
+              coins={this.state}
+              currency={this.state.currency}
+            />
           </div>
 
           <div></div>
