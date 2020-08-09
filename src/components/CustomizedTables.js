@@ -9,6 +9,24 @@ export default class CustomizedTables extends React.Component {
       coinClicked: "",
       chartDays: 10,
       redraw: false,
+      currency: this.props.currency,
+      currency_symbols: {
+        USD: "$", // US Dollar
+        EUR: "€", // Euro
+        CRC: "₡", // Costa Rican Colón
+        GBP: "£", // British Pound Sterling
+        ILS: "₪", // Israeli New Sheqel
+        INR: "₹", // Indian Rupee
+        JPY: "¥", // Japanese Yen
+        KRW: "₩", // South Korean Won
+        NGN: "₦", // Nigerian Naira
+        PHP: "₱", // Philippine Peso
+        PLN: "zł", // Polish Zloty
+        PYG: "₲", // Paraguayan Guarani
+        THB: "฿", // Thai Baht
+        UAH: "₴", // Ukrainian Hryvnia
+        VND: "₫", // Vietnamese Dong
+      },
     };
     this.dateClick = this.dateClick.bind(this);
   }
@@ -92,7 +110,12 @@ export default class CustomizedTables extends React.Component {
                 Past month
               </a>
             </div>
-            <Chart id={coin} days={days} redraw={this.state.redraw} />
+            <Chart
+              id={coin}
+              days={days}
+              redraw={this.state.redraw}
+              currency={this.props.currency}
+            />
           </td>
 
           <td></td>
@@ -125,7 +148,7 @@ export default class CustomizedTables extends React.Component {
               <td></td>
             </td>
             <td>
-              $
+              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
               {this.roundDown(coin.current_price, 2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -136,7 +159,7 @@ export default class CustomizedTables extends React.Component {
               {this.roundDown(coin.price_change_percentage_24h, 2)}%
             </td>
             <td>
-              $
+              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
               {coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </td>
             <td className="emoji">

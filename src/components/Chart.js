@@ -6,10 +6,12 @@ import moment from "moment";
 const Chart = (props) => {
   const [chartData, setChartData] = useState({});
   const [id] = useState(props.id);
+  const [currency] = useState(props.currency);
   const [days] = useState(props.days);
   const [redraw, setRedraw] = useState({});
   const chart = (props) => {
     let daysChart = props.days;
+    let currency = props.currency;
     let time = [];
     let price = [];
     let priceSmaller = [];
@@ -20,7 +22,7 @@ const Chart = (props) => {
     console.log(days);
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=usd&days=${daysChart}`
+        `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=${currency}&days=${daysChart}`
       )
       .then((res) => {
         console.log(res);
@@ -42,7 +44,7 @@ const Chart = (props) => {
           labels: timeSmallerAndConverted,
           datasets: [
             {
-              label: "USD",
+              label: currency.toUpperCase(),
               data: priceSmaller,
               backgroundColor: ["#9370DB"],
 

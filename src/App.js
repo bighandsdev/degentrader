@@ -17,7 +17,7 @@ class App extends React.Component {
       isLoaded: false,
       coins: [],
       rawCoins: [],
-      currencies: ["usd", "eur", "rub", "idr", "krw", "cny"],
+      currencies: ["usd", "eur", "rub", "idr", "krw", "cny", "gbp"],
       currencySymbols: {
         USD: "$", // US Dollar
         EUR: "€", // Euro
