@@ -16,6 +16,7 @@ class App extends React.Component {
       isLoaded: false,
       coins: [],
       rawCoins: [],
+      currencies: ["usd", "btc", "gbp"],
     };
     this.onChange = this.onChange.bind(this);
   }

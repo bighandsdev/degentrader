@@ -44,13 +44,8 @@ const Chart = (props) => {
             {
               label: "USD",
               data: priceSmaller,
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
-              backgroundColor: ["lightgreen"],
+              backgroundColor: ["#9370DB"],
+
               borderWidth: 4,
             },
           ],

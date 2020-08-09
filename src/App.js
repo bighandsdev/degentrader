@@ -5,6 +5,7 @@ import CustomizedTables from "./components/CustomizedTables.js";
 import Cards from "./components/Cards.js";
 import SearchBar from "./components/SearchBar.js";
 import Chart from "./components/Chart.js";
+import CurrencySettings from "./components/CurrencySettings.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
       isLoaded: false,
       coins: [],
       rawCoins: [],
+      currencies: ["usd", "btc", "gbp"],
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -77,6 +79,12 @@ class App extends React.Component {
 
           <div>
             <SearchBar inputValue={this.state.value} onChange={this.onChange} />
+            <span>
+              <CurrencySettings
+                currencies={this.state.currencies}
+                onClick={this.handleCurrencyClick}
+              />
+            </span>
           </div>
 
           <div>
