@@ -1,11 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import './Cards.css';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import "./Cards.css";
 
 export default class CustomizedTables extends React.Component {
   constructor(props) {
@@ -14,12 +14,14 @@ export default class CustomizedTables extends React.Component {
       error: null,
       isLoaded: false,
       coins: [],
+      currency: this.props.currency,
+      currency_symbols: this.props.currency_symbols,
     };
   }
 
   componentDidMount() {
     fetch(
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=4&page=1&sparkline=false',
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.state.currency}&order=market_cap_desc&per_page=4&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -29,30 +31,38 @@ export default class CustomizedTables extends React.Component {
             coins: result,
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+
         (error) => {
           this.setState({
             isLoaded: true,
             error,
           });
-        },
+        }
       );
   }
   handleUporDown(coinChange) {
     if (coinChange > 0) {
-      return 'Card-up';
+      return "Card-up";
     } else {
-      return 'Card-down';
+      return "Card-down";
     }
   }
   roundDown(number, decimals) {
     decimals = decimals || 0;
-    return (
-      Math.floor(number * Math.pow(10, decimals)) /
-      Math.pow(10, decimals)
-    );
+    return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+  }
+  handleEmoji(coinChange) {
+    if (coinChange < -10) {
+      return <span>💀</span>;
+    } else if (coinChange < 0) {
+      return <span>😕</span>;
+    } else if (coinChange < 10) {
+      return <span>😃</span>;
+    } else if (coinChange < 20) {
+      return <span>🚀</span>;
+    } else if (coinChange > 20) {
+      return <span>🤯</span>;
+    }
   }
 
   render() {
@@ -67,15 +77,25 @@ export default class CustomizedTables extends React.Component {
           <div class="column">
             {coins.map((coin) => (
               <div
-                class={this.handleUporDown(
-                  coin.price_change_percentage_24h,
-                )}
+                class={this.handleUporDown(coin.price_change_percentage_24h)}
               >
                 <p className="card-text">
                   <img className="image" src={coin.image} />
-                  {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
+                  {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}{" "}
+                  {this.handleEmoji(coin.price_change_percentage_24h)}
                 </p>
-                <p className="card-price">${coin.current_price} </p>
+
+                <p className="card-price">
+                  {
+                    this.state.currency_symbols[
+                      this.state.currency.toUpperCase()
+                    ]
+                  }
+                  {coin.current_price}{" "}
+                </p>
+                <p className="card-price-change">
+                  {this.roundDown(coin.price_change_percentage_24h, 2)} %
+                </p>
               </div>
             ))}
           </div>

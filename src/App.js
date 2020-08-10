@@ -16,8 +16,19 @@ class App extends React.Component {
       value: "",
       isLoaded: false,
       coins: [],
+      coinsForCard: [],
       rawCoins: [],
-      currencies: ["usd", "eur", "rub", "idr", "krw", "cny", "gbp"],
+      currencies: [
+        "usd",
+        "eur",
+        "rub",
+        "idr",
+        "krw",
+        "cny",
+        "gbp",
+        "aud",
+        "cad",
+      ],
       currencySymbols: {
         USD: "$", // US Dollar
         EUR: "€", // Euro
@@ -32,8 +43,8 @@ class App extends React.Component {
         PLN: "zł", // Polish Zloty
         PYG: "₲", // Paraguayan Guarani
         THB: "฿", // Thai Baht
-        UAH: "₴", // Ukrainian Hryvnia
-        VND: "₫", // Vietnamese Dong
+        AUD: "$",
+        CAD: "$",
       },
       currency: "usd",
       currencySymbol: "$",
@@ -55,6 +66,7 @@ class App extends React.Component {
             coins: result,
             rawCoins: result,
           });
+          this.manageCards(result);
         },
         (error) => {
           this.setState({
@@ -77,6 +89,7 @@ class App extends React.Component {
             coins: result,
             rawCoins: result,
           });
+          this.manageCards(result);
         },
         (error) => {
           this.setState({
@@ -108,6 +121,16 @@ class App extends React.Component {
       }
     }
   }
+  manageCards(coins) {
+    const coinOrderByPrice = coins.sort(
+      (a, b) =>
+        parseFloat(a.price_change_percentage_24h) -
+        parseFloat(b.price_change_percentage_24h)
+    );
+    const coinOrderByPriceTop4 = coinOrderByPrice.splice(0, 4);
+    return coinOrderByPriceTop4;
+  }
+
   handleCurrencyClick(e) {
     this.setState({
       currency: e.currentTarget.getAttribute("data-item"),
@@ -123,7 +146,10 @@ class App extends React.Component {
             <img src={logo} className="logo" />
           </div>
 
-          <Cards />
+          <Cards
+            currency={this.state.currency}
+            currency_symbols={this.state.currencySymbols}
+          />
           <div style={{ width: 500 }}></div>
 
           <div>
@@ -141,6 +167,7 @@ class App extends React.Component {
             <CustomizedTables
               coins={this.state}
               currency={this.state.currency}
+              currency_symbols={this.state.currencySymbols}
             />
           </div>
 

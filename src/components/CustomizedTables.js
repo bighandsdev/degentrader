@@ -10,23 +10,7 @@ export default class CustomizedTables extends React.Component {
       chartDays: 10,
       redraw: false,
       currency: this.props.currency,
-      currency_symbols: {
-        USD: "$", // US Dollar
-        EUR: "€", // Euro
-        CRC: "₡", // Costa Rican Colón
-        GBP: "£", // British Pound Sterling
-        ILS: "₪", // Israeli New Sheqel
-        INR: "₹", // Indian Rupee
-        JPY: "¥", // Japanese Yen
-        KRW: "₩", // South Korean Won
-        NGN: "₦", // Nigerian Naira
-        PHP: "₱", // Philippine Peso
-        PLN: "zł", // Polish Zloty
-        PYG: "₲", // Paraguayan Guarani
-        THB: "฿", // Thai Baht
-        UAH: "₴", // Ukrainian Hryvnia
-        VND: "₫", // Vietnamese Dong
-      },
+      currency_symbols: this.props.currency_symbols,
     };
     this.dateClick = this.dateClick.bind(this);
   }
@@ -109,6 +93,15 @@ export default class CustomizedTables extends React.Component {
               >
                 Past month
               </a>
+              <a
+                class="btn btn-4"
+                key="365-days"
+                data-item={365}
+                onClick={this.dateClick}
+                id={coin}
+              >
+                Past year
+              </a>
             </div>
             <Chart
               id={coin}
@@ -148,7 +141,7 @@ export default class CustomizedTables extends React.Component {
               <td></td>
             </td>
             <td>
-              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
+              {this.props.currency_symbols[this.props.currency.toUpperCase()]}
               {this.roundDown(coin.current_price, 2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

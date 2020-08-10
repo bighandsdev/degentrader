@@ -111,39 +111,23 @@ td {
 }
 
 .btn-1 {
-  background-image: linear-gradient(
-    to right,
-    #ade4c1 0%,
-    #c0e79c 51%,
-    #ade4c1 100%
-  );
+  background-image: white;
+  border: 1px solid rgb(111, 30, 218);
 }
 
 .btn-2 {
-  background-image: linear-gradient(
-    to right,
-    #ade4c1 0%,
-    #c0e79c 51%,
-    #ade4c1 100%
-  );
+  background-image: white;
+  border: 1px solid rgb(111, 30, 218);
 }
 
 .btn-3 {
-  background-image: linear-gradient(
-    to right,
-    #ade4c1 0%,
-    #c0e79c 51%,
-    #ade4c1 100%
-  );
+  background-image: white;
+  border: 1px solid rgb(111, 30, 218);
 }
 
 .btn-4 {
-  background-image: linear-gradient(
-    to right,
-    #a1c4fd 0%,
-    #c2e9fb 51%,
-    #a1c4fd 100%
-  );
+  background-image: white;
+  border: 1px solid rgb(111, 30, 218);
 }
 
 .btn-5 {

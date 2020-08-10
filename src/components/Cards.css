@@ -2,7 +2,7 @@
   text-align: center;
   max-width: 20%;
   height: auto;
-  margin: '10px';
+  margin: "10px";
 }
 
 /* Float four columns side by side */
@@ -11,6 +11,7 @@
   float: left;
   width: 25%;
   padding: 0px;
+  margin-top: 15px;
 }
 
 /* Remove extra left and right margins, due to padding */
@@ -23,7 +24,7 @@
 /* Clear floats after the columns */
 .row:after {
   text-align: center;
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -52,8 +53,8 @@
   padding: 5px;
   margin: 5px;
   width: 200px;
-  height: 130px;
-  font-family: 'Arial', sans-serif;
+  height: 100px;
+  font-family: "Arial", sans-serif;
   color: white;
   float: left;
 }
@@ -70,13 +71,15 @@
   text-align: center;
   background-color: linear-gradient(to bottom right, red, yellow);
   border-radius: 5px;
+  border: 1px solid white;
   background: linear-gradient(to bottom right, #48b770, #7ebc43);
   padding: 5px;
-  margin: 5px;
+  margin: 3px;
   width: 200px;
-  height: 130px;
-  font-family: 'Arial', sans-serif;
+  height: 100px;
+  font-family: "Arial", sans-serif;
   color: white;
+  font-size: 20px;
   float: left;
 }
 .Card-down {
@@ -85,20 +88,30 @@
   text-align: center;
   background-color: linear-gradient(to bottom right, red, yellow);
   border-radius: 5px;
+  border: 1px solid white;
   background: linear-gradient(to bottom right, #bb4462, #d1332e);
   padding: 5px;
-  margin: 5px;
+  margin: 3px;
   width: 200px;
-  height: 130px;
-  font-family: 'Arial', sans-serif;
+  height: 100px;
+  font-family: "Arial", sans-serif;
   color: white;
+  font-size: 20px;
   float: left;
 }
 .card-text {
   position: relative;
-  bottom: 10px;
+  bottom: 15px;
 }
 .card-price {
   position: relative;
-  bottom: 10px;
+  bottom: 20px;
+  right: 40px;
+  font-size: 17px;
+}
+.card-price-change {
+  position: relative;
+  bottom: 57px;
+  left: 50px;
+  font-size: 17px;
 }
