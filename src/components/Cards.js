@@ -21,14 +21,14 @@ export default class CustomizedTables extends React.Component {
 
   componentDidMount() {
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.state.currency}&order=market_cap_desc&per_page=4&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.state.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            coins: result,
+            coins: this.manageCards(result),
           });
         },
 
@@ -63,6 +63,15 @@ export default class CustomizedTables extends React.Component {
     } else if (coinChange > 20) {
       return <span>🤯</span>;
     }
+  }
+  manageCards(coins) {
+    const coinOrderByPrice = coins.sort(
+      (a, b) =>
+        parseFloat(b.price_change_percentage_24h) -
+        parseFloat(a.price_change_percentage_24h)
+    );
+    const coinOrderByPriceTop4 = coinOrderByPrice.splice(0, 4);
+    return coinOrderByPriceTop4;
   }
 
   render() {

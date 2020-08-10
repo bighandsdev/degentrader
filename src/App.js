@@ -66,7 +66,6 @@ class App extends React.Component {
             coins: result,
             rawCoins: result,
           });
-          this.manageCards(result);
         },
         (error) => {
           this.setState({
@@ -89,7 +88,6 @@ class App extends React.Component {
             coins: result,
             rawCoins: result,
           });
-          this.manageCards(result);
         },
         (error) => {
           this.setState({

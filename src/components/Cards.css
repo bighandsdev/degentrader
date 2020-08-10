@@ -102,16 +102,17 @@
 .card-text {
   position: relative;
   bottom: 15px;
+  font-size: 1.15vw;
 }
 .card-price {
   position: relative;
-  bottom: 20px;
+  bottom: 18px;
   right: 40px;
   font-size: 17px;
 }
 .card-price-change {
   position: relative;
-  bottom: 57px;
+  bottom: 55px;
   left: 50px;
   font-size: 17px;
 }
