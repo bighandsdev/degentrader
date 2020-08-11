@@ -44,11 +44,17 @@ export default class CustomizedTables extends React.Component {
   }
 
   handleClick(e) {
-    const coin = e.currentTarget.getAttribute("data-item");
-    this.setState({
-      coinClicked: coin,
-    });
-    console.log("We need to get the details for " + coin);
+    if (this.state.coinClicked !== e.currentTarget.getAttribute("data-item")) {
+      const coin = e.currentTarget.getAttribute("data-item");
+      this.setState({
+        coinClicked: coin,
+      });
+      console.log("We need to get the details for " + coin);
+    } else {
+      this.setState({
+        coinClicked: "",
+      });
+    }
   }
 
   dateClick(e) {
@@ -77,7 +83,7 @@ export default class CustomizedTables extends React.Component {
                 Past day
               </a>
               <a
-                className="btn btn-2"
+                className="btn btn-1"
                 key="7-days"
                 data-item={7}
                 onClick={this.dateClick}
@@ -86,7 +92,7 @@ export default class CustomizedTables extends React.Component {
                 Past week
               </a>
               <a
-                className="btn btn-3"
+                className="btn btn-1"
                 key="30-days"
                 data-item={30}
                 onClick={this.dateClick}
@@ -95,7 +101,7 @@ export default class CustomizedTables extends React.Component {
                 Past month
               </a>
               <a
-                class="btn btn-4"
+                class="btn btn-1"
                 key="365-days"
                 data-item={365}
                 onClick={this.dateClick}
@@ -134,11 +140,13 @@ export default class CustomizedTables extends React.Component {
           >
             <td>{coin.market_cap_rank}</td>
             <td className="theCoinId">
-              <img src={coin.image} className="Coin-Logo" />
+              <p className="theCoinIdSec">
+                <img src={coin.image} className="Coin-Logo" />
 
-              {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
+                {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
+                <span className="symbol">{coin.symbol.toUpperCase()}</span>
+              </p>
 
-              <span className="symbol">{coin.symbol.toUpperCase()}</span>
               <td></td>
             </td>
             <td>

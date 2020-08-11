@@ -35,6 +35,9 @@ tr {
 .theCoinId:hover {
   background: linear-gradient(to bottom right, #d1e9f7, #e9dcfa);
 }
+.theCoinIdSec {
+  float: left;
+}
 th,
 td,
 tr {
