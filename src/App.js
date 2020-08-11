@@ -119,15 +119,6 @@ class App extends React.Component {
       }
     }
   }
-  manageCards(coins) {
-    const coinOrderByPrice = coins.sort(
-      (a, b) =>
-        parseFloat(a.price_change_percentage_24h) -
-        parseFloat(b.price_change_percentage_24h)
-    );
-    const coinOrderByPriceTop4 = coinOrderByPrice.splice(0, 4);
-    return coinOrderByPriceTop4;
-  }
 
   handleCurrencyClick(e) {
     this.setState({
@@ -147,6 +138,7 @@ class App extends React.Component {
           <Cards
             currency={this.state.currency}
             currency_symbols={this.state.currencySymbols}
+            data={this.state}
           />
           <div style={{ width: 500 }}></div>
 

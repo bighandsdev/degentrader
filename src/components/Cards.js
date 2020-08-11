@@ -21,14 +21,35 @@ export default class CustomizedTables extends React.Component {
 
   componentDidMount() {
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.state.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            coins: this.manageCards(result),
+            coins: this.manageCoins(result),
+          });
+        },
+
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
+  componentDidUpdate() {
+    fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            coins: this.manageCoins(result),
           });
         },
 
@@ -64,18 +85,18 @@ export default class CustomizedTables extends React.Component {
       return <span>🤯</span>;
     }
   }
-  manageCards(coins) {
+  manageCoins(coins) {
     const coinOrderByPrice = coins.sort(
       (a, b) =>
         parseFloat(b.price_change_percentage_24h) -
         parseFloat(a.price_change_percentage_24h)
     );
-    const coinOrderByPriceTop4 = coinOrderByPrice.splice(0, 4);
-    return coinOrderByPriceTop4;
+
+    return coinOrderByPrice.slice(0, 4);
   }
 
   render() {
-    const { error, isLoaded, coins } = this.state;
+    const { error, isLoaded, coins, currency_symbols } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -96,8 +117,8 @@ export default class CustomizedTables extends React.Component {
 
                 <p className="card-price">
                   {
-                    this.state.currency_symbols[
-                      this.state.currency.toUpperCase()
+                    this.props.currency_symbols[
+                      this.props.currency.toUpperCase()
                     ]
                   }
                   {coin.current_price}{" "}
