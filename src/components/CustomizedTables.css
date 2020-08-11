@@ -32,6 +32,9 @@ tr {
   border-width: 1px;
   border-radius: 0px;
 }
+.theCoinId:hover {
+  background: linear-gradient(to bottom right, #d1e9f7, #e9dcfa);
+}
 th,
 td,
 tr {
@@ -107,7 +110,8 @@ td {
 /* <- Magic Stuff Start */
 
 .btn:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-color: rgb(111, 30, 218);
+  color: white; /* change the direction of the change here */
 }
 
 .btn-1 {

@@ -7,10 +7,11 @@ export default class CustomizedTables extends React.Component {
     super(props);
     this.state = {
       coinClicked: "",
-      chartDays: 10,
+      chartDays: 30,
       redraw: false,
       currency: this.props.currency,
       currency_symbols: this.props.currency_symbols,
+      button_color: "white",
     };
     this.dateClick = this.dateClick.bind(this);
   }
@@ -52,11 +53,11 @@ export default class CustomizedTables extends React.Component {
 
   dateClick(e) {
     const dayRequest = e.currentTarget.getAttribute("data-item");
-
     this.setState({
       chartDays: dayRequest,
     });
   }
+
   chartRender(coin, days) {
     const { error, isLoaded, coins } = this.props.coins;
     if (coin === this.state.coinClicked) {
@@ -67,7 +68,7 @@ export default class CustomizedTables extends React.Component {
           <td>
             <div class="container">
               <a
-                class="btn btn-1"
+                className="btn btn-1"
                 key="1-days"
                 data-item={1}
                 onClick={this.dateClick}
@@ -76,7 +77,7 @@ export default class CustomizedTables extends React.Component {
                 Past day
               </a>
               <a
-                class="btn btn-2"
+                className="btn btn-2"
                 key="7-days"
                 data-item={7}
                 onClick={this.dateClick}
@@ -85,7 +86,7 @@ export default class CustomizedTables extends React.Component {
                 Past week
               </a>
               <a
-                class="btn btn-3"
+                className="btn btn-3"
                 key="30-days"
                 data-item={30}
                 onClick={this.dateClick}
@@ -132,7 +133,7 @@ export default class CustomizedTables extends React.Component {
             onClick={this.handleClick.bind(this)}
           >
             <td>{coin.market_cap_rank}</td>
-            <td>
+            <td className="theCoinId">
               <img src={coin.image} className="Coin-Logo" />
 
               {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
