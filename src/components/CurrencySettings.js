@@ -6,26 +6,43 @@ export default class CurrencySettings extends React.Component {
     super(props);
     this.state = {
       currencies: this.props.currencies,
+      settings: this.props.settings,
     };
   }
 
   render() {
-    const { currencies } = this.state;
+    const { currencies, settings } = this.state;
     return (
-      <div class="dropdown">
-        <button class="dropbtn">💵</button>
-        <div class="dropdown-content">
-          {currencies.map((currency) => (
-            <a
-              data-item={currency}
-              onClick={this.props.onClick}
-              value={this.props.inputValue}
-            >
-              {currency.toUpperCase()}
-            </a>
-          ))}
+      <span className="settings">
+        <div class="dropdown">
+          <button class="dropbtn">💵</button>
+          <div class="dropdown-content">
+            {currencies.map((currency) => (
+              <a
+                data-item={currency}
+                onClick={this.props.onClick}
+                value={this.props.inputValue}
+              >
+                {currency.toUpperCase()}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+        <div class="dropdown">
+          <button class="dropbtn">⚙️</button>
+          <div class="dropdown-content">
+            {settings.map((setting) => (
+              <a
+                data-item={setting}
+                onClick={this.props.onClick}
+                value={this.props.inputValue}
+              >
+                {setting}
+              </a>
+            ))}
+          </div>
+        </div>
+      </span>
     );
   }
 }

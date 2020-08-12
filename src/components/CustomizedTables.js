@@ -25,8 +25,12 @@ export default class CustomizedTables extends React.Component {
     }
   }
   handleEmoji(coinChange) {
-    if (coinChange < -10) {
+    if (coinChange < -20) {
       return <span>💀</span>;
+    } else if (coinChange < -10) {
+      return <span>🤡</span>;
+    } else if (coinChange < -5) {
+      return <span>😡</span>;
     } else if (coinChange < 0) {
       return <span>😕</span>;
     } else if (coinChange < 10) {
@@ -110,17 +114,16 @@ export default class CustomizedTables extends React.Component {
                 Past year
               </a>
             </div>
-            <Chart
-              id={coin}
-              days={days}
-              redraw={this.state.redraw}
-              currency={this.props.currency}
-            />
+            <div className="chart-background">
+              <Chart
+                id={coin}
+                days={days}
+                redraw={this.state.redraw}
+                currency={this.props.currency}
+              />
+            </div>
           </td>
 
-          <td></td>
-          <td></td>
-          <td></td>
           <td></td>
         </tr>
       );
@@ -143,11 +146,9 @@ export default class CustomizedTables extends React.Component {
               <p className="theCoinIdSec">
                 <img src={coin.image} className="Coin-Logo" />
 
-                {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}
+                {coin.name}
                 <span className="symbol">{coin.symbol.toUpperCase()}</span>
               </p>
-
-              <td></td>
             </td>
             <td>
               {this.props.currency_symbols[this.props.currency.toUpperCase()]}
@@ -162,8 +163,15 @@ export default class CustomizedTables extends React.Component {
             </td>
             <td>
               {this.state.currency_symbols[this.props.currency.toUpperCase()]}
+              {this.roundDown(coin.total_volume, 2)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </td>
+            <td>
+              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
               {coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </td>
+
             <td className="emoji">
               {this.handleEmoji(coin.price_change_percentage_24h)}
             </td>
@@ -188,7 +196,8 @@ export default class CustomizedTables extends React.Component {
             <th>Rank</th>
             <th>Coin</th>
             <th>Price</th>
-            <th>24 Hour Change</th>
+            <th>Change</th>
+            <th>Volume</th>
             <th>MarketCap</th>
           </tr>
           {this.result()}

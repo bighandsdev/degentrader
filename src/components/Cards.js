@@ -16,10 +16,14 @@ export default class CustomizedTables extends React.Component {
       coins: [],
       currency: this.props.currency,
       currency_symbols: this.props.currency_symbols,
+      currencyUpdated: "",
     };
   }
 
   componentDidMount() {
+    this.setState({
+      currencyUpdated: this.props.currency,
+    });
     fetch(
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     )
@@ -40,26 +44,33 @@ export default class CustomizedTables extends React.Component {
         }
       );
   }
-  componentDidUpdate() {
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            coins: this.manageCoins(result),
-          });
-        },
+  componentWillUpdate() {
+    if (this.props.currency !== this.state.currencyUpdated) {
+      console.log("lol");
+      this.setState({
+        currencyUpdated: this.props.currency,
+      });
+      fetch(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            this.setState({
+              isLoaded: true,
+              coins: this.manageCoins(result),
+            });
+          },
 
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error,
+            });
+          }
+        );
+    } else {
+    }
   }
   handleUporDown(coinChange) {
     if (coinChange > 0) {
@@ -111,7 +122,7 @@ export default class CustomizedTables extends React.Component {
               >
                 <p className="card-text">
                   <img className="image" src={coin.image} />
-                  {coin.id.charAt(0).toUpperCase() + coin.id.slice(1)}{" "}
+                  {coin.name}{" "}
                   {this.handleEmoji(coin.price_change_percentage_24h)}
                 </p>
 

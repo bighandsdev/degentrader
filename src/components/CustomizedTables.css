@@ -38,6 +38,12 @@ tr {
 .theCoinIdSec {
   float: left;
 }
+.chart-background {
+  background-image: white;
+  border: 1px solid rgb(174, 132, 230);
+  border-radius: 10px;
+  padding: 5px;
+}
 th,
 td,
 tr {
@@ -113,13 +119,13 @@ td {
 /* <- Magic Stuff Start */
 
 .btn:hover {
-  background-color: rgb(111, 30, 218);
+  background-color: rgb(158, 107, 224);
   color: white; /* change the direction of the change here */
 }
 
 .btn-1 {
   background-image: white;
-  border: 1px solid rgb(111, 30, 218);
+  border: 1px solid rgb(174, 132, 230);
 }
 
 .btn-2 {

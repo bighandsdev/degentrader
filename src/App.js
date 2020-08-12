@@ -29,6 +29,8 @@ class App extends React.Component {
         "aud",
         "cad",
       ],
+      settings: ["All", "Defi"],
+      setting: "",
       currencySymbols: {
         USD: "$", // US Dollar
         EUR: "€", // Euro
@@ -97,6 +99,28 @@ class App extends React.Component {
         }
       );
   }
+  updateDataDes(Des) {
+    const currencyR = this.state.currency;
+    fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            coins: result,
+            rawCoins: result,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  }
 
   onChange(e) {
     this.setState({
@@ -110,7 +134,7 @@ class App extends React.Component {
       {
         let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
-            let searchValue = el.id.toLowerCase();
+            let searchValue = el.name.toLowerCase();
             return searchValue.indexOf(searcjQery) !== -1;
           });
         this.setState({
@@ -147,6 +171,7 @@ class App extends React.Component {
             <span>
               <CurrencySettings
                 currencies={this.state.currencies}
+                settings={this.state.settings}
                 onClick={this.handleCurrencyClick}
                 inputValue={this.state.currency}
               />

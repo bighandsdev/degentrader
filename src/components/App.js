@@ -55,7 +55,7 @@ class App extends React.Component {
       {
         let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
-            let searchValue = el.id.toLowerCase();
+            let searchValue = el.name.toLowerCase();
             return searchValue.indexOf(searcjQery) !== -1;
           });
         this.setState({
