@@ -35,7 +35,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(240, 231, 234);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,11 +60,26 @@
 .logo {
   max-width: 40%;
   height: auto;
-  padding: 10px;
+  padding: 0px;
   position: center;
   float: center;
 }
 h1 {
   align-items: center;
   float: center;
+  color: rgb(91, 38, 57);
+  float: left;
+  margin: 5px;
+  padding-top: 55px;
+  font-family: "Nunito", sans-serif;
+  font-size: 4vw;
+}
+.row {
+  float: right;
+}
+.brain {
+  position: relative;
+  bottom: 16px;
+  right: 10px;
+  font-size: 5vw;
 }

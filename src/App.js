@@ -155,8 +155,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div class="row">
-            <img src={logo} className="logo" />
+          <div className="row">
+            <h1 className="brain">🧠</h1>
+
+            <h1>DegenTrader</h1>
           </div>
 
           <Cards
