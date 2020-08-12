@@ -1,6 +1,7 @@
 import React from "react";
 import "./CustomizedTables.css";
 import Chart from "./Chart.js";
+import { purple } from "@material-ui/core/colors";
 
 export default class CustomizedTables extends React.Component {
   constructor(props) {
@@ -59,6 +60,7 @@ export default class CustomizedTables extends React.Component {
         coinClicked: "",
       });
     }
+    this.chartRender(this.props.coins.id, this.state.chartDays);
   }
 
   dateClick(e) {
@@ -70,6 +72,9 @@ export default class CustomizedTables extends React.Component {
 
   chartRender(coin, days) {
     const { error, isLoaded, coins } = this.props.coins;
+    const symbol = this.state.currency_symbols[
+      this.props.currency.toUpperCase()
+    ];
     if (coin === this.state.coinClicked) {
       return (
         <tr>
@@ -120,6 +125,7 @@ export default class CustomizedTables extends React.Component {
                 days={days}
                 redraw={this.state.redraw}
                 currency={this.props.currency}
+                currencysymbols={symbol}
               />
             </div>
           </td>

@@ -7,19 +7,19 @@ const Chart = (props) => {
   const [chartData, setChartData] = useState({});
   const [id] = useState(props.id);
   const [currency] = useState(props.currency);
+  const [symbol] = useState(props.currencysymbols);
   const [days] = useState(props.days);
   const [redraw, setRedraw] = useState({});
   const chart = (props) => {
     let daysChart = props.days;
     let currency = props.currency;
+    let symbol = props.currencysymbols;
     let time = [];
     let price = [];
     let priceSmaller = [];
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
     let whichCoin = id;
-
-    console.log(days);
     axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=${currency}&days=${daysChart}`
@@ -32,13 +32,13 @@ const Chart = (props) => {
         }
         console.log(price);
         for (var i = 0; i < price.length; i = i + 1) {
-          priceSmaller.push(price[i]);
+          priceSmaller.push(Math.round(price[i] * 100) / 100);
         }
-        for (var i = 0; i < time.length; i = i + 1) {
+        for (var i = 0; i < time.length; i++) {
           timeSmaller.push(time[i]);
         }
         for (var i = 0; i < timeSmaller.length; i++) {
-          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("ll"));
+          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("l"));
         }
         setChartData({
           labels: timeSmallerAndConverted,
@@ -52,6 +52,7 @@ const Chart = (props) => {
             },
           ],
         });
+
         setRedraw(true);
         setRedraw(false);
       })
@@ -73,6 +74,7 @@ const Chart = (props) => {
           display: false,
         },
         tooltips: {
+          displayColors: false,
           mode: "x-axis",
         },
         responsive: true,
@@ -92,6 +94,9 @@ const Chart = (props) => {
                 autoSkip: true,
                 maxTicksLimit: 10,
                 beginAtZero: false,
+                callback: function (value) {
+                  return props.currencysymbols + value;
+                },
               },
               gridLines: {
                 display: false,
