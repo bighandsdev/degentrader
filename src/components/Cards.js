@@ -123,7 +123,6 @@ export default class CustomizedTables extends React.Component {
                 <p className="card-text">
                   <img className="image" src={coin.image} />
                   {coin.name}{" "}
-                  {this.handleEmoji(coin.price_change_percentage_24h)}
                 </p>
 
                 <p className="card-price">

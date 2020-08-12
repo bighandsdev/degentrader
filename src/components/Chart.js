@@ -46,7 +46,11 @@ const Chart = (props) => {
             {
               label: currency.toUpperCase(),
               data: priceSmaller,
-              backgroundColor: "rgb(91, 38, 57)",
+              backgroundColor: "rgb(245, 167, 167)",
+              backgroundColor: "rgb(245, 167, 167)",
+              backgroundColor: "rgb(245, 167, 167)",
+              backgroundColor: "rgb(245, 167, 167)",
+              backgroundColor: "rgb(245, 167, 167)",
 
               borderWidth: 4,
             },
