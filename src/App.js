@@ -130,7 +130,18 @@ class App extends React.Component {
       this.setState({
         coins: this.state.rawCoins,
       });
-    } else if (e.target.value !== "") {
+    } else if (e.target.value.length < this.state.value.length) {
+      {
+        let searcjQery = e.target.value.toLowerCase(),
+          displayedCoins = this.state.coins.filter((el) => {
+            let searchValue = el.name.toLowerCase();
+            return searchValue.indexOf(searcjQery) !== -1;
+          });
+        this.setState({
+          coins: this.state.rawCoins,
+        });
+      }
+    } else if (e.target.value !== this.state.value) {
       {
         let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
@@ -160,7 +171,8 @@ class App extends React.Component {
 
             <h1>DegenTrader</h1>
           </div>
-
+        </header>
+        <body className="App-body">
           <Cards
             currency={this.state.currency}
             currency_symbols={this.state.currencySymbols}
@@ -189,7 +201,10 @@ class App extends React.Component {
           </div>
 
           <div></div>
-        </header>
+        </body>
+        <footer className="App-footer">
+          <p>Degentrader</p>
+        </footer>
       </div>
     );
   }
