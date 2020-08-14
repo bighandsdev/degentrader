@@ -1,4 +1,5 @@
 import React from "react";
+import Iframe from "react-iframe";
 import "./CustomizedTables.css";
 import Chart from "./Chart.js";
 import { purple } from "@material-ui/core/colors";
@@ -77,7 +78,7 @@ export default class CustomizedTables extends React.Component {
     ];
     if (coin === this.state.coinClicked) {
       return (
-        <tr>
+        <tr className="chartandpay">
           <td></td>
 
           <td>
@@ -130,7 +131,9 @@ export default class CustomizedTables extends React.Component {
             </div>
           </td>
 
-          <td></td>
+          <td colspan="5">
+            <div class="container"></div>
+          </td>
         </tr>
       );
     } else {

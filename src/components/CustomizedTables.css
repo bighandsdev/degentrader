@@ -32,8 +32,13 @@ table {
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
+  table-layout: fixed;
 }
-
+.chartandpay {
+  table-layout: fixed;
+  position: relative;
+  left: 100px;
+}
 tr {
   text-align: center;
   padding: 12px;
@@ -76,6 +81,7 @@ tr {
   border-width: 1px;
   border-color: red;
   border: collapse;
+  table-layout: fixed;
 
   border-radius: 10px;
 }
@@ -115,6 +121,18 @@ td {
   color: #651962;
   text-align: center;
   border: 1px solid rgb(255, 255, 255);
+}
+iframe {
+  border-radius: 10px;
+
+  float: right;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: 1px solid rgb(226, 207, 213);
+  min-width: 40px;
+  min-height: 40px;
 }
 .emoji {
   font-size: 30px;
