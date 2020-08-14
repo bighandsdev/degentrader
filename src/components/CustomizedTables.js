@@ -140,7 +140,7 @@ export default class CustomizedTables extends React.Component {
   result() {
     const { error, isLoaded, coins } = this.props.coins;
     if (coins.length > 0) {
-      return coins.map((coin) => (
+      return coins.slice(0, 100).map((coin) => (
         <>
           <tr
             key={coin.id}

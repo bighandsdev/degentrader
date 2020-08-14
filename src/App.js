@@ -30,7 +30,10 @@ class App extends React.Component {
         "cad",
       ],
       settings: ["All", "Defi"],
-      setting: "",
+      settingsAPIParam: {
+        All: "all",
+        Defi: "decentralized_finance_defi",
+      },
       currencySymbols: {
         USD: "$", // US Dollar
         EUR: "€", // Euro
@@ -50,15 +53,18 @@ class App extends React.Component {
       },
       currency: "usd",
       currencySymbol: "$",
+      dataSettings: "all",
     };
     this.onChange = this.onChange.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
+    this.handleSettingsClick = this.handleSettingsClick.bind(this);
   }
 
   componentDidMount() {
     const currencyR = this.state.currency;
+    const settings = this.state.settingsAPIParam[this.state.dataSettings];
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&category=${settings}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -77,32 +83,12 @@ class App extends React.Component {
         }
       );
   }
-  updateData(currency) {
+  updateData(currency, settingsAllorDefi) {
     const currencyR = currency;
+    const settingsAllorDefiR = settingsAllorDefi;
+    console.log(settingsAllorDefi);
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            coins: result,
-            rawCoins: result,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  }
-  updateDataDes(Des) {
-    const currencyR = this.state.currency;
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&category=${settingsAllorDefiR}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -159,7 +145,21 @@ class App extends React.Component {
     this.setState({
       currency: e.currentTarget.getAttribute("data-item"),
     });
-    return this.updateData(e.currentTarget.getAttribute("data-item"));
+    return this.updateData(
+      e.currentTarget.getAttribute("data-item"),
+      this.state.dataSettings
+    );
+  }
+  handleSettingsClick(e) {
+    this.setState({
+      dataSettings: this.state.settingsAPIParam[
+        e.currentTarget.getAttribute("data-item")
+      ],
+    });
+    return this.updateData(
+      this.state.currency,
+      this.state.settingsAPIParam[e.currentTarget.getAttribute("data-item")]
+    );
   }
 
   render() {
@@ -185,7 +185,8 @@ class App extends React.Component {
             <span>
               <CurrencySettings
                 currencies={this.state.currencies}
-                settings={this.state.settings}
+                settings={this.handleSettingsClick}
+                settingsOptions={this.state.settings}
                 onClick={this.handleCurrencyClick}
                 inputValue={this.state.currency}
               />
@@ -197,6 +198,7 @@ class App extends React.Component {
               coins={this.state}
               currency={this.state.currency}
               currency_symbols={this.state.currencySymbols}
+              settings={this.state.settingsData}
             />
           </div>
 

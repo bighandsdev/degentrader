@@ -6,12 +6,12 @@ export default class CurrencySettings extends React.Component {
     super(props);
     this.state = {
       currencies: this.props.currencies,
-      settings: this.props.settings,
+      settingsOptions: this.props.settingsOptions,
     };
   }
 
   render() {
-    const { currencies, settings } = this.state;
+    const { currencies, settingsOptions } = this.state;
     return (
       <span className="settings">
         <div class="dropdown">
@@ -31,10 +31,10 @@ export default class CurrencySettings extends React.Component {
         <div class="dropdown">
           <button class="dropbtn">⚙️</button>
           <div class="dropdown-content">
-            {settings.map((setting) => (
+            {settingsOptions.map((setting) => (
               <a
                 data-item={setting}
-                onClick={this.props.onClick}
+                onClick={this.props.settings}
                 value={this.props.inputValue}
               >
                 {setting}
