@@ -86,12 +86,12 @@ export default class CustomizedTables extends React.Component {
   roundDownPrice(number) {
     if (number >= 1) {
       const decimals = 2;
-      return (
-        Math.floor(number * Math.pow(10, decimals)) /
-        Math.pow(10, decimals)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-      );
+      const amount =
+        Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+      return amount
+        .toFixed(2)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
       const decimals = 4;
       return (

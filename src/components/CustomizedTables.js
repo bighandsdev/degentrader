@@ -2,6 +2,7 @@ import React from "react";
 import Iframe from "react-iframe";
 import "./CustomizedTables.css";
 import Chart from "./Chart.js";
+import PageSettings from "./pageSettings.js";
 import { purple } from "@material-ui/core/colors";
 
 export default class CustomizedTables extends React.Component {
@@ -47,12 +48,12 @@ export default class CustomizedTables extends React.Component {
   roundDownPrice(number) {
     if (number >= 1) {
       const decimals = 2;
-      return (
-        Math.floor(number * Math.pow(10, decimals)) /
-        Math.pow(10, decimals)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-      );
+      const amount =
+        Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+      return amount
+        .toFixed(2)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
       const decimals = 4;
       return (
@@ -147,10 +148,6 @@ export default class CustomizedTables extends React.Component {
               />
             </div>
           </td>
-
-          <td colspan="5">
-            <div class="container"></div>
-          </td>
         </tr>
       );
     } else {
@@ -226,9 +223,7 @@ export default class CustomizedTables extends React.Component {
           </tr>
           {this.result()}
           <tr>
-            <td colspan="5" className="page-change">
-              <p> page 1 </p>
-            </td>
+            <PageSettings />
           </tr>
         </table>
       );
