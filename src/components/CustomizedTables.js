@@ -44,6 +44,23 @@ export default class CustomizedTables extends React.Component {
     }
   }
 
+  roundDownPrice(number) {
+    if (number >= 1) {
+      const decimals = 2;
+      return (
+        Math.floor(number * Math.pow(10, decimals)) /
+        Math.pow(10, decimals)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+    } else {
+      const decimals = 4;
+      return (
+        Math.floor(number * Math.pow(10, decimals)) /
+        Math.pow(10, decimals).toString()
+      );
+    }
+  }
   roundDown(number, decimals) {
     decimals = decimals || 0;
     return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
@@ -161,9 +178,7 @@ export default class CustomizedTables extends React.Component {
             </td>
             <td>
               {this.props.currency_symbols[this.props.currency.toUpperCase()]}
-              {this.roundDown(coin.current_price, 2)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              {this.roundDownPrice(coin.current_price)}
             </td>
             <td
               className={this.handleUporDown(coin.price_change_percentage_24h)}
@@ -210,6 +225,11 @@ export default class CustomizedTables extends React.Component {
             <th>MarketCap</th>
           </tr>
           {this.result()}
+          <tr>
+            <td colspan="5" className="page-change">
+              <p> page 1 </p>
+            </td>
+          </tr>
         </table>
       );
     }

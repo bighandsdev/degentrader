@@ -134,6 +134,10 @@ iframe {
   min-width: 40px;
   min-height: 40px;
 }
+.page-change {
+  float: center;
+  align-items: center;
+}
 .emoji {
   font-size: 30px;
   position: relative;

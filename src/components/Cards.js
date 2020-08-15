@@ -83,6 +83,23 @@ export default class CustomizedTables extends React.Component {
     decimals = decimals || 0;
     return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
   }
+  roundDownPrice(number) {
+    if (number >= 1) {
+      const decimals = 2;
+      return (
+        Math.floor(number * Math.pow(10, decimals)) /
+        Math.pow(10, decimals)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+    } else {
+      const decimals = 4;
+      return (
+        Math.floor(number * Math.pow(10, decimals)) /
+        Math.pow(10, decimals).toString()
+      );
+    }
+  }
   handleEmoji(coinChange) {
     if (coinChange < -10) {
       return <span>💀</span>;
@@ -131,7 +148,7 @@ export default class CustomizedTables extends React.Component {
                       this.props.currency.toUpperCase()
                     ]
                   }
-                  {coin.current_price}{" "}
+                  {this.roundDownPrice(coin.current_price)}{" "}
                 </p>
                 <p className="card-price-change">
                   {this.roundDown(coin.price_change_percentage_24h, 2)} %
