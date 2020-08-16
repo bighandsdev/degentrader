@@ -9,8 +9,6 @@ export default class PageSettings extends React.Component {
   }
 
   handlePageHandsDown() {
-    const { pageNumber } = this.props;
-    const currentPage = pageNumber;
     if (this.props.pageNumber > 1) {
       return (
         <a
@@ -26,31 +24,33 @@ export default class PageSettings extends React.Component {
       return <a></a>;
     }
   }
+  handlePageHandsup() {
+    if (this.props.pageNumber < 3) {
+      return (
+        <a
+          className="page-button"
+          onClick={() => {
+            this.props.onClick("up");
+          }}
+        >
+          👉
+        </a>
+      );
+    } else {
+      return <a></a>;
+    }
+  }
 
   render() {
     const { pageNumber } = this.props;
     return (
       <td colspan="7">
         <div class="container">
-          <a
-            className="page-button"
-            onClick={() => {
-              this.props.onClick("down");
-            }}
-          >
-            👈
-          </a>
+          {this.handlePageHandsDown()}
           <br />
           <p> Page {this.props.pageNumber} </p>
           <br />
-          <a
-            className="page-button"
-            onClick={() => {
-              this.props.onClick("up");
-            }}
-          >
-            👉
-          </a>
+          {this.handlePageHandsup()}
         </div>
       </td>
     );
