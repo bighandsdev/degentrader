@@ -9,35 +9,41 @@ export default class PageSettings extends React.Component {
   }
 
   handlePageHandsDown() {
-    if (this.props.pageNumber > 1) {
-      return (
-        <a
-          className="page-button"
-          onClick={() => {
-            this.props.onClick("down");
-          }}
-        >
-          👈
-        </a>
-      );
+    if (this.props.searchValue === "") {
+      if (this.props.pageNumber > 1) {
+        return (
+          <a
+            className="page-button"
+            onClick={() => {
+              this.props.onClick("down");
+            }}
+          >
+            👈
+          </a>
+        );
+      } else {
+        return <a></a>;
+      }
     } else {
-      return <a></a>;
     }
   }
   handlePageHandsup() {
-    if (this.props.pageNumber < 3) {
-      return (
-        <a
-          className="page-button"
-          onClick={() => {
-            this.props.onClick("up");
-          }}
-        >
-          👉
-        </a>
-      );
+    if (this.props.searchValue === "") {
+      if (this.props.pageNumber < 3) {
+        return (
+          <a
+            className="page-button"
+            onClick={() => {
+              this.props.onClick("up");
+            }}
+          >
+            👉
+          </a>
+        );
+      } else {
+        return <a></a>;
+      }
     } else {
-      return <a></a>;
     }
   }
 

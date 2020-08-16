@@ -139,7 +139,6 @@ export default class CustomizedTables extends React.Component {
             </div>
             <div className="chart-background" colspan="7">
               <Chart
-                className="chart-background"
                 id={coin}
                 days={days}
                 redraw={this.state.redraw}
@@ -233,6 +232,7 @@ export default class CustomizedTables extends React.Component {
             <PageSettings
               pageNumber={this.props.pageNumber}
               onClick={this.props.onClick}
+              searchValue={this.props.searchValue}
             />
           </tr>
         </table>

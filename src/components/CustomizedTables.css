@@ -56,6 +56,10 @@ tr {
 .theCoinIdSec {
   float: left;
 }
+chart {
+  width: 30px;
+  float: left;
+}
 .chart-background {
   background-image: rgb(255, 255, 255);
   box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
@@ -75,6 +79,7 @@ tr {
   width: 50vw;
   position: relative;
   left: 45px;
+  float: left;
 }
 th,
 td,

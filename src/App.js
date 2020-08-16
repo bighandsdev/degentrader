@@ -228,6 +228,7 @@ class App extends React.Component {
               pageNumber={this.state.pageNumber}
               pageSettings={this.state.pageSettings}
               onClick={this.handlePageChange}
+              searchValue={this.state.value}
             />
           </div>
 

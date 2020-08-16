@@ -5,6 +5,7 @@ import moment from "moment";
 
 const Chart = (props) => {
   const [chartData, setChartData] = useState({});
+  const [chartVol, setChartVol] = useState({});
   const [id] = useState(props.id);
   const [currency] = useState(props.currency);
   const [symbol] = useState(props.currencysymbols);
@@ -22,6 +23,25 @@ const Chart = (props) => {
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
     let whichCoin = id;
+    function roundDownPrice(number) {
+      if (number >= 1) {
+        const decimals = 2;
+        const amount =
+          Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+        return amount.toFixed(2);
+      } else if (number >= 0.01) {
+        const decimals = 4;
+        return (
+          Math.floor(number * Math.pow(10, decimals)) /
+          Math.pow(10, decimals).toFixed(4)
+        );
+      } else {
+        const decimals = 7;
+        return (
+          Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals)
+        );
+      }
+    }
     axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${whichCoin}/market_chart?vs_currency=${currency}&days=${daysChart}`
@@ -33,8 +53,9 @@ const Chart = (props) => {
           price.push(dataObj[1]);
         }
         console.log(price);
+
         for (var i = 0; i < price.length; i = i + 1) {
-          priceSmaller.push(Math.round(price[i] * 100) / 100);
+          priceSmaller.push(roundDownPrice(price[i]));
         }
         for (var i = 0; i < time.length; i++) {
           timeSmaller.push(time[i]);
@@ -42,21 +63,34 @@ const Chart = (props) => {
         for (var i = 0; i < timeSmaller.length; i++) {
           timeSmallerAndConverted.push(moment(timeSmaller[i]).format("l"));
         }
+        for (const dataObj of res.data.total_volumes) {
+          time.push(dataObj[0]);
+          volume.push(dataObj[1]);
+        }
+        console.log(volume);
 
+        for (var i = 0; i < volume.length; i = i + 1) {
+          volumeSmaller.push(volume[i]);
+        }
         setChartData({
           labels: timeSmallerAndConverted,
           datasets: [
             {
-              label: currency.toUpperCase(),
+              label: "My First dataset",
+              backgroundColor: "rgba(255, 99, 132, 0.5)",
+              borderColor: "rgba(255, 99, 132, 0.5)",
               data: priceSmaller,
-              type: "line",
-              backgroundColor: "rgb(245, 167, 167)",
-              backgroundColor: "rgb(245, 167, 167)",
-              backgroundColor: "rgb(245, 167, 167)",
-              backgroundColor: "rgb(245, 167, 167)",
-              backgroundColor: "rgb(245, 167, 167)",
-
-              borderWidth: 4,
+            },
+          ],
+        });
+        setChartVol({
+          labels: timeSmallerAndConverted,
+          datasets: [
+            {
+              label: "My second dataset",
+              backgroundColor: "rgba(135, 99, 225, 1)",
+              borderColor: "rgba(135, 99, 225, 1)",
+              data: volumeSmaller,
             },
           ],
         });
@@ -74,10 +108,64 @@ const Chart = (props) => {
   }, [props]);
 
   return (
-    <div>
+    <div colspan="8" className="charts">
       <Line
+        className="charts"
         redraw={redraw}
         data={chartData}
+        options={{
+          legend: {
+            display: false,
+          },
+          tooltips: {
+            displayColors: false,
+            mode: "x-axis",
+          },
+          responsive: true,
+          title: { text: "THICCNESS SCALE", display: false },
+          elements: {
+            point: {
+              radius: 0,
+            },
+            line: {
+              tension: 0.05,
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 10,
+                  beginAtZero: false,
+                  callback: function (value) {
+                    return props.currencysymbols + value;
+                  },
+                },
+                gridLines: {
+                  display: false,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  maxTicksLimit: 5,
+                  maxRotation: 0,
+                  minRotation: 0,
+                },
+                gridLines: {
+                  display: false,
+                },
+              },
+            ],
+          },
+        }}
+      />
+      <Bar
+        className="charts"
+        redraw={redraw}
+        data={chartVol}
         options={{
           legend: {
             display: false,
