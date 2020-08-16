@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
 
@@ -17,6 +17,8 @@ const Chart = (props) => {
     let time = [];
     let price = [];
     let priceSmaller = [];
+    let volume = [];
+    let volumeSmaller = [];
     let timeSmaller = [];
     let timeSmallerAndConverted = [];
     let whichCoin = id;
@@ -40,12 +42,14 @@ const Chart = (props) => {
         for (var i = 0; i < timeSmaller.length; i++) {
           timeSmallerAndConverted.push(moment(timeSmaller[i]).format("l"));
         }
+
         setChartData({
           labels: timeSmallerAndConverted,
           datasets: [
             {
               label: currency.toUpperCase(),
               data: priceSmaller,
+              type: "line",
               backgroundColor: "rgb(245, 167, 167)",
               backgroundColor: "rgb(245, 167, 167)",
               backgroundColor: "rgb(245, 167, 167)",
@@ -70,58 +74,60 @@ const Chart = (props) => {
   }, [props]);
 
   return (
-    <Line
-      redraw={redraw}
-      data={chartData}
-      options={{
-        legend: {
-          display: false,
-        },
-        tooltips: {
-          displayColors: false,
-          mode: "x-axis",
-        },
-        responsive: true,
-        title: { text: "THICCNESS SCALE", display: false },
-        elements: {
-          point: {
-            radius: 0,
+    <div>
+      <Line
+        redraw={redraw}
+        data={chartData}
+        options={{
+          legend: {
+            display: false,
           },
-          line: {
-            tension: 0.05,
+          tooltips: {
+            displayColors: false,
+            mode: "x-axis",
           },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                autoSkip: true,
-                maxTicksLimit: 10,
-                beginAtZero: false,
-                callback: function (value) {
-                  return props.currencysymbols + value;
+          responsive: true,
+          title: { text: "THICCNESS SCALE", display: false },
+          elements: {
+            point: {
+              radius: 0,
+            },
+            line: {
+              tension: 0.05,
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 10,
+                  beginAtZero: false,
+                  callback: function (value) {
+                    return props.currencysymbols + value;
+                  },
+                },
+                gridLines: {
+                  display: false,
                 },
               },
-              gridLines: {
-                display: false,
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  maxTicksLimit: 5,
+                  maxRotation: 0,
+                  minRotation: 0,
+                },
+                gridLines: {
+                  display: false,
+                },
               },
-            },
-          ],
-          xAxes: [
-            {
-              ticks: {
-                maxTicksLimit: 5,
-                maxRotation: 0,
-                minRotation: 0,
-              },
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-        },
-      }}
-    />
+            ],
+          },
+        }}
+      />
+    </div>
   );
 };
 

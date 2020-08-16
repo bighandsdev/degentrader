@@ -98,8 +98,7 @@ export default class CustomizedTables extends React.Component {
       return (
         <tr className="chartandpay">
           <td></td>
-
-          <td>
+          <td colspan="7">
             <div class="container">
               <a
                 className="btn btn-1"
@@ -138,8 +137,9 @@ export default class CustomizedTables extends React.Component {
                 Past year
               </a>
             </div>
-            <div className="chart-background">
+            <div className="chart-background" colspan="7">
               <Chart
+                className="chart-background"
                 id={coin}
                 days={days}
                 redraw={this.state.redraw}

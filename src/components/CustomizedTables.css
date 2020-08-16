@@ -17,7 +17,7 @@ img {
 }
 table {
   font-family: "Nunito", sans-serif;
-  min-width: 1000px;
+  min-width: 10vw;
   color: rgb(91, 38, 57);
   border-radius: 10px;
   border: 1px solid rgb(255, 255, 255);
@@ -72,6 +72,9 @@ tr {
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
+  width: 50vw;
+  position: relative;
+  left: 45px;
 }
 th,
 td,

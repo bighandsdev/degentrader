@@ -159,6 +159,8 @@ class App extends React.Component {
       dataSettings: this.state.settingsAPIParam[
         e.currentTarget.getAttribute("data-item")
       ],
+      pageNumber: 1,
+      pageSettings: [0, 100],
     });
     return this.updateData(
       this.state.currency,
@@ -193,7 +195,7 @@ class App extends React.Component {
           <div className="row">
             <h1 className="brain">🧠</h1>
 
-            <h1>DegenTrader</h1>
+            <h1 classname="logo-text">DegenTrader</h1>
           </div>
         </header>
         <body className="App-body">
@@ -232,7 +234,18 @@ class App extends React.Component {
           <div></div>
         </body>
         <footer className="App-footer">
-          <p>Degentrader</p>
+          <div className="donate">
+            <p className="footer-title">
+              Bitcoin: bc1qvu59mxfplh8cq4a0h5tzjxken3rszegja4828k
+            </p>
+
+            <p className="footer-title">
+              Ethereum: 0x413ED157A79f9197E2fcc6aF89EF89e7Da00e5F2
+            </p>
+            <p className="footer-title">
+              Bitcoin Cash: 1AYaDCDGfSgKqQzZQxhazzcbAPQMSkB9H8
+            </p>
+          </div>
         </footer>
       </div>
     );
