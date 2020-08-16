@@ -193,6 +193,11 @@ export default class CustomizedTables extends React.Component {
               {this.state.currency_symbols[this.props.currency.toUpperCase()]}
               {coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </td>
+            <td>
+              {this.roundDown(coin.circulating_supply)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </td>
 
             <td className="emoji">
               {this.handleEmoji(coin.price_change_percentage_24h)}
@@ -221,6 +226,7 @@ export default class CustomizedTables extends React.Component {
             <th>Change</th>
             <th>Volume</th>
             <th>MarketCap</th>
+            <th>Supply</th>
           </tr>
           {this.result()}
           <tr>

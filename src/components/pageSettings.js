@@ -44,7 +44,7 @@ export default class PageSettings extends React.Component {
   render() {
     const { pageNumber } = this.props;
     return (
-      <td colspan="7">
+      <td colspan="8">
         <div class="container">
           {this.handlePageHandsDown()}
           <br />

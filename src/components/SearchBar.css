@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
   display: flex;
-  min-width: 1000px;
+  min-width: 70vw;
   float: left;
   padding-top: 10px;
   color: white;
