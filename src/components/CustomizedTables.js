@@ -157,7 +157,8 @@ export default class CustomizedTables extends React.Component {
   result() {
     const { error, isLoaded, coins } = this.props.coins;
     if (coins.length > 0) {
-      return coins.slice(0, 100).map((coin) => (
+      const pageSettings = this.props.pageSettings;
+      return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
         <>
           <tr
             key={coin.id}
@@ -223,7 +224,10 @@ export default class CustomizedTables extends React.Component {
           </tr>
           {this.result()}
           <tr>
-            <PageSettings />
+            <PageSettings
+              pageNumber={this.props.pageNumber}
+              onClick={this.props.onClick}
+            />
           </tr>
         </table>
       );

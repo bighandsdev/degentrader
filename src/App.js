@@ -55,10 +55,13 @@ class App extends React.Component {
       currency: "usd",
       currencySymbol: "$",
       dataSettings: "all",
+      pageNumber: 1,
+      pageSettings: [0, 100],
     };
     this.onChange = this.onChange.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
@@ -162,6 +165,26 @@ class App extends React.Component {
       this.state.settingsAPIParam[e.currentTarget.getAttribute("data-item")]
     );
   }
+  handlePageChange(e) {
+    console.log("lol");
+    if (e === "up") {
+      const number = this.state.pageSettings.map(function (value) {
+        return value + 100;
+      });
+      this.setState({
+        pageNumber: this.state.pageNumber + 1,
+        pageSettings: number,
+      });
+    } else if (e === "down") {
+      const number = this.state.pageSettings.map(function (value) {
+        return value - 100;
+      });
+      this.setState({
+        pageNumber: this.state.pageNumber - 1,
+        pageSettings: number,
+      });
+    }
+  }
 
   render() {
     return (
@@ -200,6 +223,9 @@ class App extends React.Component {
               currency={this.state.currency}
               currency_symbols={this.state.currencySymbols}
               settings={this.state.settingsData}
+              pageNumber={this.state.pageNumber}
+              pageSettings={this.state.pageSettings}
+              onClick={this.handlePageChange}
             />
           </div>
 
