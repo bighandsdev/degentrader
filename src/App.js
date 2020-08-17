@@ -236,6 +236,7 @@ class App extends React.Component {
         </body>
         <footer className="App-footer">
           <div className="donate">
+            <p className="footer-title">Donations</p>
             <p className="footer-title">
               Bitcoin: bc1qvu59mxfplh8cq4a0h5tzjxken3rszegja4828k
             </p>

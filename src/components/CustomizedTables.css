@@ -77,7 +77,7 @@ chart {
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
-  width: 5vw;
+  min-width: 5vw;
   position: relative;
   left: 45px;
   float: top;

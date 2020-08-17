@@ -3,6 +3,7 @@ import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
 import "./Chart.css";
+import { withTheme } from "@material-ui/core";
 
 const Chart = (props) => {
   const [chartData, setChartData] = useState({});
@@ -62,7 +63,7 @@ const Chart = (props) => {
           timeSmaller.push(time[i]);
         }
         for (var i = 0; i < timeSmaller.length; i++) {
-          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("l"));
+          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("ll"));
         }
         for (const dataObj of res.data.total_volumes) {
           time.push(dataObj[0]);
@@ -121,6 +122,12 @@ const Chart = (props) => {
             tooltips: {
               displayColors: false,
               mode: "x-axis",
+
+              backgroundColor: "rgb(238, 221, 226)",
+              bodyFontColor: "rgb(91, 38, 57)",
+              titleFontColor: "rgb(91, 38, 57)",
+              borderWidth: 1,
+              borderColor: "rgb(226, 207, 213)",
               callbacks: {
                 label: function (tooltipItems) {
                   return (
@@ -164,7 +171,7 @@ const Chart = (props) => {
               xAxes: [
                 {
                   ticks: {
-                    maxTicksLimit: 5,
+                    maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
                   },
@@ -188,6 +195,11 @@ const Chart = (props) => {
             tooltips: {
               displayColors: false,
               mode: "x-axis",
+              backgroundColor: "rgb(238, 221, 226)",
+              bodyFontColor: "rgb(91, 38, 57)",
+              titleFontColor: "rgb(91, 38, 57)",
+              borderWidth: 1,
+              borderColor: "rgb(226, 207, 213)",
               callbacks: {
                 label: function (tooltipItems) {
                   return (
@@ -231,7 +243,7 @@ const Chart = (props) => {
               xAxes: [
                 {
                   ticks: {
-                    maxTicksLimit: 5,
+                    maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
                   },
