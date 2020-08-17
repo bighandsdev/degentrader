@@ -60,6 +60,7 @@ chart {
   width: 30px;
   float: left;
 }
+
 .chart-background {
   background-image: rgb(255, 255, 255);
   box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
@@ -76,10 +77,10 @@ chart {
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
-  width: 50vw;
+  width: 5vw;
   position: relative;
   left: 45px;
-  float: left;
+  float: top;
 }
 th,
 td,

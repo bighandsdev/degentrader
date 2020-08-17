@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
+import "./Chart.css";
 
 const Chart = (props) => {
   const [chartData, setChartData] = useState({});
@@ -108,113 +109,115 @@ const Chart = (props) => {
   }, [props]);
 
   return (
-    <div colspan="8" className="charts">
-      <Line
-        className="charts"
-        redraw={redraw}
-        data={chartData}
-        options={{
-          legend: {
-            display: false,
-          },
-          tooltips: {
-            displayColors: false,
-            mode: "x-axis",
-          },
-          responsive: true,
-          title: { text: "THICCNESS SCALE", display: false },
-          elements: {
-            point: {
-              radius: 0,
+    <div colspan="8">
+      <td className="charts">
+        <Line
+          redraw={redraw}
+          data={chartData}
+          options={{
+            legend: {
+              display: false,
             },
-            line: {
-              tension: 0.05,
+            tooltips: {
+              displayColors: false,
+              mode: "x-axis",
             },
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 10,
-                  beginAtZero: false,
-                  callback: function (value) {
-                    return props.currencysymbols + value;
+            responsive: true,
+            title: { text: "THICCNESS SCALE", display: false },
+            elements: {
+              point: {
+                radius: 0,
+              },
+              line: {
+                tension: 0.05,
+              },
+            },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    beginAtZero: false,
+                    callback: function (value) {
+                      return props.currencysymbols + value;
+                    },
+                  },
+                  gridLines: {
+                    display: false,
                   },
                 },
-                gridLines: {
-                  display: false,
-                },
-              },
-            ],
-            xAxes: [
-              {
-                ticks: {
-                  maxTicksLimit: 5,
-                  maxRotation: 0,
-                  minRotation: 0,
-                },
-                gridLines: {
-                  display: false,
-                },
-              },
-            ],
-          },
-        }}
-      />
-      <Bar
-        className="charts"
-        redraw={redraw}
-        data={chartVol}
-        options={{
-          legend: {
-            display: false,
-          },
-          tooltips: {
-            displayColors: false,
-            mode: "x-axis",
-          },
-          responsive: true,
-          title: { text: "THICCNESS SCALE", display: false },
-          elements: {
-            point: {
-              radius: 0,
-            },
-            line: {
-              tension: 0.05,
-            },
-          },
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 10,
-                  beginAtZero: false,
-                  callback: function (value) {
-                    return props.currencysymbols + value;
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    maxTicksLimit: 5,
+                    maxRotation: 0,
+                    minRotation: 0,
+                  },
+                  gridLines: {
+                    display: false,
                   },
                 },
-                gridLines: {
-                  display: false,
-                },
+              ],
+            },
+          }}
+        />
+      </td>
+      <td className="charts">
+        <Bar
+          redraw={redraw}
+          data={chartVol}
+          options={{
+            legend: {
+              display: false,
+            },
+            tooltips: {
+              displayColors: false,
+              mode: "x-axis",
+            },
+            responsive: true,
+            title: { text: "THICCNESS SCALE", display: false },
+            elements: {
+              point: {
+                radius: 0,
               },
-            ],
-            xAxes: [
-              {
-                ticks: {
-                  maxTicksLimit: 5,
-                  maxRotation: 0,
-                  minRotation: 0,
-                },
-                gridLines: {
-                  display: false,
-                },
+              line: {
+                tension: 0.05,
               },
-            ],
-          },
-        }}
-      />
+            },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    beginAtZero: false,
+                    callback: function (value) {
+                      return props.currencysymbols + value;
+                    },
+                  },
+                  gridLines: {
+                    display: false,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    maxTicksLimit: 5,
+                    maxRotation: 0,
+                    minRotation: 0,
+                  },
+                  gridLines: {
+                    display: false,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </td>
     </div>
   );
 };
