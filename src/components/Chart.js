@@ -77,7 +77,7 @@ const Chart = (props) => {
           labels: timeSmallerAndConverted,
           datasets: [
             {
-              label: "My First dataset",
+              label: "Price",
               backgroundColor: "rgba(255, 99, 132, 0.5)",
               borderColor: "rgba(255, 99, 132, 0.5)",
               data: priceSmaller,
@@ -88,7 +88,7 @@ const Chart = (props) => {
           labels: timeSmallerAndConverted,
           datasets: [
             {
-              label: "My second dataset",
+              label: "Volume",
               backgroundColor: "rgba(135, 99, 225, 1)",
               borderColor: "rgba(135, 99, 225, 1)",
               data: volumeSmaller,
@@ -121,6 +121,16 @@ const Chart = (props) => {
             tooltips: {
               displayColors: false,
               mode: "x-axis",
+              callbacks: {
+                label: function (tooltipItems) {
+                  return (
+                    symbol +
+                    tooltipItems.yLabel
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  );
+                },
+              },
             },
             responsive: true,
             title: { text: "THICCNESS SCALE", display: false },
@@ -140,7 +150,10 @@ const Chart = (props) => {
                     maxTicksLimit: 10,
                     beginAtZero: false,
                     callback: function (value) {
-                      return props.currencysymbols + value;
+                      return (
+                        props.currencysymbols +
+                        value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      );
                     },
                   },
                   gridLines: {
@@ -175,6 +188,16 @@ const Chart = (props) => {
             tooltips: {
               displayColors: false,
               mode: "x-axis",
+              callbacks: {
+                label: function (tooltipItems) {
+                  return (
+                    symbol +
+                    tooltipItems.yLabel
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  );
+                },
+              },
             },
             responsive: true,
             title: { text: "THICCNESS SCALE", display: false },
@@ -194,7 +217,10 @@ const Chart = (props) => {
                     maxTicksLimit: 10,
                     beginAtZero: false,
                     callback: function (value) {
-                      return props.currencysymbols + value;
+                      return (
+                        props.currencysymbols +
+                        value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      );
                     },
                   },
                   gridLines: {

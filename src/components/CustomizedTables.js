@@ -136,6 +136,15 @@ export default class CustomizedTables extends React.Component {
               >
                 Past year
               </a>
+              <a
+                class="btn btn-1"
+                key="365-days"
+                data-item={1825}
+                onClick={this.dateClick}
+                id={coin}
+              >
+                Past 5 years
+              </a>
             </div>
 
             <Chart
