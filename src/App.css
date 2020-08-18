@@ -37,6 +37,7 @@
 .App-header {
   background-color: rgb(238, 221, 226);
   min-height: 10vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,14 +85,14 @@ h1 {
   margin: 5px;
   padding-top: 55px;
   font-family: "Nunito", sans-serif;
-  font-size: 4vw;
+  font-size: 3.5vw;
 }
 .row {
   float: right;
 }
 .brain {
   position: relative;
-  bottom: 16px;
+  bottom: 15px;
   right: 10px;
   font-size: 5vw;
 }

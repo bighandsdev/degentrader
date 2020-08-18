@@ -64,11 +64,13 @@ class App extends React.Component {
       dataSettings: "all",
       pageNumber: 1,
       pageSettings: [0, 100],
+      orderSelection: "",
     };
     this.onChange = this.onChange.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     this.handleSettingsClick = this.handleSettingsClick.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleTableHeaderClick = this.handleTableHeaderClick.bind(this);
   }
 
   componentDidMount() {
@@ -152,7 +154,75 @@ class App extends React.Component {
       }
     }
   }
+  handleTableHeaderClick(e) {
+    const header = e.currentTarget.getAttribute("data-item");
+    console.log(e.currentTarget.getAttribute("data-item"));
+    console.log("coins being managed");
+    if (header === this.state.orderSelection) {
+      this.setState({
+        coins: this.state.rawCoins,
+        orderSelection: "",
+      });
+    } else if (header === "price_change_percentage_24h") {
+      const coins = this.state.rawCoins;
+      const coinsOnPage = coins.slice(
+        this.state.pageSettings[0],
+        this.state.pageSettings[1]
+      );
+      const coinOrderByPrice = coinsOnPage.sort(
+        (a, b) =>
+          parseFloat(b.price_change_percentage_24h) -
+          parseFloat(a.price_change_percentage_24h)
+      );
 
+      this.setState({
+        coins: coinOrderByPrice,
+        orderSelection: header,
+      });
+    } else if (header === "total_volume") {
+      const coins = this.state.rawCoins;
+      const coinsOnPage = coins.slice(
+        this.state.pageSettings[0],
+        this.state.pageSettings[1]
+      );
+      const coinOrderByPrice = coinsOnPage.sort(
+        (a, b) => parseFloat(b.total_volume) - parseFloat(a.total_volume)
+      );
+
+      this.setState({
+        coins: coinOrderByPrice,
+        orderSelection: header,
+      });
+    } else if (header === "current_price") {
+      const coins = this.state.rawCoins;
+      const coinsOnPage = coins.slice(
+        this.state.pageSettings[0],
+        this.state.pageSettings[1]
+      );
+      const coinOrderByPrice = coinsOnPage.sort(
+        (a, b) => parseFloat(b.current_price) - parseFloat(a.current_price)
+      );
+
+      this.setState({
+        coins: coinOrderByPrice,
+        orderSelection: header,
+      });
+    } else if (header === "market_cap") {
+      const coins = this.state.rawCoins;
+      const coinsOnPage = coins.slice(
+        this.state.pageSettings[0],
+        this.state.pageSettings[1]
+      );
+      const coinOrderByPrice = coinsOnPage.sort(
+        (a, b) => parseFloat(b.market_cap) - parseFloat(a.market_cap)
+      );
+
+      this.setState({
+        coins: coinOrderByPrice,
+        orderSelection: header,
+      });
+    }
+  }
   handleCurrencyClick(e) {
     this.setState({
       currency: e.currentTarget.getAttribute("data-item"),
@@ -237,6 +307,8 @@ class App extends React.Component {
               pageSettings={this.state.pageSettings}
               onClick={this.handlePageChange}
               searchValue={this.state.value}
+              handleTableHeaderClick={this.handleTableHeaderClick}
+              orderSelection={this.state.orderSelection}
             />
           </div>
 

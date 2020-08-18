@@ -15,6 +15,7 @@ export default class CustomizedTables extends React.Component {
       currency: this.props.currency,
       currency_symbols: this.props.currency_symbols,
       button_color: "white",
+      orderSelection: this.props.orderSelection,
     };
     this.dateClick = this.dateClick.bind(this);
   }
@@ -235,10 +236,34 @@ export default class CustomizedTables extends React.Component {
           <tr>
             <th>Rank</th>
             <th>Coin</th>
-            <th>Price</th>
-            <th className="table-header-button">Change</th>
-            <th className="table-header-button">Volume</th>
-            <th className="table-header-button">MarketCap</th>
+            <th
+              className="table-header-button"
+              data-item="current_price"
+              onClick={this.props.handleTableHeaderClick}
+            >
+              Price
+            </th>
+            <th
+              className="table-header-button"
+              data-item="price_change_percentage_24h"
+              onClick={this.props.handleTableHeaderClick}
+            >
+              Change
+            </th>
+            <th
+              className="table-header-button"
+              data-item="total_volume"
+              onClick={this.props.handleTableHeaderClick}
+            >
+              Volume
+            </th>
+            <th
+              className="table-header-button"
+              data-item="market_cap"
+              onClick={this.props.handleTableHeaderClick}
+            >
+              MarketCap
+            </th>
             <th>Supply</th>
           </tr>
           {this.result()}

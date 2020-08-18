@@ -141,18 +141,19 @@ export default class CustomizedTables extends React.Component {
                   <img className="image" src={coin.image} />
                   {coin.name}{" "}
                 </p>
-
-                <p className="card-price">
-                  {
-                    this.props.currency_symbols[
-                      this.props.currency.toUpperCase()
-                    ]
-                  }
-                  {this.roundDownPrice(coin.current_price)}{" "}
-                </p>
-                <p className="card-price-change">
-                  {this.roundDown(coin.price_change_percentage_24h, 2)} %
-                </p>
+                <div className="info">
+                  <p className="card-price">
+                    {
+                      this.props.currency_symbols[
+                        this.props.currency.toUpperCase()
+                      ]
+                    }
+                    {this.roundDownPrice(coin.current_price)}{" "}
+                  </p>
+                  <p className="card-price-change">
+                    {this.roundDown(coin.price_change_percentage_24h, 2)} %
+                  </p>
+                </div>
               </div>
             ))}
           </div>
