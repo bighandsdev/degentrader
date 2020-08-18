@@ -54,8 +54,14 @@ export default class CustomizedTables extends React.Component {
         .toFixed(2)
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else if (number >= 0.001) {
+      const decimals = 6;
+      return (
+        Math.floor(number * Math.pow(10, decimals)) /
+        Math.pow(10, decimals).toString()
+      );
     } else {
-      const decimals = 4;
+      const decimals = 8;
       return (
         Math.floor(number * Math.pow(10, decimals)) /
         Math.pow(10, decimals).toString()
@@ -192,7 +198,7 @@ export default class CustomizedTables extends React.Component {
             </td>
             <td>
               {this.state.currency_symbols[this.props.currency.toUpperCase()]}
-              {this.roundDown(coin.total_volume, 2)
+              {this.roundDown(coin.total_volume)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </td>
@@ -230,9 +236,9 @@ export default class CustomizedTables extends React.Component {
             <th>Rank</th>
             <th>Coin</th>
             <th>Price</th>
-            <th>Change</th>
-            <th>Volume</th>
-            <th>MarketCap</th>
+            <th className="table-header-button">Change</th>
+            <th className="table-header-button">Volume</th>
+            <th className="table-header-button">MarketCap</th>
             <th>Supply</th>
           </tr>
           {this.result()}

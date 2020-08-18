@@ -21,14 +21,16 @@ class App extends React.Component {
       rawCoins: [],
       currencies: [
         "usd",
+        "btc",
+        "eth",
+        "gbp",
+        "aud",
+        "cad",
         "eur",
         "rub",
         "idr",
         "krw",
         "cny",
-        "gbp",
-        "aud",
-        "cad",
       ],
       settings: ["All", "Defi"],
       settingsAPIParam: {
@@ -51,6 +53,11 @@ class App extends React.Component {
         THB: "฿", // Thai Baht
         AUD: "$",
         CAD: "$",
+        RUB: "₽",
+        IDR: "Rp",
+        CNY: "¥",
+        BTC: "₿",
+        ETH: "Ξ",
       },
       currency: "usd",
       currencySymbol: "$",
@@ -125,6 +132,7 @@ class App extends React.Component {
         let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
             let searchValue = el.name.toLowerCase();
+
             return searchValue.indexOf(searcjQery) !== -1;
           });
         this.setState({
@@ -243,9 +251,6 @@ class App extends React.Component {
 
             <p className="footer-title">
               Ethereum: 0x413ED157A79f9197E2fcc6aF89EF89e7Da00e5F2
-            </p>
-            <p className="footer-title">
-              Bitcoin Cash: 1AYaDCDGfSgKqQzZQxhazzcbAPQMSkB9H8
             </p>
           </div>
         </footer>

@@ -78,9 +78,11 @@ chart {
   flex: 1 1 0%;
   overflow: hidden;
   min-width: 5vw;
-  position: relative;
-  left: 45px;
-  float: top;
+
+  float: center;
+}
+.table-header-button {
+  cursor: pointer;
 }
 th,
 td,
