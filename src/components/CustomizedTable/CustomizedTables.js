@@ -1,8 +1,8 @@
 import React from "react";
 import Iframe from "react-iframe";
 import "./CustomizedTables.css";
-import Chart from "./Chart.js";
-import PageSettings from "./pageSettings.js";
+import Chart from "../Chart/Chart.js";
+import PageSettings from "../PageSettings/pageSettings.js";
 import { purple } from "@material-ui/core/colors";
 
 export default class CustomizedTables extends React.Component {

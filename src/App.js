@@ -2,11 +2,11 @@ import React from "react";
 
 import logo from "./logo.png";
 import "./App.css";
-import CustomizedTables from "./components/CustomizedTables.js";
-import Cards from "./components/Cards.js";
-import SearchBar from "./components/SearchBar.js";
-import Chart from "./components/Chart.js";
-import CurrencySettings from "./components/CurrencySettings.js";
+import CustomizedTables from "./components/CustomizedTable/CustomizedTables.js";
+import Cards from "./components/Cards/Cards.js";
+import SearchBar from "./components/SearchBar/SearchBar.js";
+
+import CurrencySettings from "./components/Settings/CurrencySettings.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -239,6 +239,7 @@ class App extends React.Component {
       ],
       pageNumber: 1,
       pageSettings: [0, 100],
+      orderSelection: "",
     });
     return this.updateData(
       this.state.currency,

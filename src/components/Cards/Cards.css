@@ -64,6 +64,8 @@
   position: relative;
   top: 8px;
   right: 5px;
+  height: 5vh;
+  border-radius: 25px;
 }
 
 .Card-up {
@@ -81,8 +83,8 @@
   border: 1px solid white;
   padding: 5px;
   margin: 3px;
-  width: 15vw;
-  height: 13vh;
+  width: 13vw;
+  height: 12vh;
   font-family: "Nunito", sans-serif;
   float: left;
 }
@@ -109,19 +111,10 @@
   font-size: 1.8vh;
   padding: 0px;
 }
-.card-price {
+.card-info {
   position: relative;
-  bottom: 7.5px;
-  right: 35px;
-  font-size: 1vw;
-  padding: 0px;
-}
-.card-price-change {
-  position: relative;
-  bottom: 40.5px;
-  left: 50px;
-  font-size: 1vw;
-}
-.info {
-  align-self: center;
+  bottom: 11px;
+  font-size: 1.8vh;
+
+  float: center;
 }
