@@ -125,10 +125,12 @@ class App extends React.Component {
     this.setState({
       value: e.target.value,
     });
+    // if searchbar is empty then show all the coins
     if (e.target.value == "") {
       this.setState({
         coins: this.state.rawCoins,
       });
+      // if backspace on searchbar then table renders all coins
     } else if (e.target.value.length < this.state.value.length) {
       {
         let searcjQery = e.target.value.toLowerCase(),
@@ -141,12 +143,16 @@ class App extends React.Component {
           coins: this.state.rawCoins,
         });
       }
+      // if something has been entered on the searchbar then it searches through the coins array taking name and symbol into account
     } else if (e.target.value !== this.state.value) {
       {
         let searcjQery = e.target.value.toLowerCase(),
           displayedCoins = this.state.coins.filter((el) => {
-            let searchValue = el.name.toLowerCase();
-            return searchValue.indexOf(searcjQery) !== -1;
+            let searchValue = el.name
+              .toLowerCase()
+              .concat(el.symbol.toLowerCase());
+            let searchBy = searchValue.indexOf(searcjQery) !== -1;
+            return searchBy;
           });
         this.setState({
           coins: displayedCoins,
