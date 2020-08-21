@@ -62,11 +62,8 @@ export default class CustomizedTables extends React.Component {
         Math.pow(10, decimals).toString()
       );
     } else {
-      const decimals = 8;
-      return (
-        Math.floor(number * Math.pow(10, decimals)) /
-        Math.pow(10, decimals).toString()
-      );
+      const decimals = 9;
+      return number.toFixed(9).toString();
     }
   }
   roundDown(number, decimals) {
