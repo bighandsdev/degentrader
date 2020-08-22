@@ -2,6 +2,7 @@ import React from "react";
 import Iframe from "react-iframe";
 import "./CustomizedTables.css";
 import Chart from "../Chart/Chart.js";
+import MoonPayPopup from "../MoonPayPopup.js";
 import PageSettings from "../PageSettings/pageSettings.js";
 import { purple } from "@material-ui/core/colors";
 

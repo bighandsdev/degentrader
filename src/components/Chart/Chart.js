@@ -3,6 +3,7 @@ import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
 import "./Chart.css";
+import MoonPayPopup from "../MoonPayPopup.js";
 import { withTheme } from "@material-ui/core";
 
 const Chart = (props) => {
@@ -283,6 +284,7 @@ const Chart = (props) => {
           }}
         />
       </td>
+      <MoonPayPopup coin={id} />
     </div>
   );
 };

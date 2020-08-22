@@ -24,3 +24,23 @@
   margin: 2px;
   text-align: center;
 }
+
+.Buy-button {
+  color: rgb(91, 38, 57);
+  font-family: "Nunito", sans-serif;
+  font-size: 0.8vh;
+
+  padding: 5px;
+  font-size: 3vh;
+  background-color: rgb(240, 231, 234);
+  box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
+    rgb(247, 242, 244) -3px -3px 6px -0.5px;
+
+  border-radius: 80px;
+  border: none;
+
+  margin-left: 10px;
+  position: relative;
+  top: 3px;
+  text-align: center;
+}

@@ -15,6 +15,7 @@
     "react-dom": "^16.13.1",
     "react-iframe": "^1.8.0",
     "react-scripts": "3.4.1",
+    "reactjs-popup": "^1.5.0",
     "reactstrap": "^8.5.1",
     "zingchart-react": "^3.0.0"
   },

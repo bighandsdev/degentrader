@@ -1,5 +1,4 @@
 import React from "react";
-
 import logo from "./logo.png";
 import "./App.css";
 import CustomizedTables from "./components/CustomizedTable/CustomizedTables.js";
