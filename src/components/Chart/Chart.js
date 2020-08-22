@@ -23,6 +23,8 @@ const Chart = (props) => {
     let volume = [];
     let volumeSmaller = [];
     let timeSmaller = [];
+    let timeSmallerAndConvertedForVolume = [];
+
     let timeSmallerAndConverted = [];
     let whichCoin = id;
     function roundDownPrice(number) {
@@ -31,14 +33,14 @@ const Chart = (props) => {
         const amount =
           Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
         return amount.toFixed(2);
-      } else if (number >= 0.01) {
-        const decimals = 4;
+      } else if (number >= 0.001) {
+        const decimals = 6;
         return (
           Math.floor(number * Math.pow(10, decimals)) /
           Math.pow(10, decimals).toFixed(4)
         );
       } else {
-        const decimals = 7;
+        const decimals = 9;
         return (
           Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals)
         );
@@ -63,7 +65,7 @@ const Chart = (props) => {
           timeSmaller.push(time[i]);
         }
         for (var i = 0; i < timeSmaller.length; i++) {
-          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("ll"));
+          timeSmallerAndConverted.push(moment(timeSmaller[i]).format("lll"));
         }
         for (const dataObj of res.data.total_volumes) {
           time.push(dataObj[0]);
@@ -71,8 +73,11 @@ const Chart = (props) => {
         }
         console.log(volume);
 
-        for (var i = 0; i < volume.length; i = i + 1) {
+        for (var i = 0; i < volume.length; i = i + 4) {
           volumeSmaller.push(volume[i]);
+        }
+        for (var i = 0; i < timeSmallerAndConverted.length; i = i + 4) {
+          timeSmallerAndConvertedForVolume.push(timeSmallerAndConverted[i]);
         }
         setChartData({
           labels: timeSmallerAndConverted,
@@ -86,7 +91,7 @@ const Chart = (props) => {
           ],
         });
         setChartVol({
-          labels: timeSmallerAndConverted,
+          labels: timeSmallerAndConvertedForVolume,
           datasets: [
             {
               label: "Volume",
@@ -112,6 +117,7 @@ const Chart = (props) => {
   return (
     <div colspan="8">
       <td className="charts">
+        <p className="chart-name">Price</p>
         <Line
           redraw={redraw}
           data={chartData}
@@ -130,12 +136,16 @@ const Chart = (props) => {
               borderColor: "rgb(226, 207, 213)",
               callbacks: {
                 label: function (tooltipItems) {
-                  return (
-                    symbol +
-                    tooltipItems.yLabel
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  );
+                  if (tooltipItems > 1) {
+                    return (
+                      symbol +
+                      tooltipItems.yLabel
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    );
+                  } else {
+                    return symbol + tooltipItems.yLabel.toString();
+                  }
                 },
               },
             },
@@ -156,11 +166,16 @@ const Chart = (props) => {
                     autoSkip: true,
                     maxTicksLimit: 10,
                     beginAtZero: false,
+                    fontColor: "rgb(209, 0, 75)",
                     callback: function (value) {
-                      return (
-                        props.currencysymbols +
-                        value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                      );
+                      if (value > 1) {
+                        return (
+                          props.currencysymbols +
+                          value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        );
+                      } else {
+                        return props.currencysymbols + value.toString();
+                      }
                     },
                   },
                   gridLines: {
@@ -174,6 +189,10 @@ const Chart = (props) => {
                     maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
+                    fontColor: "rgb(209, 0, 75)",
+                    callback: function (value) {
+                      return value.split(",")[0];
+                    },
                   },
                   gridLines: {
                     display: false,
@@ -184,7 +203,9 @@ const Chart = (props) => {
           }}
         />
       </td>
+
       <td className="charts">
+        <p className="chart-name">Volume</p>
         <Bar
           redraw={redraw}
           data={chartVol}
@@ -229,6 +250,7 @@ const Chart = (props) => {
                     autoSkip: true,
                     maxTicksLimit: 10,
                     beginAtZero: false,
+                    fontColor: "rgb(209, 0, 75)",
                     callback: function (value) {
                       return (
                         props.currencysymbols +
@@ -247,6 +269,10 @@ const Chart = (props) => {
                     maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
+                    fontColor: "rgb(209, 0, 75)",
+                    callback: function (value) {
+                      return value.split(",")[0];
+                    },
                   },
                   gridLines: {
                     display: false,

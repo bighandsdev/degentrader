@@ -227,6 +227,20 @@ class App extends React.Component {
         coins: coinOrderByPrice,
         orderSelection: header,
       });
+    } else if (header === "market_cap_rank") {
+      const coins = this.state.rawCoins;
+      const coinsOnPage = coins.slice(
+        this.state.pageSettings[0],
+        this.state.pageSettings[1]
+      );
+      const coinOrderByPrice = coinsOnPage.sort(
+        (a, b) => parseFloat(a.market_cap_rank) - parseFloat(b.market_cap_rank)
+      );
+
+      this.setState({
+        coins: coinOrderByPrice,
+        orderSelection: header,
+      });
     }
   }
   handleCurrencyClick(e) {

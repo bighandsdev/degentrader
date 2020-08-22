@@ -63,7 +63,7 @@ export default class CustomizedTables extends React.Component {
       );
     } else {
       const decimals = 9;
-      return number.toFixed(9).toString();
+      return number.toFixed(8).toString();
     }
   }
   roundDown(number, decimals) {
@@ -231,7 +231,13 @@ export default class CustomizedTables extends React.Component {
       return (
         <table>
           <tr>
-            <th>Rank</th>
+            <th
+              className="table-header-button"
+              data-item="market_cap_rank"
+              onClick={this.props.handleTableHeaderClick}
+            >
+              Rank
+            </th>
             <th>Coin</th>
             <th
               className="table-header-button"
