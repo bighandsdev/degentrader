@@ -1,14 +1,14 @@
 .charts {
   background-image: rgb(255, 255, 255);
-  box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
-    rgb(247, 242, 244) -3px -3px 6px -0.5px;
+
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
-  box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
+  box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
+    rgb(247, 242, 244) -6px -6px 12px inset;
   font-size: 15px;
   background: rgb(240, 231, 234);
-  border-width: 1px;
+  border-width: 0px;
   border-style: solid;
   border-color: rgb(226, 207, 213);
   border-image: initial;
