@@ -4,6 +4,7 @@ import "./App.css";
 import CustomizedTables from "./components/CustomizedTable/CustomizedTables.js";
 import Cards from "./components/Cards/Cards.js";
 import SearchBar from "./components/SearchBar/SearchBar.js";
+import { MoonPayCheckWhichCoins } from "./components/MoonPayCheckWhichCoins.js";
 
 import CurrencySettings from "./components/Settings/CurrencySettings.js";
 
@@ -18,6 +19,7 @@ class App extends React.Component {
       coins: [],
       coinsForCard: [],
       rawCoins: [],
+      coinsOnMoonPay: MoonPayCheckWhichCoins(),
       currencies: [
         "usd",
         "btc",
