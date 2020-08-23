@@ -5,6 +5,7 @@ import CustomizedTables from "./components/CustomizedTable/CustomizedTables.js";
 import Cards from "./components/Cards/Cards.js";
 import SearchBar from "./components/SearchBar/SearchBar.js";
 import { MoonPayCheckWhichCoins } from "./components/MoonPayCheckWhichCoins.js";
+import axios from "axios";
 
 import CurrencySettings from "./components/Settings/CurrencySettings.js";
 
@@ -19,7 +20,7 @@ class App extends React.Component {
       coins: [],
       coinsForCard: [],
       rawCoins: [],
-      coinsOnMoonPay: MoonPayCheckWhichCoins(),
+      coinsOnMoonPay: [],
       currencies: [
         "usd",
         "btc",
@@ -96,6 +97,24 @@ class App extends React.Component {
           });
         }
       );
+
+    axios
+      .get(
+        `https://api.moonpay.io/v3/currencies?apiKey=pk_test_XYlfn9ISmwfjwReteBLpiN1TdSDV7Pw7`
+      )
+      .then((res) => {
+        let allNames = [];
+        for (let i = 0; res.data.length > i; i++) {
+          allNames.push(res.data[i].name.toLowerCase());
+        }
+        console.log(allNames);
+        this.setState({
+          coinsOnMoonPay: allNames,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   updateData(currency, settingsAllorDefi) {
     const currencyR = currency;
@@ -331,6 +350,7 @@ class App extends React.Component {
               searchValue={this.state.value}
               handleTableHeaderClick={this.handleTableHeaderClick}
               orderSelection={this.state.orderSelection}
+              coinsOnMoonPay={this.state.coinsOnMoonPay}
             />
           </div>
 

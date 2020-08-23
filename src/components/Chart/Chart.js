@@ -10,6 +10,7 @@ const Chart = (props) => {
   const [chartData, setChartData] = useState({});
   const [chartVol, setChartVol] = useState({});
   const [id] = useState(props.id);
+  const [coinsOnMoonPay] = useState(props.coinsOnMoonPay);
   const [currency] = useState(props.currency);
   const [symbol] = useState(props.currencysymbols);
   const [days] = useState(props.days);
@@ -114,7 +115,6 @@ const Chart = (props) => {
   useEffect(() => {
     chart(props);
   }, [props]);
-
   return (
     <div colspan="8">
       <td className="charts">
@@ -284,7 +284,6 @@ const Chart = (props) => {
           }}
         />
       </td>
-      <MoonPayPopup coin={id} />
     </div>
   );
 };

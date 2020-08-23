@@ -6,10 +6,9 @@ export function MoonPayCheckWhichCoins() {
       `https://api.moonpay.io/v3/currencies?apiKey=pk_test_XYlfn9ISmwfjwReteBLpiN1TdSDV7Pw7`
     )
     .then((res) => {
-      console.log(res);
       let allNames = [];
-      for (const dataObj of res.data.name) {
-        allNames.push(dataObj);
+      for (let i = 0; res.data.length > i; i++) {
+        allNames.push(res.data[i].name);
       }
       console.log(allNames);
       return allNames;

@@ -4,6 +4,7 @@ import "./CustomizedTables.css";
 import Chart from "../Chart/Chart.js";
 import PageSettings from "../PageSettings/pageSettings.js";
 import { purple } from "@material-ui/core/colors";
+import MoonPayPopup from "../MoonPayPopup.js";
 
 export default class CustomizedTables extends React.Component {
   constructor(props) {
@@ -157,7 +158,15 @@ export default class CustomizedTables extends React.Component {
               redraw={this.state.redraw}
               currency={this.props.currency}
               currencysymbols={symbol}
+              coinsOnMoonPay={this.props.coinsOnMoonPay}
             />
+            <div class="container">
+              <MoonPayPopup
+                className="btn btn-1"
+                coin={coin}
+                coinsOnMoonPay={this.props.coinsOnMoonPay}
+              />
+            </div>
           </td>
         </tr>
       );
