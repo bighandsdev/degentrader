@@ -17,7 +17,15 @@ export default class MoonPayPopup extends React.Component {
     if (this.state.coinsOnMoonPay.includes(this.props.coin.toLowerCase())) {
       return (
         <Popup
-          contentStyle={{ width: "400px", height: "400px" }}
+          contentStyle={{
+            width: "400px",
+            height: "400px",
+            padding: "0px",
+            borderRadius: "12px",
+            boxShadow: `rgb(226, 207, 213) 1.5px 1.5px 3px,
+            rgb(247, 242, 244) -3px -3px 6px -0.5px`,
+            border: "none",
+          }}
           trigger={
             <a className="btn-buy">
               {" "}
@@ -29,7 +37,6 @@ export default class MoonPayPopup extends React.Component {
           position="top left"
         >
           <Iframe
-            style={{ borderRadius: "5px" }}
             allow="accelerometer; autoplay; camera; gyroscope; payment"
             frameborder="0"
             height="100%"
