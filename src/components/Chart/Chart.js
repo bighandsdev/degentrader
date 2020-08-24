@@ -87,7 +87,8 @@ const Chart = (props) => {
             {
               label: "Price",
               backgroundColor: "rgba(255, 99, 132, 0.5)",
-              borderColor: "rgba(255, 99, 132, 0.5)",
+
+              borderWidth: "0px",
               data: priceSmaller,
             },
           ],
