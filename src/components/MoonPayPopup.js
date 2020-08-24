@@ -31,7 +31,8 @@ export default class MoonPayPopup extends React.Component {
               {" "}
               Buy{" "}
               {this.props.coin.charAt(0).toUpperCase() +
-                this.props.coin.slice(1)}
+                this.props.coin.slice(1)}{" "}
+              💳
             </a>
           }
           position="top left"
@@ -40,7 +41,8 @@ export default class MoonPayPopup extends React.Component {
             allow="accelerometer; autoplay; camera; gyroscope; payment"
             frameborder="0"
             height="100%"
-            src="https://buy-staging.moonpay.io?apiKey=pk_test_123"
+            colorCode="%23F0E7EA"
+            src="https://buy-staging.moonpay.io?apiKey=pk_test_123&colorCode=%235B2639"
             width="100%"
           >
             <p>Your browser does not support iframes.</p>

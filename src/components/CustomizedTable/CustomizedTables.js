@@ -133,7 +133,7 @@ export default class CustomizedTables extends React.Component {
                 Past month
               </a>
               <a
-                class="btn btn-1"
+                className="btn btn-1"
                 key="365-days"
                 data-item={365}
                 onClick={this.dateClick}
@@ -142,7 +142,7 @@ export default class CustomizedTables extends React.Component {
                 Past year
               </a>
               <a
-                class="btn btn-1"
+                className="btn btn-1"
                 key="365-days"
                 data-item={1825}
                 onClick={this.dateClick}

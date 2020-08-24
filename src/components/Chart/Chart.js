@@ -117,7 +117,7 @@ const Chart = (props) => {
     chart(props);
   }, [props]);
   return (
-    <div colspan="8">
+    <div className="charts-div" colspan="8">
       <td className="charts">
         <p className="chart-name">Price</p>
         <Line
@@ -168,7 +168,7 @@ const Chart = (props) => {
                     autoSkip: true,
                     maxTicksLimit: 10,
                     beginAtZero: false,
-                    fontColor: "rgb(209, 0, 75)",
+                    fontColor: "rgb(91, 38, 57)",
                     callback: function (value) {
                       if (value > 1) {
                         return (
@@ -191,7 +191,7 @@ const Chart = (props) => {
                     maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
-                    fontColor: "rgb(209, 0, 75)",
+                    fontColor: "rgb(91, 38, 57)",
                     callback: function (value) {
                       return value.split(",")[0];
                     },
@@ -252,7 +252,7 @@ const Chart = (props) => {
                     autoSkip: true,
                     maxTicksLimit: 10,
                     beginAtZero: false,
-                    fontColor: "rgb(209, 0, 75)",
+                    fontColor: "rgb(91, 38, 57)",
                     callback: function (value) {
                       return (
                         props.currencysymbols +
@@ -271,7 +271,7 @@ const Chart = (props) => {
                     maxTicksLimit: 4,
                     maxRotation: 0,
                     minRotation: 0,
-                    fontColor: "rgb(209, 0, 75)",
+                    fontColor: "rgb(91, 38, 57)",
                     callback: function (value) {
                       return value.split(",")[0];
                     },
