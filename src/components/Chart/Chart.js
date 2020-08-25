@@ -138,7 +138,7 @@ const Chart = (props) => {
               borderColor: "rgb(226, 207, 213)",
               callbacks: {
                 label: function (tooltipItems) {
-                  if (tooltipItems > 1) {
+                  if (tooltipItems.yLabel > 1) {
                     return (
                       symbol +
                       tooltipItems.yLabel
