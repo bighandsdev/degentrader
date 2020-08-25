@@ -11,7 +11,7 @@ export default class CustomizedTables extends React.Component {
     super(props);
     this.state = {
       coinClicked: "",
-      chartDays: 30,
+      chartDays: 1,
       redraw: false,
       currency: this.props.currency,
       currency_symbols: this.props.currency_symbols,
@@ -19,6 +19,7 @@ export default class CustomizedTables extends React.Component {
       orderSelection: this.props.orderSelection,
     };
     this.dateClick = this.dateClick.bind(this);
+    this.buttonStyleForData = this.buttonStyleForData.bind(this);
   }
   handleUporDown(coinChange) {
     if (coinChange > 0) {
@@ -75,13 +76,16 @@ export default class CustomizedTables extends React.Component {
   handleClick(e) {
     if (this.state.coinClicked !== e.currentTarget.getAttribute("data-item")) {
       const coin = e.currentTarget.getAttribute("data-item");
+      const coinSymbol = e.currentTarget.getAttribute("data-item-symbol");
       this.setState({
         coinClicked: coin,
+        coinClickedSymbol: coinSymbol,
       });
       console.log("We need to get the details for " + coin);
     } else {
       this.setState({
         coinClicked: "",
+        coinClickedSymbol: "",
       });
     }
     this.chartRender(this.props.coins.id, this.state.chartDays);
@@ -93,12 +97,20 @@ export default class CustomizedTables extends React.Component {
       chartDays: dayRequest,
     });
   }
+  buttonStyleForData(e) {
+    if (e.currentTarget.getAttribute("data-item") === this.state.chartDays) {
+      return "btn-2";
+    } else {
+      return "btn-1";
+    }
+  }
 
   chartRender(coin, days) {
     const { error, isLoaded, coins } = this.props.coins;
     const symbol = this.state.currency_symbols[
       this.props.currency.toUpperCase()
     ];
+    const coinSymbol = this.state.coinClickedSymbol;
     if (coin === this.state.coinClicked) {
       return (
         <tr className="chartandpay">
@@ -106,7 +118,7 @@ export default class CustomizedTables extends React.Component {
           <td colspan="8">
             <div class="container">
               <a
-                className="btn btn-1"
+                className={"btn btn-1"}
                 key="1-days"
                 data-item={1}
                 onClick={this.dateClick}
@@ -115,7 +127,7 @@ export default class CustomizedTables extends React.Component {
                 Past day
               </a>
               <a
-                className="btn btn-1"
+                className={"btn btn-1"}
                 key="7-days"
                 data-item={7}
                 onClick={this.dateClick}
@@ -124,7 +136,7 @@ export default class CustomizedTables extends React.Component {
                 Past week
               </a>
               <a
-                className="btn btn-1"
+                className={"btn btn-1"}
                 key="30-days"
                 data-item={30}
                 onClick={this.dateClick}
@@ -133,7 +145,7 @@ export default class CustomizedTables extends React.Component {
                 Past month
               </a>
               <a
-                className="btn btn-1"
+                className={"btn btn-1"}
                 key="365-days"
                 data-item={365}
                 onClick={this.dateClick}
@@ -142,7 +154,7 @@ export default class CustomizedTables extends React.Component {
                 Past year
               </a>
               <a
-                class="btn btn-1"
+                className={"btn btn-1"}
                 key="365-days"
                 data-item={1825}
                 onClick={this.dateClick}
@@ -164,6 +176,7 @@ export default class CustomizedTables extends React.Component {
               <MoonPayPopup
                 className="btn btn-1"
                 coin={coin}
+                symbol={coinSymbol}
                 coinsOnMoonPay={this.props.coinsOnMoonPay}
               />
             </div>
@@ -183,6 +196,7 @@ export default class CustomizedTables extends React.Component {
           <tr
             key={coin.id}
             data-item={coin.id}
+            data-item-symbol={coin.symbol}
             onClick={this.handleClick.bind(this)}
           >
             <td>{coin.market_cap_rank}</td>

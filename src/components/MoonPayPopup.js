@@ -9,11 +9,12 @@ export default class MoonPayPopup extends React.Component {
     super(props);
     this.state = {
       coinsOnMoonPay: this.props.coinsOnMoonPay,
+      url: `https://buy.moonpay.io?apiKey=pk_live_M4RiDyjN7nnYeRFyBlwDBZzPNlkZHrjn&currencyCode=${this.props.symbol}&colorCode=%235B2639`,
     };
   }
 
   render() {
-    console.log(this.props.coinsOnMoonPay + "lol");
+    console.log(this.props.symbol + "hehehe");
     if (this.state.coinsOnMoonPay.includes(this.props.coin.toLowerCase())) {
       return (
         <Popup
@@ -42,7 +43,7 @@ export default class MoonPayPopup extends React.Component {
             frameborder="0"
             height="100%"
             colorCode="%23F0E7EA"
-            src="https://buy-staging.moonpay.io?apiKey=pk_test_123&colorCode=%235B2639"
+            src={this.state.url}
             width="100%"
           >
             <p>Your browser does not support iframes.</p>
