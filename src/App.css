@@ -229,16 +229,16 @@ footer {
     align-items: center;
     float: center;
     color: rgb(91, 38, 57);
-
+    font-family: "Nunito", sans-serif;
     float: left;
     margin: 5px;
-    padding-top: 40px;
-    font-family: "Nunito", sans-serif;
-    font-size: 30px;
+    padding-top: 25px;
+
+    font-size: 35px;
   }
   .brain {
     position: relative;
-    bottom: 17px;
+    bottom: 13px;
     right: 10px;
     font-size: 50px;
   }

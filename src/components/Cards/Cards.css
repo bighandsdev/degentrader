@@ -289,7 +289,7 @@
   .rowcard {
     text-align: center;
     margin: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     max-height: 35vh;
     max-width: 1000vw;
     box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
@@ -386,6 +386,8 @@
 
   .top-gainers {
     margin: 0px;
+    margin-top: 10px;
+    font-size: large;
     color: rgb(91, 38, 57);
     font-family: "Nunito", sans-serif;
   }
