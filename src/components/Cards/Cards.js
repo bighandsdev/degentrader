@@ -102,15 +102,15 @@ export default class CustomizedTables extends React.Component {
   }
   handleEmoji(coinChange) {
     if (coinChange < -10) {
-      return <span>💀</span>;
+      return "💀";
     } else if (coinChange < 0) {
-      return <span>😕</span>;
+      return "😕";
     } else if (coinChange < 10) {
-      return <span>😃</span>;
+      return "😃";
     } else if (coinChange < 20) {
-      return <span>🚀</span>;
+      return "🚀";
     } else if (coinChange > 20) {
-      return <span>🤯</span>;
+      return "🤯";
     }
   }
   manageCoins(coins) {
@@ -165,15 +165,17 @@ export default class CustomizedTables extends React.Component {
         );
       } else {
         return (
-          <div class="row">
+          <div class="rowcard">
+            <p className="top-gainers">Top gainers</p>
             <div class="column">
               {coins.map((coin) => (
                 <div
                   class={this.handleUporDown(coin.price_change_percentage_24h)}
                 >
-                  <p className="card-text">
-                    <img className="image" src={coin.image} />
-                    {coin.name}{" "}
+                  <img className="image" src={coin.image} />
+                  <p className="card-text">{coin.name} </p>
+                  <p className="card-price">
+                    {this.handleEmoji(coin.price_change_percentage_24h)}
                   </p>
                   <p className="card-info">
                     {
@@ -182,8 +184,6 @@ export default class CustomizedTables extends React.Component {
                       ]
                     }
                     {this.roundDownPrice(coin.current_price)}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    {this.roundDown(coin.price_change_percentage_24h, 2)} %
                   </p>
                 </div>
               ))}

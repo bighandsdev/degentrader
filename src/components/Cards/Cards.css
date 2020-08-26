@@ -286,16 +286,31 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .row {
+  .rowcard {
     text-align: center;
     margin: 0px;
-    max-height: 30vh;
+    margin-bottom: 40px;
+    max-height: 35vh;
     max-width: 1000vw;
+    box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
+      rgb(247, 242, 244) -6px -6px 12px inset;
+    font-size: 15px;
+    background: rgb(240, 231, 234);
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 207, 213);
+    border-image: initial;
+    border-radius: 12px;
+    padding: 10px;
   }
   .image {
-    text-align: center;
-    max-width: 3.6vw;
-    max-height: 3.6vw;
+    position: relative;
+    bottom: 30px;
+    padding: 0.5em;
+    line-height: 1.22;
+    min-width: 20px;
+    min-height: 20px;
+    float: left;
   }
   /* Clear floats after the columns */
   .row:after {
@@ -305,6 +320,7 @@
     clear: both;
   }
   .Card-up {
+    line-height: 1.22;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     background-color: rgb(196, 248, 186);
@@ -326,7 +342,6 @@
     height: 5vh;
     font-family: "Nunito", sans-serif;
     text-align: center;
-    align-items: baseline;
   }
   .Card-down {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -352,13 +367,26 @@
   .card-text {
     font-size: 15px;
     padding: 0px;
+    display: inline-block;
     margin: 5px;
     float: left;
+  }
+  .card-price {
+    font-size: 25px;
+    padding: 0px;
+    margin: 5px;
+    float: right;
   }
   .card-info {
     font-size: 15px;
     padding: 0px;
     margin: 5px;
     float: right;
+  }
+
+  .top-gainers {
+    margin: 0px;
+    color: rgb(91, 38, 57);
+    font-family: "Nunito", sans-serif;
   }
 }
