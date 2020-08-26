@@ -87,7 +87,7 @@ h1 {
   margin: 5px;
   padding-top: 55px;
   font-family: "Nunito", sans-serif;
-  font-size: 3.5vw;
+  font-size: 60px;
 }
 .row {
   float: right;
@@ -96,7 +96,7 @@ h1 {
   position: relative;
   bottom: 15px;
   right: 10px;
-  font-size: 5vw;
+  font-size: 80px;
 }
 .App-footer {
   background-color: rgb(238, 221, 226);

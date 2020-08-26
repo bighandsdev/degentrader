@@ -173,19 +173,21 @@ iframe {
 /* <- Magic Stuff Start */
 
 .btn:hover {
-  box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
-    rgb(247, 242, 244) -3px -3px 6px -0.5px;
+  background-color: rgb(245, 243, 243);
 }
 
 .btn-1 {
-  color: rgb(91, 38, 57);
-  font-family: "Nunito", sans-serif;
-  padding: 5px;
+  color: rgb(209, 0, 75);
+  font: 400 13.3333px Arial;
+  font-family: Arial;
+  font-weight: 700;
+  padding: 7px;
   margin: 3px;
   max-width: 90px;
-  box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
+  box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
+    rgb(247, 242, 244) -3px -3px 6px -0.5px;
   background: rgb(240, 231, 234);
-  border-width: 1px;
+  border-width: 0px;
   border-style: solid;
   border-color: rgb(226, 207, 213);
   border-image: initial;

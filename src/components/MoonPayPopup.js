@@ -29,11 +29,13 @@ export default class MoonPayPopup extends React.Component {
           }}
           trigger={
             <a className="btn-buy">
-              {" "}
-              Buy{" "}
-              {this.props.coin.charAt(0).toUpperCase() +
-                this.props.coin.slice(1)}{" "}
-              💳
+              <p className="buttontext">
+                {" "}
+                Buy{" "}
+                {this.props.coin.charAt(0).toUpperCase() +
+                  this.props.coin.slice(1)}{" "}
+                💳
+              </p>
             </a>
           }
           position="top left"
