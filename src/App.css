@@ -45,25 +45,12 @@
   font-size: calc(10px + 2vmin);
   color: rgb(91, 38, 57);
 }
-.App-body {
-  background-color: rgb(238, 221, 226);
-  min-width: 100vh;
-  min-height: 70vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: top;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(91, 38, 57);
-}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes .brain {
   from {
     transform: rotate(0deg);
   }
@@ -71,33 +58,110 @@
     transform: rotate(360deg);
   }
 }
-.logo {
-  max-width: 40%;
-  height: auto;
-  padding: 0px;
-  position: center;
-  float: center;
-}
-h1 {
-  align-items: center;
-  float: center;
-  color: rgb(91, 38, 57);
+@media screen and (min-width: 857px) {
+  .App-body {
+    background-color: rgb(238, 221, 226);
+    min-width: 100vh;
+    min-height: 70vh;
 
-  float: left;
-  margin: 5px;
-  padding-top: 55px;
-  font-family: "Nunito", sans-serif;
-  font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .App-header {
+    background-color: rgb(238, 221, 226);
+    min-height: 8vh;
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .logo {
+    max-width: 40%;
+    height: auto;
+    padding: 0px;
+    position: center;
+    float: center;
+  }
+  h1 {
+    align-items: center;
+    float: center;
+    color: rgb(91, 38, 57);
+
+    float: left;
+    margin: 5px;
+    padding-top: 55px;
+    font-family: "Nunito", sans-serif;
+    font-size: 60px;
+  }
+  .brain {
+    position: relative;
+    bottom: 15px;
+    right: 10px;
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 857px) and (min-width: 768px) {
+  .App-header {
+    background-color: rgb(238, 221, 226);
+    min-height: 5vh;
+    min-width: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .App-body {
+    background-color: rgb(238, 221, 226);
+    min-width: 80vh;
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .logo {
+    max-width: 40%;
+    height: auto;
+    padding: 0px;
+    position: center;
+    float: center;
+  }
+  h1 {
+    align-items: center;
+    float: center;
+    color: rgb(91, 38, 57);
+
+    float: left;
+    margin: 5px;
+    padding-top: 20px;
+    font-family: "Nunito", sans-serif;
+    font-size: 50px;
+  }
+  .brain {
+    position: relative;
+    bottom: 17px;
+    right: 10px;
+    font-size: 70px;
+  }
 }
 .row {
   float: right;
 }
-.brain {
-  position: relative;
-  bottom: 15px;
-  right: 10px;
-  font-size: 80px;
-}
+
 .App-footer {
   background-color: rgb(238, 221, 226);
   min-width: 50vh;
@@ -122,4 +186,95 @@ h1 {
 }
 Popup {
   border-radius: 12px;
+}
+body,
+header,
+footer {
+  border-width: 0px;
+  border: 0;
+}
+@media screen and (max-width: 768px) {
+  .App-header {
+    background-color: rgb(238, 221, 226);
+    max-height: 14vh;
+    min-width: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .App-body {
+    background-color: rgb(238, 221, 226);
+    min-width: 80vh;
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(91, 38, 57);
+  }
+  .logo {
+    max-width: 40%;
+    height: auto;
+    padding: 0px;
+    position: center;
+    float: center;
+  }
+  h1 {
+    align-items: center;
+    float: center;
+    color: rgb(91, 38, 57);
+
+    float: left;
+    margin: 5px;
+    padding-top: 40px;
+    font-family: "Nunito", sans-serif;
+    font-size: 50px;
+  }
+  .brain {
+    position: relative;
+    bottom: 17px;
+    right: 10px;
+    font-size: 70px;
+  }
+}
+.row {
+  float: right;
+}
+
+.App-footer {
+  background-color: rgb(238, 221, 226);
+  min-width: 50vh;
+  min-height: 10vw;
+  display: flex;
+  flex-direction: column;
+
+  font-size: calc(6px + 1vmin);
+  color: rgb(91, 38, 57);
+  font-family: "Nunito", sans-serif;
+}
+.footer-title {
+  color: rgb(91, 38, 57);
+  margin: 5px;
+  padding-top: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: calc(7px + 1vmin);
+}
+.donate {
+  float: left;
+  padding-top: 20px;
+}
+Popup {
+  border-radius: 12px;
+}
+body,
+header,
+footer {
+  border-width: 0px;
+  border: 0;
 }

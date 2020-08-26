@@ -114,49 +114,83 @@ export default class CustomizedTables extends React.Component {
     }
   }
   manageCoins(coins) {
+    let width = window.innerWidth;
     const coinOrderByPrice = coins.sort(
       (a, b) =>
         parseFloat(b.price_change_percentage_24h) -
         parseFloat(a.price_change_percentage_24h)
     );
-
-    return coinOrderByPrice.slice(0, 5);
+    if (width > 768) {
+      return coinOrderByPrice.slice(0, 5);
+    } else {
+      return coinOrderByPrice.slice(0, 3);
+    }
   }
 
   render() {
+    let width = window.innerWidth;
     const { error, isLoaded, coins, currency_symbols } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      return (
-        <div class="row">
-          <div class="column">
-            {coins.map((coin) => (
-              <div
-                class={this.handleUporDown(coin.price_change_percentage_24h)}
-              >
-                <p className="card-text">
-                  <img className="image" src={coin.image} />
-                  {coin.name}{" "}
-                </p>
+      if (width > 768) {
+        return (
+          <div class="row">
+            <div class="column">
+              {coins.map((coin) => (
+                <div
+                  class={this.handleUporDown(coin.price_change_percentage_24h)}
+                >
+                  <p className="card-text">
+                    <img className="image" src={coin.image} />
+                    {coin.name}{" "}
+                  </p>
 
-                <p className="card-info">
-                  {
-                    this.props.currency_symbols[
-                      this.props.currency.toUpperCase()
-                    ]
-                  }
-                  {this.roundDownPrice(coin.current_price)}
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  {this.roundDown(coin.price_change_percentage_24h, 2)} %
-                </p>
-              </div>
-            ))}
+                  <p className="card-info">
+                    {
+                      this.props.currency_symbols[
+                        this.props.currency.toUpperCase()
+                      ]
+                    }
+                    {this.roundDownPrice(coin.current_price)}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {this.roundDown(coin.price_change_percentage_24h, 2)} %
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div class="row">
+            <div class="column">
+              {coins.map((coin) => (
+                <div
+                  class={this.handleUporDown(coin.price_change_percentage_24h)}
+                >
+                  <p className="card-text">
+                    <img className="image" src={coin.image} />
+                    {coin.name}{" "}
+                  </p>
+                  <p className="card-info">
+                    {
+                      this.props.currency_symbols[
+                        this.props.currency.toUpperCase()
+                      ]
+                    }
+                    {this.roundDownPrice(coin.current_price)}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {this.roundDown(coin.price_change_percentage_24h, 2)} %
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
     }
   }
 }
