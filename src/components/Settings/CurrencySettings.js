@@ -11,38 +11,74 @@ export default class CurrencySettings extends React.Component {
   }
 
   render() {
+    let width = window.innerWidth;
     const { currencies, settingsOptions } = this.state;
-    return (
-      <span className="settings">
-        <div class="dropdown">
-          <button class="dropbtn">💵</button>
-          <div class="dropdown-content">
-            {currencies.map((currency) => (
-              <a
-                data-item={currency}
-                onClick={this.props.onClick}
-                value={this.props.inputValue}
-              >
-                {currency.toUpperCase()}
-              </a>
-            ))}
+    if (width > 768) {
+      return (
+        <span className="settings">
+          <div class="dropdown">
+            <button class="dropbtn">💵</button>
+            <div class="dropdown-content">
+              {currencies.map((currency) => (
+                <a
+                  data-item={currency}
+                  onClick={this.props.onClick}
+                  value={this.props.inputValue}
+                >
+                  {currency.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">⚙️</button>
+            <div class="dropdown-content">
+              {settingsOptions.map((setting) => (
+                <a
+                  data-item={setting}
+                  onClick={this.props.settings}
+                  value={this.props.inputValue}
+                >
+                  {setting}
+                </a>
+              ))}
+            </div>
+          </div>
+        </span>
+      );
+    } else {
+      return (
+        <div className="settings">
+          <div class="dropdown">
+            <button class="dropbtn">💵</button>
+            <div class="dropdown-content">
+              {currencies.map((currency) => (
+                <a
+                  data-item={currency}
+                  onClick={this.props.onClick}
+                  value={this.props.inputValue}
+                >
+                  {currency.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">⚙️</button>
+            <div class="dropdown-content">
+              {settingsOptions.map((setting) => (
+                <a
+                  data-item={setting}
+                  onClick={this.props.settings}
+                  value={this.props.inputValue}
+                >
+                  {setting}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-        <div class="dropdown">
-          <button class="dropbtn">⚙️</button>
-          <div class="dropdown-content">
-            {settingsOptions.map((setting) => (
-              <a
-                data-item={setting}
-                onClick={this.props.settings}
-                value={this.props.inputValue}
-              >
-                {setting}
-              </a>
-            ))}
-          </div>
-        </div>
-      </span>
-    );
+      );
+    }
   }
 }

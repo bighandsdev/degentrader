@@ -21,18 +21,19 @@
   .dropbtn {
     color: rgb(111, 30, 218);
 
-    padding: 10px;
-    font-size: 3vh;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 4vh;
     background-color: rgb(240, 231, 234);
     box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
       rgb(247, 242, 244) -3px -3px 6px -0.5px;
 
-    border-radius: 30px;
+    border-radius: 20px;
     border: none;
-
+    margine: 5px;
     margin-left: 10px;
-    position: relative;
-    top: 15px;
+
     text-align: center;
   }
 }

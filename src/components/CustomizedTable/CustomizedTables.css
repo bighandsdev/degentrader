@@ -231,7 +231,7 @@
 /* Magic Stuff End -> */
 @media screen and (max-width: 768px) {
   img {
-    max-width: 10%;
+    max-width: 20px;
     height: auto;
   }
 
@@ -253,7 +253,7 @@
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
-    font-size: 3vw;
+    font-size: 11px;
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
     background: rgb(240, 231, 234);
     border-width: 1px;

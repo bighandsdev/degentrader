@@ -47,8 +47,8 @@
     position: relative;
     display: flex;
     min-width: 70vw;
+    margin-bottom: 20px;
     float: left;
-    padding-top: 10px;
     color: white;
     border-color: linear-gradient(to bottom right, #349dda, #752ed1);
   }
@@ -65,7 +65,7 @@
     border-radius: 5px;
     height: 30px;
     width: 100%;
-    margin: 10px;
+
     outline: 0;
     color: grey;
     border: none;
@@ -80,6 +80,7 @@
     border-radius: 12px;
     flex: 1 1 0%;
     overflow: hidden;
+    min-width: 80vw;
   }
   .search:hover,
   .search:focus {
