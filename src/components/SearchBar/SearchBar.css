@@ -45,9 +45,9 @@
 @media screen and (max-width: 768px) {
   .wrapper {
     position: relative;
-    display: flex;
-    min-width: 70vw;
-    margin-bottom: 20px;
+
+    min-width: 0vw;
+    margin-bottom: 10px;
     float: left;
     color: white;
     border-color: linear-gradient(to bottom right, #349dda, #752ed1);
@@ -80,7 +80,9 @@
     border-radius: 12px;
     flex: 1 1 0%;
     overflow: hidden;
-    min-width: 80vw;
+    min-width: 70vw;
+    float: center;
+    align-content: center;
   }
   .search:hover,
   .search:focus {

@@ -252,6 +252,7 @@ export default class CustomizedTables extends React.Component {
         return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
           <>
             <tr
+              className="idcoin"
               key={coin.id}
               data-item={coin.id}
               data-item-symbol={coin.symbol}

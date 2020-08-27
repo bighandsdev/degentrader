@@ -308,37 +308,100 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <div className="row">
-            <h1 className="brain">🧠</h1>
+    let width = window.innerWidth;
+    if (width > 768) {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <div className="row">
+              <h1 className="brain">🧠</h1>
 
-            <h1 classname="logo-text">DegenTrader</h1>
-          </div>
-        </header>
-        <body className="App-body">
-          <Cards
-            currency={this.state.currency}
-            currency_symbols={this.state.currencySymbols}
-            data={this.state}
-          />
-          <div style={{ width: 500 }}></div>
+              <h1 classname="logo-text">DegenTrader</h1>
+            </div>
+          </header>
+          <body className="App-body">
+            <Cards
+              currency={this.state.currency}
+              currency_symbols={this.state.currencySymbols}
+              data={this.state}
+            />
+            <div style={{ width: 500 }}></div>
 
-          <div>
-            <SearchBar inputValue={this.state.value} onChange={this.onChange} />
-            <span>
-              <CurrencySettings
-                currencies={this.state.currencies}
-                settings={this.handleSettingsClick}
-                settingsOptions={this.state.settings}
-                onClick={this.handleCurrencyClick}
-                inputValue={this.state.currency}
+            <div>
+              <SearchBar
+                inputValue={this.state.value}
+                onChange={this.onChange}
               />
-            </span>
-          </div>
+              <span>
+                <CurrencySettings
+                  currencies={this.state.currencies}
+                  settings={this.handleSettingsClick}
+                  settingsOptions={this.state.settings}
+                  onClick={this.handleCurrencyClick}
+                  inputValue={this.state.currency}
+                />
+              </span>
+            </div>
 
-          <div>
+            <div>
+              <CustomizedTables
+                coins={this.state}
+                currency={this.state.currency}
+                currency_symbols={this.state.currencySymbols}
+                settings={this.state.settingsData}
+                pageNumber={this.state.pageNumber}
+                pageSettings={this.state.pageSettings}
+                onClick={this.handlePageChange}
+                searchValue={this.state.value}
+                handleTableHeaderClick={this.handleTableHeaderClick}
+                orderSelection={this.state.orderSelection}
+                coinsOnMoonPay={this.state.coinsOnMoonPay}
+              />
+            </div>
+
+            <div></div>
+          </body>
+          <footer className="App-footer">
+            <div className="donate">
+              <p className="footer-title">Donations</p>
+              <p className="footer-title">
+                Bitcoin: bc1qvu59mxfplh8cq4a0h5tzjxken3rszegja4828k
+              </p>
+
+              <p className="footer-title">
+                Ethereum: 0x413ED157A79f9197E2fcc6aF89EF89e7Da00e5F2
+              </p>
+            </div>
+          </footer>
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <div className="row">
+              <h1 className="brain">🧠</h1>
+
+              <h1 classname="logo-text">DegenTrader</h1>
+            </div>
+          </header>
+          <body className="App-body">
+            <Cards
+              currency={this.state.currency}
+              currency_symbols={this.state.currencySymbols}
+              data={this.state}
+            />
+            <div style={{ width: 500 }}></div>
+
+            <CurrencySettings
+              currencies={this.state.currencies}
+              settings={this.handleSettingsClick}
+              settingsOptions={this.state.settings}
+              onClick={this.handleCurrencyClick}
+              inputValue={this.state.currency}
+            />
+            <SearchBar inputValue={this.state.value} onChange={this.onChange} />
+
             <CustomizedTables
               coins={this.state}
               currency={this.state.currency}
@@ -352,24 +415,22 @@ class App extends React.Component {
               orderSelection={this.state.orderSelection}
               coinsOnMoonPay={this.state.coinsOnMoonPay}
             />
-          </div>
+          </body>
+          <footer className="App-footer">
+            <div className="donate">
+              <p className="footer-title">Donations</p>
+              <p className="footer-title">
+                Bitcoin: bc1qvu59mxfplh8cq4a0h5tzjxken3rszegja4828k
+              </p>
 
-          <div></div>
-        </body>
-        <footer className="App-footer">
-          <div className="donate">
-            <p className="footer-title">Donations</p>
-            <p className="footer-title">
-              Bitcoin: bc1qvu59mxfplh8cq4a0h5tzjxken3rszegja4828k
-            </p>
-
-            <p className="footer-title">
-              Ethereum: 0x413ED157A79f9197E2fcc6aF89EF89e7Da00e5F2
-            </p>
-          </div>
-        </footer>
-      </div>
-    );
+              <p className="footer-title">
+                Ethereum: 0x413ED157A79f9197E2fcc6aF89EF89e7Da00e5F2
+              </p>
+            </div>
+          </footer>
+        </div>
+      );
+    }
   }
 }
 

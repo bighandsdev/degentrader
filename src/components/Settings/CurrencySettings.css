@@ -26,13 +26,16 @@
     padding-right: 50px;
     font-size: 4vh;
     background-color: rgb(240, 231, 234);
-    box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
-      rgb(247, 242, 244) -3px -3px 6px -0.5px;
-
-    border-radius: 20px;
-    border: none;
-    margine: 5px;
-    margin-left: 10px;
+    box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
+    background: rgb(240, 231, 234);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 207, 213);
+    border-image: initial;
+    border-radius: 15px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
 
     text-align: center;
   }
@@ -86,4 +89,7 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background: rgb(245, 241, 243);
+}
+.settings {
+  height: auto;
 }

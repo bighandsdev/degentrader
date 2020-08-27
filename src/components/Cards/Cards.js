@@ -164,32 +164,7 @@ export default class CustomizedTables extends React.Component {
           </div>
         );
       } else {
-        return (
-          <div class="rowcard">
-            <p className="top-gainers">Top gainers</p>
-            <div class="column">
-              {coins.map((coin) => (
-                <div
-                  class={this.handleUporDown(coin.price_change_percentage_24h)}
-                >
-                  <img className="image" src={coin.image} />
-                  <p className="card-text">{coin.name} </p>
-                  <p className="card-price">
-                    {this.handleEmoji(coin.price_change_percentage_24h)}
-                  </p>
-                  <p className="card-info">
-                    {
-                      this.props.currency_symbols[
-                        this.props.currency.toUpperCase()
-                      ]
-                    }
-                    {this.roundDownPrice(coin.current_price)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
+        return <></>;
       }
     }
   }

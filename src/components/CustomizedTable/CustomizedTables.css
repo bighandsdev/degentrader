@@ -248,7 +248,7 @@
   }
   table {
     font-family: "Nunito", sans-serif;
-    min-width: 10vw;
+    max-width: 90vw;
     color: rgb(91, 38, 57);
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
@@ -265,6 +265,7 @@
     overflow: hidden;
     table-layout: fixed;
     margin: 10px;
+    margin-top: 0px;
   }
   .chartandpay {
     table-layout: fixed;
@@ -305,7 +306,7 @@
   td,
   tr {
     text-align: left;
-    padding: 10px;
+    padding: 7px;
     border-width: 1px;
     border-color: red;
     border: collapse;
@@ -365,7 +366,7 @@
   .page-selection {
   }
   .emoji {
-    font-size: 5vw;
+    font-size: 25px;
     position: relative;
     box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
       rgb(247, 242, 244) -3px -3px 6px -0.5px;
@@ -379,7 +380,7 @@
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
-    width: 40vw;
+    width: 30vw;
     margin: 0 auto;
     min-height: 1vh;
     padding-bottom: 5px;
