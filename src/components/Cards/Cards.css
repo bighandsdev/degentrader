@@ -292,11 +292,12 @@
     margin-bottom: 0px;
     max-height: 35vh;
     max-width: 1000vw;
-    box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
-      rgb(247, 242, 244) -6px -6px 12px inset;
-    font-size: 15px;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
+    font-size: 1vw;
+    box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
     background: rgb(240, 231, 234);
-    border-width: 0px;
+    border-width: 1px;
     border-style: solid;
     border-color: rgb(226, 207, 213);
     border-image: initial;

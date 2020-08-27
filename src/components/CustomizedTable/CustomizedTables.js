@@ -106,6 +106,7 @@ export default class CustomizedTables extends React.Component {
   }
 
   chartRender(coin, days) {
+    let width = window.innerWidth;
     const { error, isLoaded, coins } = this.props.coins;
     const symbol = this.state.currency_symbols[
       this.props.currency.toUpperCase()
@@ -188,120 +189,197 @@ export default class CustomizedTables extends React.Component {
   }
 
   result() {
+    let width = window.innerWidth;
     const { error, isLoaded, coins } = this.props.coins;
     if (coins.length > 0) {
-      const pageSettings = this.props.pageSettings;
-      return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
-        <>
-          <tr
-            key={coin.id}
-            data-item={coin.id}
-            data-item-symbol={coin.symbol}
-            onClick={this.handleClick.bind(this)}
-          >
-            <td>{coin.market_cap_rank}</td>
-            <td className="theCoinId">
-              <p className="theCoinIdSec">
-                <img src={coin.image} className="Coin-Logo" />
-
-                {coin.name}
-                <span className="symbol">{coin.symbol.toUpperCase()}</span>
-              </p>
-            </td>
-            <td>
-              {this.props.currency_symbols[this.props.currency.toUpperCase()]}
-              {this.roundDownPrice(coin.current_price)}
-            </td>
-            <td
-              className={this.handleUporDown(coin.price_change_percentage_24h)}
+      if (width > 768) {
+        const pageSettings = this.props.pageSettings;
+        return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
+          <>
+            <tr
+              key={coin.id}
+              data-item={coin.id}
+              data-item-symbol={coin.symbol}
+              onClick={this.handleClick.bind(this)}
             >
-              {this.roundDown(coin.price_change_percentage_24h, 2)}%
-            </td>
-            <td>
-              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
-              {this.roundDown(coin.total_volume)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </td>
-            <td>
-              {this.state.currency_symbols[this.props.currency.toUpperCase()]}
-              {coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </td>
-            <td>
-              {this.roundDown(coin.circulating_supply)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </td>
+              <td>{coin.market_cap_rank}</td>
+              <td className="theCoinId">
+                <p className="theCoinIdSec">
+                  <img src={coin.image} className="Coin-Logo" />
 
-            <td className="emoji">
-              {this.handleEmoji(coin.price_change_percentage_24h)}
-            </td>
-          </tr>
-          {this.chartRender(coin.id, this.state.chartDays)}
-        </>
-      ));
+                  {coin.name}
+                  <span className="symbol">{coin.symbol.toUpperCase()}</span>
+                </p>
+              </td>
+              <td>
+                {this.props.currency_symbols[this.props.currency.toUpperCase()]}
+                {this.roundDownPrice(coin.current_price)}
+              </td>
+              <td
+                className={this.handleUporDown(
+                  coin.price_change_percentage_24h
+                )}
+              >
+                {this.roundDown(coin.price_change_percentage_24h, 2)}%
+              </td>
+              <td>
+                {this.state.currency_symbols[this.props.currency.toUpperCase()]}
+                {this.roundDown(coin.total_volume)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </td>
+              <td>
+                {this.state.currency_symbols[this.props.currency.toUpperCase()]}
+                {coin.market_cap
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </td>
+              <td>
+                {this.roundDown(coin.circulating_supply)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </td>
+
+              <td className="emoji">
+                {this.handleEmoji(coin.price_change_percentage_24h)}
+              </td>
+            </tr>
+            {this.chartRender(coin.id, this.state.chartDays)}
+          </>
+        ));
+      } else {
+        const pageSettings = this.props.pageSettings;
+        return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
+          <>
+            <tr
+              key={coin.id}
+              data-item={coin.id}
+              data-item-symbol={coin.symbol}
+              onClick={this.handleClick.bind(this)}
+            >
+              <td className="theCoinId">
+                <p className="theCoinIdSec">
+                  <img src={coin.image} className="Coin-Logo" />
+
+                  {coin.name}
+                  <span className="symbol">{coin.symbol.toUpperCase()}</span>
+                </p>
+              </td>
+              <td>
+                {this.props.currency_symbols[this.props.currency.toUpperCase()]}
+                {this.roundDownPrice(coin.current_price)}
+              </td>
+              <td
+                className={this.handleUporDown(
+                  coin.price_change_percentage_24h
+                )}
+              >
+                {this.roundDown(coin.price_change_percentage_24h, 2)}%
+              </td>
+
+              <td className="emoji">
+                {this.handleEmoji(coin.price_change_percentage_24h)}
+              </td>
+            </tr>
+            {this.chartRender(coin.id, this.state.chartDays)}
+          </>
+        ));
+      }
     } else {
       return <p>No results 😕</p>;
     }
   }
   render() {
+    let width = window.innerWidth;
     const { error, isLoaded, coins } = this.props.coins;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div class="loader">⌛</div>;
     } else {
-      return (
-        <table>
-          <tr>
-            <th
-              className="table-header-button"
-              data-item="market_cap_rank"
-              onClick={this.props.handleTableHeaderClick}
-            >
-              Rank
-            </th>
-            <th>Coin</th>
-            <th
-              className="table-header-button"
-              data-item="current_price"
-              onClick={this.props.handleTableHeaderClick}
-            >
-              Price
-            </th>
-            <th
-              className="table-header-button"
-              data-item="price_change_percentage_24h"
-              onClick={this.props.handleTableHeaderClick}
-            >
-              Change
-            </th>
-            <th
-              className="table-header-button"
-              data-item="total_volume"
-              onClick={this.props.handleTableHeaderClick}
-            >
-              Volume
-            </th>
-            <th
-              className="table-header-button"
-              data-item="market_cap"
-              onClick={this.props.handleTableHeaderClick}
-            >
-              MarketCap
-            </th>
-            <th>Supply</th>
-          </tr>
-          {this.result()}
-          <tr>
-            <PageSettings
-              pageNumber={this.props.pageNumber}
-              onClick={this.props.onClick}
-              searchValue={this.props.searchValue}
-            />
-          </tr>
-        </table>
-      );
+      if (width > 768) {
+        return (
+          <table>
+            <tr>
+              <th
+                className="table-header-button"
+                data-item="market_cap_rank"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Rank
+              </th>
+              <th>Coin</th>
+              <th
+                className="table-header-button"
+                data-item="current_price"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Price
+              </th>
+              <th
+                className="table-header-button"
+                data-item="price_change_percentage_24h"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Change
+              </th>
+              <th
+                className="table-header-button"
+                data-item="total_volume"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Volume
+              </th>
+              <th
+                className="table-header-button"
+                data-item="market_cap"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                MarketCap
+              </th>
+              <th>Supply</th>
+            </tr>
+            {this.result()}
+            <tr>
+              <PageSettings
+                pageNumber={this.props.pageNumber}
+                onClick={this.props.onClick}
+                searchValue={this.props.searchValue}
+              />
+            </tr>
+          </table>
+        );
+      } else {
+        return (
+          <table>
+            <tr>
+              <th>Coin</th>
+              <th
+                className="table-header-button"
+                data-item="current_price"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Price
+              </th>
+              <th
+                className="table-header-button"
+                data-item="price_change_percentage_24h"
+                onClick={this.props.handleTableHeaderClick}
+              >
+                Change
+              </th>
+            </tr>
+            {this.result()}
+            <tr>
+              <PageSettings
+                pageNumber={this.props.pageNumber}
+                onClick={this.props.onClick}
+                searchValue={this.props.searchValue}
+              />
+            </tr>
+          </table>
+        );
+      }
     }
   }
 }
