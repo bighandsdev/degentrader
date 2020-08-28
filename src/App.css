@@ -60,7 +60,7 @@
 }
 @media screen and (min-width: 857px) {
   .App-body {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     min-width: 100vh;
     min-height: 70vh;
 
@@ -73,7 +73,7 @@
     color: rgb(91, 38, 57);
   }
   .App-header {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     min-height: 8vh;
     min-width: 100vh;
     display: flex;
@@ -97,7 +97,7 @@
 
     float: left;
     margin: 5px;
-    padding-top: 55px;
+    padding-top: 45px;
     font-family: "Nunito", sans-serif;
     font-size: 60px;
   }
@@ -110,7 +110,7 @@
 }
 @media screen and (max-width: 857px) and (min-width: 768px) {
   .App-header {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     min-height: 5vh;
     min-width: 80vh;
     display: flex;
@@ -121,7 +121,7 @@
     color: rgb(91, 38, 57);
   }
   .App-body {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     min-width: 80vh;
     min-height: 70vh;
 
@@ -163,7 +163,7 @@
 }
 
 .App-footer {
-  background-color: rgb(238, 221, 226);
+  background-color: rgb(240, 231, 234);
   min-width: 50vh;
   min-height: 10vw;
   display: flex;
@@ -195,7 +195,7 @@ footer {
 }
 @media screen and (max-width: 768px) {
   .App-header {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     max-height: 14vh;
     min-width: 70vw;
     display: flex;
@@ -206,7 +206,7 @@ footer {
     color: rgb(91, 38, 57);
   }
   .App-body {
-    background-color: rgb(238, 221, 226);
+    background-color: rgb(240, 231, 234);
     min-width: 70vw;
     min-height: 70vh;
 
@@ -248,7 +248,7 @@ footer {
 }
 
 .App-footer {
-  background-color: rgb(238, 221, 226);
+  background-color: rgb(240, 231, 234);
   min-width: 70vw;
   min-height: 10vw;
   display: flex;

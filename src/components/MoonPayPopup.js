@@ -9,7 +9,7 @@ export default class MoonPayPopup extends React.Component {
     super(props);
     this.state = {
       coinsOnMoonPay: this.props.coinsOnMoonPay,
-      url: `https://buy.moonpay.io?apiKey=pk_live_M4RiDyjN7nnYeRFyBlwDBZzPNlkZHrjn&currencyCode=${this.props.symbol}&colorCode=%235B2639`,
+      url: `https://buy.moonpay.io?apiKey=pk_live_M4RiDyjN7nnYeRFyBlwDBZzPNlkZHrjn&currencyCode=${this.props.symbol}&colorCode=%23dea4b7`,
     };
   }
 
