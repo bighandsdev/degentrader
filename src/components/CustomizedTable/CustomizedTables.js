@@ -105,7 +105,7 @@ export default class CustomizedTables extends React.Component {
     }
   }
 
-  chartRender(coin, days) {
+  chartRender(coin, days, market_cap, supply, currency) {
     let width = window.innerWidth;
     const { error, isLoaded, coins } = this.props.coins;
     const symbol = this.state.currency_symbols[
@@ -113,76 +113,165 @@ export default class CustomizedTables extends React.Component {
     ];
     const coinSymbol = this.state.coinClickedSymbol;
     if (coin === this.state.coinClicked) {
-      return (
-        <tr className="chartandpay">
-          <td colspan="8">
-            <div class="container">
-              <a
-                className={"btn btn-1"}
-                key="1-days"
-                data-item={1}
-                onClick={this.dateClick}
-                id={coin}
-              >
-                Past day
-              </a>
-              <a
-                className={"btn btn-1"}
-                key="7-days"
-                data-item={7}
-                onClick={this.dateClick}
-                id={coin}
-              >
-                Past week
-              </a>
-              <a
-                className={"btn btn-1"}
-                key="30-days"
-                data-item={30}
-                onClick={this.dateClick}
-                id={coin}
-              >
-                Past month
-              </a>
-              <a
-                className={"btn btn-1"}
-                key="365-days"
-                data-item={365}
-                onClick={this.dateClick}
-                id={coin}
-              >
-                Past year
-              </a>
-              <a
-                className={"btn btn-1"}
-                key="365-days"
-                data-item={1825}
-                onClick={this.dateClick}
-                id={coin}
-              >
-                Past 5 years
-              </a>
-            </div>
+      if (width > 768) {
+        return (
+          <tr className="chartandpay">
+            <td colspan="8">
+              <div class="container">
+                <a
+                  className={"btn btn-1"}
+                  key="1-days"
+                  data-item={1}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  Past day
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="7-days"
+                  data-item={7}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  Past week
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="30-days"
+                  data-item={30}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  Past month
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="365-days"
+                  data-item={365}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  Past year
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="365-days"
+                  data-item={1825}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  Past 5 years
+                </a>
+              </div>
 
-            <Chart
-              id={coin}
-              days={days}
-              redraw={this.state.redraw}
-              currency={this.props.currency}
-              currencysymbols={symbol}
-              coinsOnMoonPay={this.props.coinsOnMoonPay}
-            />
-            <div class="container">
-              <MoonPayPopup
-                className="btn btn-1"
-                coin={coin}
-                symbol={coinSymbol}
+              <Chart
+                id={coin}
+                days={days}
+                redraw={this.state.redraw}
+                currency={this.props.currency}
+                currencysymbols={symbol}
                 coinsOnMoonPay={this.props.coinsOnMoonPay}
               />
-            </div>
-          </td>
-        </tr>
-      );
+              <div class="container">
+                <MoonPayPopup
+                  className="btn btn-1"
+                  coin={coin}
+                  symbol={coinSymbol}
+                  coinsOnMoonPay={this.props.coinsOnMoonPay}
+                />
+              </div>
+            </td>
+          </tr>
+        );
+      } else {
+        return (
+          <tr className="chartandpay">
+            <td colspan="8">
+              <div>
+                <tr colspan="4">
+                  <th className="mobHeader">MarketCap</th>
+                  <th className="mobHeader">Supply</th>
+                </tr>
+                <tr>
+                  <td className="mobData">
+                    {currency}
+                    {market_cap}
+                  </td>
+                  <td className="mobData">
+                    {currency}
+                    {supply}
+                  </td>
+                </tr>
+              </div>
+              <div class="container">
+                <a
+                  className={"btn btn-1"}
+                  key="1-days"
+                  data-item={1}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  1D
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="7-days"
+                  data-item={7}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  1W
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="30-days"
+                  data-item={30}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  1M
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="365-days"
+                  data-item={365}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  1Y
+                </a>
+                <a
+                  className={"btn btn-1"}
+                  key="365-days"
+                  data-item={1825}
+                  onClick={this.dateClick}
+                  id={coin}
+                >
+                  5Y
+                </a>
+              </div>
+
+              <Chart
+                id={coin}
+                days={days}
+                redraw={this.state.redraw}
+                currency={this.props.currency}
+                currencysymbols={symbol}
+                coinsOnMoonPay={this.props.coinsOnMoonPay}
+              />
+              <div class="container">
+                <MoonPayPopup
+                  className="btn btn-1"
+                  coin={coin}
+                  symbol={coinSymbol}
+                  coinsOnMoonPay={this.props.coinsOnMoonPay}
+                />
+              </div>
+            </td>
+          </tr>
+        );
+      }
     } else {
     }
   }
@@ -282,7 +371,15 @@ export default class CustomizedTables extends React.Component {
                 {this.handleEmoji(coin.price_change_percentage_24h)}
               </td>
             </tr>
-            {this.chartRender(coin.id, this.state.chartDays)}
+            {this.chartRender(
+              coin.id,
+              this.state.chartDays,
+              coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+              this.roundDown(coin.circulating_supply)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+              this.state.currency_symbols[this.props.currency.toUpperCase()]
+            )}
           </>
         ));
       }
