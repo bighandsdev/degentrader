@@ -6,7 +6,7 @@ import Cards from "./components/Cards/Cards.js";
 import SearchBar from "./components/SearchBar/SearchBar.js";
 import { MoonPayCheckWhichCoins } from "./components/MoonPayCheckWhichCoins.js";
 import axios from "axios";
-
+import "./img/logo.png";
 import CurrencySettings from "./components/Settings/CurrencySettings.js";
 
 class App extends React.Component {
@@ -314,7 +314,7 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <div className="row">
-              <h1 className="brain">🧠</h1>
+              <img className="brain" src="src/img/logo.png" />
 
               <h1 classname="logo-text">DegenTrader</h1>
             </div>
@@ -380,7 +380,7 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <div className="row">
-              <h1 className="brain">🧠</h1>
+              <img className="brain" src="src/img/logo.png" />
 
               <h1 classname="logo-text">DegenTrader</h1>
             </div>

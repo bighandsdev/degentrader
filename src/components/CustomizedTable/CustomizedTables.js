@@ -188,7 +188,7 @@ export default class CustomizedTables extends React.Component {
         return (
           <tr className="chartandpay">
             <td colspan="8">
-              <div>
+              <table className="additionalData">
                 <tr colspan="4">
                   <th className="mobHeader">MarketCap</th>
                   <th className="mobHeader">Supply</th>
@@ -203,7 +203,8 @@ export default class CustomizedTables extends React.Component {
                     {supply}
                   </td>
                 </tr>
-              </div>
+              </table>
+
               <div class="container">
                 <a
                   className={"btn btn-1"}

@@ -8,7 +8,6 @@
   padding-right: 70px;
   font-size: 16px;
   margin: 15px;
-
   background-color: rgb(240, 231, 234);
   box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
     rgb(247, 242, 244) -3px -3px 6px -0.5px;
@@ -32,11 +31,22 @@
   overflow: hidden;
   background: none;
 }
-.buttontext {
-  float: left;
-  overflow: hidden;
-  padding: 0px;
-  margin: 10px;
+@media screen and (max-width: 768px) {
+  .buttontext {
+    float: left;
+    overflow: hidden;
+    padding: 0px;
+    margin: 10px;
+    width: 30vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .buttontext {
+    float: left;
+    overflow: hidden;
+    padding: 0px;
+    margin: 10px;
+  }
 }
 .emojicard {
   margin: 6px;

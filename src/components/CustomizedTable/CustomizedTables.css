@@ -270,6 +270,7 @@
     table-layout: fixed;
     margin: 10px;
     margin-top: 0px;
+    width: fixed;
   }
   .chartandpay {
     table-layout: fixed;
@@ -463,13 +464,43 @@
       transform: rotate(360deg);
     }
   }
-}
-.mobData {
-  padding-left: 9vw;
-  padding-right: 9vw;
-  padding-bottom: 10px;
-}
-.mobHeader {
-  padding-left: 9vw;
-  padding-right: 9vw;
+  .mobData {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .mobHeader {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .additionalData {
+    background-image: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
+      rgb(247, 242, 244) -6px -6px 12px inset;
+    font-size: 15px;
+    background: rgb(240, 231, 234);
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 207, 213);
+    border-image: initial;
+    border-radius: 12px;
+    flex: 1 1 0%;
+    overflow: hidden;
+    align-content: center;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    align-content: center;
+  }
+  .infotext {
+    padding-top: -6px;
+    margin-top: 3px;
+    text-align: center;
+  }
 }

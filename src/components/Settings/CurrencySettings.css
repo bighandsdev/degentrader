@@ -24,7 +24,7 @@
     padding: 5px;
     padding-left: 50px;
     padding-right: 50px;
-    font-size: 4vh;
+    font-size: 5vw;
     background-color: rgb(240, 231, 234);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
     background: rgb(240, 231, 234);
@@ -49,6 +49,7 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
+  width: 30vw;
   position: absolute;
   background-color: rgb(240, 231, 234);
   box-shadow: rgb(226, 207, 213) 6px 6px 12px,

@@ -15,6 +15,16 @@ const Chart = (props) => {
   const [symbol] = useState(props.currencysymbols);
   const [days] = useState(props.days);
   const [redraw, setRedraw] = useState({});
+  const convertToMillions = (number) => {
+    if (number > 1000000) {
+      return (
+        (number / 1000000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+        "M"
+      );
+    } else {
+      return number;
+    }
+  };
   const mobileOrNot = () => {
     let width = window.innerWidth;
     if (width > 768) {
@@ -262,10 +272,7 @@ const Chart = (props) => {
                     beginAtZero: false,
                     fontColor: "rgb(91, 38, 57)",
                     callback: function (value) {
-                      return (
-                        props.currencysymbols +
-                        value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                      );
+                      return props.currencysymbols + convertToMillions(value);
                     },
                   },
                   gridLines: {

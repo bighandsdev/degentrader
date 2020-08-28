@@ -36,11 +36,13 @@
   flex: 1 1 0%;
   overflow: hidden;
 }
-.search:hover,
-.search:focus {
-  background: rgb(240, 235, 237);
-  box-shadow: rgb(226, 207, 213) 3px 3px 6px,
-    rgb(247, 242, 244) -6px -6px 12px -1px;
+@media screen and (min-width: 768px) {
+  .search:hover,
+  .search:focus {
+    background: rgb(240, 235, 237);
+    box-shadow: rgb(226, 207, 213) 3px 3px 6px,
+      rgb(247, 242, 244) -6px -6px 12px -1px;
+  }
 }
 @media screen and (max-width: 768px) {
   .wrapper {
@@ -83,11 +85,5 @@
     min-width: 70vw;
     float: center;
     align-content: center;
-  }
-  .search:hover,
-  .search:focus {
-    background: rgb(240, 235, 237);
-    box-shadow: rgb(226, 207, 213) 3px 3px 6px,
-      rgb(247, 242, 244) -6px -6px 12px -1px;
   }
 }
