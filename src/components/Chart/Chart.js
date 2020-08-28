@@ -15,6 +15,14 @@ const Chart = (props) => {
   const [symbol] = useState(props.currencysymbols);
   const [days] = useState(props.days);
   const [redraw, setRedraw] = useState({});
+  const mobileOrNot = () => {
+    let width = window.innerWidth;
+    if (width > 768) {
+      return <></>;
+    } else {
+      return <br />;
+    }
+  };
   const chart = (props) => {
     let daysChart = props.days;
     let currency = props.currency;
@@ -205,7 +213,7 @@ const Chart = (props) => {
           }}
         />
       </td>
-
+      {mobileOrNot()}
       <td className="charts-vol">
         <p className="chart-name">Volume</p>
         <Bar
