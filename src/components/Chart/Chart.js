@@ -117,7 +117,7 @@ const Chart = (props) => {
     chart(props);
   }, [props]);
   return (
-    <div className="charts-div" colspan="8">
+    <div className="charts-div">
       <td className="charts">
         <p className="chart-name">Price</p>
         <Line
@@ -206,7 +206,7 @@ const Chart = (props) => {
         />
       </td>
 
-      <td className="charts">
+      <td className="charts-vol">
         <p className="chart-name">Volume</p>
         <Bar
           redraw={redraw}

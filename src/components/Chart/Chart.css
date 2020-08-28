@@ -1,6 +1,7 @@
 .charts {
   background-image: rgb(255, 255, 255);
-
+  width: 37vw;
+  height: auto;
   font-size: 15px;
   border-width: 0px;
   border-style: solid;
@@ -8,12 +9,27 @@
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
-  width: 35vw;
+
+  object-fit: cover;
 }
+.charts-vol {
+  background-image: rgb(255, 255, 255);
+  width: 37vw;
+  height: auto;
+  font-size: 15px;
+  border-width: 0px;
+  border-style: solid;
+  border-image: initial;
+  border-radius: 12px;
+  flex: 1 1 0%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
 .charts-div {
   background-image: rgb(255, 255, 255);
-  align-self: center;
   border-radius: 10px;
+  width: fit-content;
   box-shadow: rgb(226, 207, 213) 4px 4px 8px inset,
     rgb(247, 242, 244) -6px -6px 12px inset;
   font-size: 15px;
@@ -25,7 +41,12 @@
   border-radius: 12px;
   flex: 1 1 0%;
   overflow: hidden;
-  width: fit-content;
+  align-content: center;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .chart-name {
   font-size: medium;

@@ -115,7 +115,6 @@ export default class CustomizedTables extends React.Component {
     if (coin === this.state.coinClicked) {
       return (
         <tr className="chartandpay">
-          <td></td>
           <td colspan="8">
             <div class="container">
               <a
@@ -244,6 +243,7 @@ export default class CustomizedTables extends React.Component {
                 {this.handleEmoji(coin.price_change_percentage_24h)}
               </td>
             </tr>
+
             {this.chartRender(coin.id, this.state.chartDays)}
           </>
         ));

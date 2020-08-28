@@ -20,7 +20,7 @@
 @media screen and (max-width: 768px) {
   .dropbtn {
     color: rgb(111, 30, 218);
-
+    position: "absolute";
     padding: 5px;
     padding-left: 50px;
     padding-right: 50px;
