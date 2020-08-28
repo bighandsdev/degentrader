@@ -102,15 +102,15 @@ export default class CustomizedTables extends React.Component {
   }
   handleEmoji(coinChange) {
     if (coinChange < -10) {
-      return "💀";
+      return <span className="emojicard">💀</span>;
     } else if (coinChange < 0) {
-      return "😕";
+      return <span className="emojicard">😕</span>;
     } else if (coinChange < 10) {
-      return "😃";
+      return <span className="emojicard">😃</span>;
     } else if (coinChange < 20) {
-      return "🚀";
+      return <span className="emojicard">🚀</span>;
     } else if (coinChange > 20) {
-      return "🤯";
+      return <span className="emojicard">🤯</span>;
     }
   }
   manageCoins(coins) {

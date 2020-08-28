@@ -18,7 +18,8 @@
   }
   table {
     font-family: "Nunito", sans-serif;
-    min-width: 10vw;
+    min-width: 85vw;
+    max-width: 85vw;
     color: rgb(91, 38, 57);
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
@@ -31,9 +32,9 @@
     border-color: rgb(226, 207, 213);
     border-image: initial;
     border-radius: 12px;
-    flex: 1 1 0%;
     overflow: hidden;
     table-layout: fixed;
+    width: fixed;
   }
   .chartandpay {
     table-layout: fixed;
