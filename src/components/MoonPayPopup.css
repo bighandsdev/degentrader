@@ -39,6 +39,30 @@
     margin: 10px;
     width: 30vw;
   }
+  .btn-buy {
+    color: rgb(209, 0, 77);
+    font: 400 13.3333px Arial;
+    font-family: Arial;
+    font-weight: 700;
+    padding: 0px;
+    padding-left: 70px;
+    padding-right: 70px;
+    font-size: 16px;
+    margin: 15px;
+    background-color: rgb(240, 231, 234);
+    box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
+      rgb(247, 242, 244) -3px -3px 6px -0.5px;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgb(226, 207, 213);
+    border-image: initial;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    align-content: center;
+    text-align: center;
+    margin-top: 30px;
+  }
 }
 @media screen and (min-width: 768px) {
   .buttontext {

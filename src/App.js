@@ -1,14 +1,12 @@
 import React from "react";
-import logo from "./logo.png";
+import logo from "./logoheader.png";
 import "./App.css";
 import CustomizedTables from "./components/CustomizedTable/CustomizedTables.js";
 import Cards from "./components/Cards/Cards.js";
 import SearchBar from "./components/SearchBar/SearchBar.js";
 import { MoonPayCheckWhichCoins } from "./components/MoonPayCheckWhichCoins.js";
 import axios from "axios";
-import "./img/logo.png";
 import CurrencySettings from "./components/Settings/CurrencySettings.js";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -314,7 +312,7 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <div className="row">
-              <img className="brain" src="src/img/logo.png" />
+              <img className="brain" src={logo} />
 
               <h1 classname="logo-text">DegenTrader</h1>
             </div>
@@ -380,9 +378,10 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <div className="row">
-              <img className="brain" src="src/img/logo.png" />
-
-              <h1 classname="logo-text">DegenTrader</h1>
+              <h1 classname="logo-text">
+                <img className="brain" src={logo} /> <br />
+                DegenTrader
+              </h1>
             </div>
           </header>
           <body className="App-body">

@@ -18,16 +18,21 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .dropbtn {
+  .dropbtn1 {
     color: rgb(111, 30, 218);
+    position: fixed;
+    bottom: 30px;
+    left: 45px;
+    z-index: 4;
     position: "absolute";
     padding: 5px;
     padding-left: 50px;
     padding-right: 50px;
     font-size: 5vw;
     background-color: rgb(240, 231, 234);
-    box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
-    background: rgb(240, 231, 234);
+    box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
+      rgb(247, 242, 244) -3px -3px 6px -0.5px;
+    background: rgb(241, 235, 237);
     border-width: 1px;
     border-style: solid;
     border-color: rgb(226, 207, 213);
@@ -40,6 +45,33 @@
     text-align: center;
   }
 }
+.dropbtn2 {
+  color: rgb(111, 30, 218);
+  position: fixed;
+  bottom: 30px;
+  right: 45px;
+  z-index: 4;
+  position: "absolute";
+  padding: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 5vw;
+  background-color: rgb(243, 193, 212);
+  box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
+    rgb(247, 242, 244) -3px -3px 6px -0.5px;
+  background: rgb(241, 235, 237);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(226, 207, 213);
+  border-image: initial;
+  border-radius: 15px;
+  margin: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  text-align: center;
+}
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;

@@ -196,7 +196,7 @@ footer {
 @media screen and (max-width: 768px) {
   .App-header {
     background-color: rgb(240, 231, 234);
-    max-height: 14vh;
+    max-height: 20vh;
     min-width: 70vw;
     display: flex;
     flex-direction: column;
@@ -237,10 +237,8 @@ footer {
     font-size: 35px;
   }
   .brain {
-    position: relative;
-    bottom: 13px;
-    right: 10px;
-    font-size: 50px;
+    min-width: 60px;
+    height: auto;
   }
 }
 .row {
@@ -257,6 +255,7 @@ footer {
   font-size: calc(6px + 1vmin);
   color: rgb(91, 38, 57);
   font-family: "Nunito", sans-serif;
+  padding-bottom: 100px;
 }
 .footer-title {
   color: rgb(91, 38, 57);
