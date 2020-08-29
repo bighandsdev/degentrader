@@ -33,11 +33,12 @@
 }
 @media screen and (max-width: 768px) {
   .buttontext {
-    float: left;
+    float: center;
     overflow: hidden;
     padding: 0px;
-    margin: 10px;
+
     width: 30vw;
+    text-decoration: none;
   }
   .btn-buy {
     color: rgb(209, 0, 77);
@@ -62,6 +63,7 @@
     align-content: center;
     text-align: center;
     margin-top: 30px;
+    text-decoration: none;
   }
 }
 @media screen and (min-width: 768px) {

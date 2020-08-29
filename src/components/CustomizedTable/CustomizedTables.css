@@ -59,6 +59,9 @@
   .theCoinIdSec {
     float: left;
   }
+  .theCoinId {
+    min-width: 1vw;
+  }
   chart {
     width: 30px;
     float: left;
@@ -251,6 +254,7 @@
   table {
     font-family: "Nunito", sans-serif;
     max-width: 90vw;
+
     color: rgb(91, 38, 57);
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);

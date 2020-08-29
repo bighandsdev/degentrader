@@ -102,10 +102,10 @@
     font-size: 60px;
   }
   .brain {
+    min-width: 70px;
+    height: auto;
     position: relative;
-    bottom: 15px;
-    right: 10px;
-    font-size: 80px;
+    top: 10px;
   }
 }
 @media screen and (max-width: 857px) and (min-width: 768px) {
@@ -152,10 +152,10 @@
     font-size: 50px;
   }
   .brain {
+    min-width: 60px;
+    height: auto;
     position: relative;
-    bottom: 17px;
-    right: 10px;
-    font-size: 70px;
+    top: 10px;
   }
 }
 .row {

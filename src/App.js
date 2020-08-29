@@ -312,9 +312,9 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <div className="row">
-              <img className="brain" src={logo} />
-
-              <h1 classname="logo-text">DegenTrader</h1>
+              <h1 classname="logo-text">
+                <img className="brain" src={logo} /> DegenTrader
+              </h1>
             </div>
           </header>
           <body className="App-body">
