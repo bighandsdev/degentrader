@@ -50,14 +50,24 @@
   margin-left: auto;
   margin-right: auto;
 }
-.chart-name {
-  font-size: medium;
-  padding-bottom: 4px;
-  align-self: center;
-  margin: 2px;
-  text-align: center;
+@media screen and (min-width: 380px) {
+  .chart-name {
+    font-size: medium;
+    padding-bottom: 4px;
+    align-self: center;
+    margin: 2px;
+    text-align: center;
+  }
 }
-
+@media screen and (max-width: 380px) {
+  .chart-name {
+    font-size: small;
+    padding-bottom: 4px;
+    align-self: center;
+    margin: 2px;
+    text-align: center;
+  }
+}
 .Buy {
   float: center;
 }
