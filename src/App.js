@@ -265,6 +265,7 @@ class App extends React.Component {
     this.setState({
       currency: e.currentTarget.getAttribute("data-item"),
     });
+    localStorage.setItem("currency", e.currentTarget.getAttribute("data-item"));
     return this.updateData(
       e.currentTarget.getAttribute("data-item"),
       this.state.dataSettings
@@ -279,6 +280,11 @@ class App extends React.Component {
       pageSettings: [0, 100],
       orderSelection: "",
     });
+    localStorage.setItem(
+      "dataSettings",
+      this.state.settingsAPIParam[e.currentTarget.getAttribute("data-item")]
+    );
+
     return this.updateData(
       this.state.currency,
       this.state.settingsAPIParam[e.currentTarget.getAttribute("data-item")]

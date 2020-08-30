@@ -1,6 +1,6 @@
-@media screen and (max-width: 857px) and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   img {
-    max-width: 15%;
+    max-width: 4%;
     height: auto;
     margin: "10px";
   }
@@ -26,7 +26,7 @@
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
-    font-size: 11px;
+    font-size: 14px;
     box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
       rgb(247, 242, 244) -3px -3px 6px -0.5px;
     background: rgb(240, 231, 234);
@@ -141,7 +141,7 @@
   .page-selection {
   }
   .emoji {
-    font-size: 2.3vw;
+    font-size: 28px;
     position: relative;
     box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
       rgb(247, 242, 244) -3px -3px 6px -0.5px;
@@ -261,7 +261,7 @@
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
-    font-size: 13px;
+    font-size: 11px;
     box-shadow: rgb(226, 207, 213) 1.5px 1.5px 3px,
       rgb(247, 242, 244) -3px -3px 6px -0.5px;
     background: rgb(240, 231, 234);
