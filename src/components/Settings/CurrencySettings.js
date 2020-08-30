@@ -51,7 +51,7 @@ export default class CurrencySettings extends React.Component {
         <div className="settings">
           <div class="dropdown">
             <button class="dropbtn1">💵</button>
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdown-content-1">
               {currencies.map((currency) => (
                 <a
                   data-item={currency}
@@ -65,7 +65,7 @@ export default class CurrencySettings extends React.Component {
           </div>
           <div class="dropdown">
             <button class="dropbtn2">⚙️</button>
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdown-content-2">
               {settingsOptions.map((setting) => (
                 <a
                   data-item={setting}

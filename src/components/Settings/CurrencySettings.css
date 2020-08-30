@@ -18,6 +18,18 @@
   }
 }
 @media screen and (max-width: 768px) {
+  #dropdown-content-1 {
+    position: fixed;
+    bottom: 50px;
+    left: 45px;
+    z-index: 4;
+  }
+  #dropdown-content-2 {
+    position: fixed;
+    bottom: 50px;
+    right: 45px;
+    z-index: 4;
+  }
   .dropbtn1 {
     color: rgb(111, 30, 218);
     position: fixed;
