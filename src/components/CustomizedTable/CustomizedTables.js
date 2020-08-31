@@ -198,10 +198,7 @@ export default class CustomizedTables extends React.Component {
                     {currency}
                     {market_cap}
                   </td>
-                  <td className="mobData">
-                    {currency}
-                    {supply}
-                  </td>
+                  <td className="mobData">{supply}</td>
                 </tr>
               </table>
 

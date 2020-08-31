@@ -184,7 +184,7 @@ class App extends React.Component {
     const header = e.currentTarget.getAttribute("data-item");
     console.log(e.currentTarget.getAttribute("data-item"));
     console.log("coins being managed" + this.state.pageSettings);
-
+    console.log("coins being managed" + this.state.pageSettings);
     if (header === this.state.orderSelection) {
       this.setState({
         coins: this.state.rawCoins,
