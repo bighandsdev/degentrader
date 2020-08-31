@@ -183,7 +183,8 @@ class App extends React.Component {
   handleTableHeaderClick(e) {
     const header = e.currentTarget.getAttribute("data-item");
     console.log(e.currentTarget.getAttribute("data-item"));
-    console.log("coins being managed");
+    console.log("coins being managed" + this.state.pageSettings);
+
     if (header === this.state.orderSelection) {
       this.setState({
         coins: this.state.rawCoins,
@@ -293,7 +294,6 @@ class App extends React.Component {
     );
   }
   handlePageChange(e) {
-    console.log("lol");
     if (e === "up") {
       const number = this.state.pageSettings.map(function (value) {
         return value + 100;
