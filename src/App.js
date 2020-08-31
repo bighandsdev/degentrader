@@ -74,6 +74,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    localStorage.getItem("");
+
     const currencyR = this.state.currency;
     const settings = this.state.settingsAPIParam[this.state.dataSettings];
     fetch(
