@@ -280,7 +280,7 @@ export default class CustomizedTables extends React.Component {
     if (coins.length > 0) {
       if (width > 768) {
         const pageSettings = this.props.pageSettings;
-        return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
+        return coins.map((coin) => (
           <>
             <tr
               key={coin.id}

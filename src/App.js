@@ -86,7 +86,10 @@ class App extends React.Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            coins: result,
+            coins: result.slice(
+              this.state.pageSettings[0],
+              this.state.pageSettings[1]
+            ),
             rawCoins: result,
           });
         },
@@ -128,7 +131,10 @@ class App extends React.Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            coins: result,
+            coins: result.slice(
+              this.state.pageSettings[0],
+              this.state.pageSettings[1]
+            ),
             rawCoins: result,
           });
         },
@@ -201,7 +207,7 @@ class App extends React.Component {
           parseFloat(b.price_change_percentage_24h) -
           parseFloat(a.price_change_percentage_24h)
       );
-
+      console.log(coinOrderByPrice);
       this.setState({
         coins: coinOrderByPrice,
         orderSelection: header,
@@ -294,6 +300,7 @@ class App extends React.Component {
     );
   }
   handlePageChange(e) {
+    const allCoins = this.state.rawCoins;
     if (e === "up") {
       const number = this.state.pageSettings.map(function (value) {
         return value + 100;
@@ -301,6 +308,7 @@ class App extends React.Component {
       this.setState({
         pageNumber: this.state.pageNumber + 1,
         pageSettings: number,
+        coins: allCoins.slice(number),
       });
     } else if (e === "down") {
       const number = this.state.pageSettings.map(function (value) {
@@ -309,6 +317,7 @@ class App extends React.Component {
       this.setState({
         pageNumber: this.state.pageNumber - 1,
         pageSettings: number,
+        coins: allCoins.slice(number),
       });
     }
   }
