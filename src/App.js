@@ -148,32 +148,39 @@ class App extends React.Component {
   }
 
   onChange(e) {
+    const allCoins = this.state.rawCoins;
     this.setState({
       value: e.target.value,
     });
     // if searchbar is empty then show all the coins
     if (e.target.value == "") {
       this.setState({
-        coins: this.state.rawCoins,
+        coins: allCoins.slice(
+          this.state.pageSettings[0],
+          this.state.pageSettings[1]
+        ),
       });
       // if backspace on searchbar then table renders all coins
     } else if (e.target.value.length < this.state.value.length) {
       {
         let searcjQery = e.target.value.toLowerCase(),
-          displayedCoins = this.state.coins.filter((el) => {
+          displayedCoins = allCoins.filter((el) => {
             let searchValue = el.name.toLowerCase();
 
             return searchValue.indexOf(searcjQery) !== -1;
           });
         this.setState({
-          coins: this.state.rawCoins,
+          coins: allCoins.slice(
+            this.state.pageSettings[0],
+            this.state.pageSettings[1]
+          ),
         });
       }
       // if something has been entered on the searchbar then it searches through the coins array taking name and symbol into account
     } else if (e.target.value !== this.state.value) {
       {
         let searcjQery = e.target.value.toLowerCase(),
-          displayedCoins = this.state.coins.filter((el) => {
+          displayedCoins = allCoins.filter((el) => {
             let searchValue = el.name
               .toLowerCase()
               .concat(el.symbol.toLowerCase());
@@ -192,8 +199,12 @@ class App extends React.Component {
     console.log("coins being managed" + this.state.pageSettings);
     console.log("coins being managed" + this.state.pageSettings);
     if (header === this.state.orderSelection) {
+      const allCoins = this.state.rawCoins;
       this.setState({
-        coins: this.state.rawCoins,
+        coins: allCoins.slice(
+          this.state.pageSettings[0],
+          this.state.pageSettings[1]
+        ),
         orderSelection: "",
       });
     } else if (header === "price_change_percentage_24h") {
@@ -308,7 +319,7 @@ class App extends React.Component {
       this.setState({
         pageNumber: this.state.pageNumber + 1,
         pageSettings: number,
-        coins: allCoins.slice(number),
+        coins: allCoins.slice(number[0], number[1]),
       });
     } else if (e === "down") {
       const number = this.state.pageSettings.map(function (value) {
@@ -317,7 +328,7 @@ class App extends React.Component {
       this.setState({
         pageNumber: this.state.pageNumber - 1,
         pageSettings: number,
-        coins: allCoins.slice(number),
+        coins: allCoins.slice(number[0], number[1]),
       });
     }
   }
