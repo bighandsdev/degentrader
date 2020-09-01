@@ -153,12 +153,15 @@
 @media screen and (max-width: 400px) {
   #dropdown-content-1 {
     position: fixed;
+    height: 40vh;
+    overflow: scroll;
     bottom: 80px;
     left: 45px;
     z-index: 4;
   }
   #dropdown-content-2 {
     position: fixed;
+
     bottom: 80px;
     right: 45px;
     z-index: 4;
@@ -166,6 +169,7 @@
   .dropdown-content {
     display: none;
     width: 30vw;
+
     position: absolute;
     background-color: rgb(240, 231, 234);
     box-shadow: rgb(226, 207, 213) 6px 6px 12px,

@@ -336,7 +336,7 @@ export default class CustomizedTables extends React.Component {
         ));
       } else {
         const pageSettings = this.props.pageSettings;
-        return coins.slice(pageSettings[0], pageSettings[1]).map((coin) => (
+        return coins.map((coin) => (
           <>
             <tr
               className="idcoin"
