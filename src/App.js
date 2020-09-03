@@ -74,12 +74,29 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    localStorage.getItem("");
-
-    const currencyR = this.state.currency;
-    const settings = this.state.settingsAPIParam[this.state.dataSettings];
+    let settings = this.state.settingsAPIParam[this.state.dataSettings];
+    function checkLocalStorageC() {
+      if (localStorage.getItem("currency") !== null) {
+        App.setState({
+          currency: localStorage.getItem("currency"),
+        });
+        return localStorage.getItem("currency");
+      } else {
+        return this.state.currency;
+      }
+    }
+    function checkLocalStorageS() {
+      if (localStorage.getItem("settings") !== null) {
+        App.setState({
+          dataSettings: localStorage.getItem("settings"),
+        });
+        return localStorage.getItem("settings");
+      } else {
+        return settings;
+      }
+    }
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&category=${settings}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${checkLocalStorageC()}&category=${settings}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -120,11 +137,30 @@ class App extends React.Component {
       });
   }
   updateData(currency, settingsAllorDefi) {
-    const currencyR = currency;
-    const settingsAllorDefiR = settingsAllorDefi;
+    let settings = this.state.settingsAPIParam[this.state.dataSettings];
+    function checkLocalStorageC() {
+      if (localStorage.getItem("currency") !== null) {
+        App.setState({
+          currency: localStorage.getItem("currency"),
+        });
+        return localStorage.getItem("currency");
+      } else {
+        return this.state.currency;
+      }
+    }
+    function checkLocalStorageS() {
+      if (localStorage.getItem("settings") !== null) {
+        App.setState({
+          dataSettings: localStorage.getItem("settings"),
+        });
+        return localStorage.getItem("settings");
+      } else {
+        return settings;
+      }
+    }
     console.log(settingsAllorDefi);
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyR}&category=${settingsAllorDefiR}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${checkLocalStorageC()}&category=${checkLocalStorageS()}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
