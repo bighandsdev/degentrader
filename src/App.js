@@ -74,29 +74,25 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.localStorage();
+
     let settings = this.state.settingsAPIParam[this.state.dataSettings];
     function checkLocalStorageC() {
       if (localStorage.getItem("currency") !== null) {
-        App.setState({
-          currency: localStorage.getItem("currency"),
-        });
         return localStorage.getItem("currency");
       } else {
         return this.state.currency;
       }
     }
     function checkLocalStorageS() {
-      if (localStorage.getItem("settings") !== null) {
-        App.setState({
-          dataSettings: localStorage.getItem("settings"),
-        });
-        return localStorage.getItem("settings");
+      if (localStorage.getItem("dataSettings") !== null) {
+        return localStorage.getItem("dataSettings");
       } else {
         return settings;
       }
     }
     fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${checkLocalStorageC()}&category=${settings}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${checkLocalStorageC()}&category=${checkLocalStorageS()}&order=market_cap_desc&per_page=350&page=1&sparkline=false`
     )
       .then((res) => res.json())
       .then(
@@ -140,20 +136,14 @@ class App extends React.Component {
     let settings = this.state.settingsAPIParam[this.state.dataSettings];
     function checkLocalStorageC() {
       if (localStorage.getItem("currency") !== null) {
-        App.setState({
-          currency: localStorage.getItem("currency"),
-        });
         return localStorage.getItem("currency");
       } else {
         return this.state.currency;
       }
     }
     function checkLocalStorageS() {
-      if (localStorage.getItem("settings") !== null) {
-        App.setState({
-          dataSettings: localStorage.getItem("settings"),
-        });
-        return localStorage.getItem("settings");
+      if (localStorage.getItem("dataSettings") !== null) {
+        return localStorage.getItem("dataSettings");
       } else {
         return settings;
       }
@@ -181,6 +171,20 @@ class App extends React.Component {
           });
         }
       );
+  }
+
+  localStorage() {
+    if (localStorage.getItem("currency") !== null) {
+      this.setState({
+        currency: localStorage.getItem("currency"),
+      });
+    }
+
+    if (localStorage.getItem("dataSettings") !== null) {
+      this.setState({
+        dataSettings: localStorage.getItem("dataSettings"),
+      });
+    }
   }
 
   onChange(e) {
