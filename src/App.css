@@ -43,7 +43,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(91, 38, 57);
+  color: #651962;
 }
 
 .App-link {
@@ -70,7 +70,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .App-header {
     background-color: rgb(240, 231, 234);
@@ -81,7 +81,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .logo {
     max-width: 40%;
@@ -93,11 +93,11 @@
   h1 {
     align-items: center;
     float: center;
-    color: rgb(91, 38, 57);
+    color: #651962;
 
     float: left;
     margin: 5px;
-    padding-top: 45px;
+    padding-top: 30px;
     font-family: "Nunito", sans-serif;
     font-size: 60px;
   }
@@ -118,7 +118,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .App-body {
     background-color: rgb(240, 231, 234);
@@ -131,7 +131,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .logo {
     max-width: 40%;
@@ -143,7 +143,7 @@
   h1 {
     align-items: center;
     float: center;
-    color: rgb(91, 38, 57);
+    color: #651962;
 
     float: left;
     margin: 5px;
@@ -170,11 +170,11 @@
   flex-direction: column;
 
   font-size: calc(6px + 1vmin);
-  color: rgb(91, 38, 57);
+  color: #651962;
   font-family: "Nunito", sans-serif;
 }
 .footer-title {
-  color: rgb(91, 38, 57);
+  color: #651962;
   margin: 5px;
   padding-top: 5px;
   font-family: "Nunito", sans-serif;
@@ -203,7 +203,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .App-body {
     background-color: rgb(240, 231, 234);
@@ -216,7 +216,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: rgb(91, 38, 57);
+    color: #651962;
   }
   .logo {
     max-width: 40%;
@@ -228,7 +228,7 @@ footer {
   h1 {
     align-items: center;
     float: center;
-    color: rgb(91, 38, 57);
+    color: #651962;
     font-family: "Nunito", sans-serif;
     float: left;
     margin: 5px;
@@ -253,12 +253,12 @@ footer {
   flex-direction: column;
 
   font-size: calc(6px + 1vmin);
-  color: rgb(91, 38, 57);
+  color: #651962;
   font-family: "Nunito", sans-serif;
   padding-bottom: 100px;
 }
 .footer-title {
-  color: rgb(91, 38, 57);
+  color: #651962;
   margin: 5px;
   padding-top: 5px;
   font-family: "Nunito", sans-serif;

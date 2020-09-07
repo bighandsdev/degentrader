@@ -22,7 +22,7 @@
     font-family: "Nunito", sans-serif;
     min-width: 85vw;
     max-width: 85vw;
-    color: rgb(91, 38, 57);
+    color: #651962;
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
@@ -259,7 +259,7 @@
     font-family: "Nunito", sans-serif;
     min-width: 85vw;
     max-width: 85vw;
-    color: rgb(91, 38, 57);
+    color: #651962;
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
@@ -494,7 +494,7 @@
     font-family: "Nunito", sans-serif;
     max-width: 90vw;
 
-    color: rgb(91, 38, 57);
+    color: #651962;
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;
@@ -769,7 +769,7 @@
     font-family: "Nunito", sans-serif;
     max-width: 90vw;
 
-    color: rgb(91, 38, 57);
+    color: #651962;
     border-radius: 10px;
     border: 1px solid rgb(255, 255, 255);
     box-shadow: rgb(247, 242, 244) 1px 1px 0px inset;

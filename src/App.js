@@ -75,13 +75,13 @@ class App extends React.Component {
 
   componentDidMount() {
     this.localStorage();
-
+    let currencyState = this.state.currency;
     let settings = this.state.settingsAPIParam[this.state.dataSettings];
     function checkLocalStorageC() {
       if (localStorage.getItem("currency") !== null) {
         return localStorage.getItem("currency");
       } else {
-        return this.state.currency;
+        return currencyState;
       }
     }
     function checkLocalStorageS() {
